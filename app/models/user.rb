@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
     validates :session_token, :username, :email, presence: true, uniqueness: true
     validates :password_digest, presence: true
@@ -22,18 +34,17 @@ class User < ApplicationRecord
     end
 
     def is_password?(password)
-        password_item = BCrypt::Password.new(@password_digest)
+        password_item = BCrypt::Password.new(self.password_digest)
         password_item.is_password?(password)
     end
 
     def reset_session_token!
-        @session_token ||= SecureRandom::urlsafe_base64
+        @session_token = SecureRandom::urlsafe_base64
         self.save!
         @session_token
     end
 
-    private
     def ensure_session_token
-        @session_token = SecureRandom::urlsafe_base64
+        self.session_token ||= SecureRandom::urlsafe_base64
     end
 end

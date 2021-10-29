@@ -1,2 +1,13 @@
+# == Schema Information
+#
+# Table name: friends
+#
+#  id         :bigint           not null, primary key
+#  user_id    :integer          not null
+#  friend_id  :integer          not null
+#  status     :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Friend < ApplicationRecord
 end
