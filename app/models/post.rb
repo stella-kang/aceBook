@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-    validates :author_id, :profile_id, :content, presence: true
+    validates :author_id, :content, presence: true
 
     belongs_to :author,
         primary_key: :id,

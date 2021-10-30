@@ -1,6 +1,6 @@
 export const fetchNewsfeedPosts = () => {
     return $.ajax({
         method: 'GET',
-        url: ''
+        url: '/api/newsfeed'
     })
 }

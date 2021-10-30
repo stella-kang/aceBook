@@ -20,7 +20,7 @@ const Auth = (props) => {
         path={props.path}
         exact={props.exact}
         render={newProps =>
-            !props.loggedIn ? <Component {...newProps} /> : <Redirect to="/index" />
+            !props.loggedIn ? <Component {...newProps} /> : <Redirect to="/newsfeed" />
         }
     />
 }

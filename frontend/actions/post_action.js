@@ -8,7 +8,7 @@ const receiveNewsfeedPosts = (posts) => ({
 })
 
 export const fetchNewsfeedPosts = () => dispatch => {
-    NewsfeedApiUtil.fetchNewsfeedPosts()
+    return NewsfeedApiUtil.fetchNewsfeedPosts()
         .then(
             posts => dispatch(receiveNewsfeedPosts(posts)),
             )
