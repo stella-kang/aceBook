@@ -47,4 +47,19 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= SecureRandom::urlsafe_base64
     end
+
+    has_many :posts,
+        foreign_key: :author_id,
+        primary_key: :id,
+        class_name: :Post
+
+    has_many :friends_requested,
+        foreign_key: :user_id,
+        primary_key: :id,
+        class_name: :Friend
+
+    has_many :friends_received,
+        foreign_key: :friend_id,
+        primary_key: :id,
+        class_name: :Friend
 end

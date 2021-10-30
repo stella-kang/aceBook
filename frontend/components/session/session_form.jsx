@@ -1,5 +1,5 @@
-import { thistle } from "color-name";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class SessionFrom extends React.Component {
     constructor(props) {
@@ -28,6 +28,7 @@ export default class SessionFrom extends React.Component {
 
     render() {
         let email;
+        let link;
 
         if (this.props.formType === "Sign Up") {
             email =  <label>Email:
@@ -35,6 +36,12 @@ export default class SessionFrom extends React.Component {
             </label>
         } else {
             email = null;
+        }
+
+        if (this.props.formType === "Log In") {
+            link = <Link to="/signup">Create a new account</Link>;
+        } else {
+            link = null;
         }
 
         return <form onSubmit={this.handleSubmit}>
@@ -49,6 +56,8 @@ export default class SessionFrom extends React.Component {
             {email}
             <br />
             <button>{this.props.formType}</button>
+            <br />
+            {link}
         </form>
     }
 }
