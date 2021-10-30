@@ -12,6 +12,7 @@ export default class SessionFrom extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGuestLogin = this.handleGuestLogin.bind(this);
     }
 
     update(type) {
@@ -26,9 +27,19 @@ export default class SessionFrom extends React.Component {
         this.props.action(this.state);
     }
 
+    handleGuestLogin(e) {
+        e.preventDefault()
+
+        this.props.action({
+            username: "stella",
+            password: "password"
+        })
+    }
+
     render() {
         let email;
         let signupLink;
+        let guestLogin;
 
         if (this.props.formType === "Sign Up") {
             email =  <label>Email:
@@ -40,8 +51,10 @@ export default class SessionFrom extends React.Component {
 
         if (this.props.formType === "Log In") {
             signupLink = <Link to="/signup">Create a new account</Link>;
+            guestLogin = <button onClick={this.handleGuestLogin}>Login as guest</button>
         } else {
             signupLink = null;
+            guestLogin = null;
         }
 
         return <form onSubmit={this.handleSubmit}>
@@ -59,7 +72,7 @@ export default class SessionFrom extends React.Component {
             <br />
             {signupLink}
             <br />
-            <button onClick={this.props.loginGuest}>Login as guest</button>
+            {guestLogin}
         </form>
     }
 }

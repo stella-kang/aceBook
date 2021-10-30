@@ -8,8 +8,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (user) => dispatch(login(user)),
-    loginGuest: () => dispatch(login({username: "stella", password: "password"}))
+    action: (user) => dispatch(login(user))
 })
 
 export default connect(mSTP, mDTP)(SessionForm);

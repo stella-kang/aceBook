@@ -20,14 +20,6 @@ const logoutUser = () => ({
     type: LOGOUT
 })
 
-// export const loginGuest = () => ({
-//     type: LOGIN_GUEST,
-//     user: {
-//         id: 1,
-//         username: "guest"
-//     }
-// })
-
 const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
     errors
