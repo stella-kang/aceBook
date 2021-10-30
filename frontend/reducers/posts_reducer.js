@@ -1,6 +1,6 @@
 import { RECEIVE_NEWSFEED_POSTS } from "../actions/post_action";
 
-const postsReducer = (state={}, action) => {
+const postsReducer = (state = {}, action) => {
     Object.freeze(state);
     
     switch(action.type) {

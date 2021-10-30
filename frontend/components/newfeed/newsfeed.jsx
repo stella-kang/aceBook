@@ -1,5 +1,5 @@
 import React from "react";
-import PostIndexItem from "../posts/post_index_item"
+import PostItem from "../posts/post_item"
 
 export default class Newsfeed extends React.Component {
     componentDidMount() {
@@ -8,10 +8,13 @@ export default class Newsfeed extends React.Component {
 
     render() {
         return <div>
-            {this.props.posts.map(post => (
-                <PostIndexItem post={post} key={`${post.id}-${post.author_id}`}/>
-            )
-            )}
+            <button onClick={() => this.props.logout()}>Logout</button>
+            <ul>
+                {this.props.posts.map(post => (
+                    <PostItem post={post} key={`${post.id}-${post.author_id}`}/>
+                )
+                )}
+            </ul>
         </div>
     }
 }

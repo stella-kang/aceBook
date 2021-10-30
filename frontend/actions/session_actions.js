@@ -4,6 +4,7 @@ export const SIGN_UP = "SIGN_UP"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
+export const LOGIN_GUEST = "LOGIN_GUEST"
 
 const signupUser = (user) => ({
     type: SIGN_UP,
@@ -18,6 +19,14 @@ const loginUser = (user) => ({
 const logoutUser = () => ({
     type: LOGOUT
 })
+
+// export const loginGuest = () => ({
+//     type: LOGIN_GUEST,
+//     user: {
+//         id: 1,
+//         username: "guest"
+//     }
+// })
 
 const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
@@ -40,7 +49,7 @@ export const login = (user) => dispatch => {
         )
 }
 
-export const logout = (user) => dispatch => {
+export const logout = () => dispatch => {
     SessionApiUtil.logout()
         .then(
             () => dispatch(logoutUser()),

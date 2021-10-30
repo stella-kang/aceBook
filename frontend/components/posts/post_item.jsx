@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PostIndexItem = (props) => {
+const PostItem = (props) => {
     return <li>
         <span>{props.post.content}</span>
     </li>
 }
 
-export default PostIndexItem;
+export default PostItem;

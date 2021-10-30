@@ -28,7 +28,7 @@ export default class SessionFrom extends React.Component {
 
     render() {
         let email;
-        let link;
+        let signupLink;
 
         if (this.props.formType === "Sign Up") {
             email =  <label>Email:
@@ -39,9 +39,9 @@ export default class SessionFrom extends React.Component {
         }
 
         if (this.props.formType === "Log In") {
-            link = <Link to="/signup">Create a new account</Link>;
+            signupLink = <Link to="/signup">Create a new account</Link>;
         } else {
-            link = null;
+            signupLink = null;
         }
 
         return <form onSubmit={this.handleSubmit}>
@@ -57,7 +57,9 @@ export default class SessionFrom extends React.Component {
             <br />
             <button>{this.props.formType}</button>
             <br />
-            {link}
+            {signupLink}
+            <br />
+            <button onClick={this.props.loginGuest}>Login as guest</button>
         </form>
     }
 }
