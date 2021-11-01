@@ -9,3 +9,5 @@ const mSTP = (state, ownProps) => ({
 const mDTP = (dispatch, ownProps) => ({
     logout: () => dispatch(logout()),
 })
+
+export default connect(mSTP, mDTP)(NavBar);
