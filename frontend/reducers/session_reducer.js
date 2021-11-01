@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, LOGIN_GUEST } from "../actions/session_actions";
+import { LOGIN, LOGOUT, SIGN_UP } from "../actions/session_actions";
 
 const _nullState = { currentUserId: null }
 
@@ -8,6 +8,9 @@ const SessionReducer = (state = _nullState, action) => {
 
     switch(action.type) {
         case LOGIN:
+            nextState.currentUserId = action.user.id;
+            return nextState;
+        case SIGN_UP:
             nextState.currentUserId = action.user.id;
             return nextState;
         case LOGOUT:

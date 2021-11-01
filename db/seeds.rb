@@ -9,7 +9,7 @@
 User.destroy_all
 Post.destroy_all
 
-user1 = User.create(username: "stella", password: "password", email: "stella@email.com")
+user1 = User.create(first_name: "stella", last_name: "kang", password: "password", email: "stella@email.com")
 
 post1 = Post.create(content: "post1", author_id: 1)
 post1 = Post.create(content: "post2", author_id: 1)
