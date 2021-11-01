@@ -18,15 +18,13 @@ export default class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (this.state.profile_id) {
+        if (this.props.match.params.userId) {
             this.props.action(this.state)
-                .then(() => this.props.fetchProfilePosts(this.state.profile_id))
+                .then(() => this.props.fetchProfilePosts(this.props.match.params.userId))
         } else {
             this.props.action(this.state)
-                .then(() => this.props.fetchNewfeedPosts())
+                .then(() => this.props.fetchNewsfeedPosts())
         }
-
-        this.setState( { content: "" })
     }
 
     render() {

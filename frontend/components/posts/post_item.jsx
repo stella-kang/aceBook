@@ -1,4 +1,5 @@
 import React from 'react';
+import EditPostFormContainer from './edit_post_form_container';
 
 const PostItem = (props) => {
 
@@ -15,6 +16,7 @@ const PostItem = (props) => {
         <span>{props.post.author.first_name} {props.post.author.last_name}</span>
         {profile}
         <button onClick={() => props.removePost(props.post.id)}>Delete Post</button>
+        <EditPostFormContainer postId={props.post.id}/>
     </li>
 }
 
