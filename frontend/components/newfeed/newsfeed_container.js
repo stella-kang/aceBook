@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchNewsfeedPosts } from '../../actions/post_action';
+import { fetchNewsfeedPosts } from '../../actions/post_actions';
 import { logout } from "../../actions/session_actions"
 import Newsfeed from "./newsfeed"
 

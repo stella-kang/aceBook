@@ -3,7 +3,7 @@ import loginFormContainer from './session/login_form_container';
 import signupFormContainer from './session/signup_form_container';
 import newsfeedContainer from "./newfeed/newsfeed_container"
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import profileContainer from "./profile/profile_wall_container"
+import profileContainer from "./profile/profile_container"
 
 const App = (props) => {
 
