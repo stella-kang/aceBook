@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default class SessionFrom extends React.Component {
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
     constructor(props) {
         super(props);
 
@@ -43,6 +47,7 @@ export default class SessionFrom extends React.Component {
         let firstNameField;
         let lastNameField;
         let loginLink;
+        let errors;
 
         if (this.props.formType === "Log In") {
             signupLink = <Link to="/signup">Create a new account</Link>;
@@ -58,7 +63,16 @@ export default class SessionFrom extends React.Component {
             loginLink = <Link to="/">Already have an account? Log in</Link>;
         }
 
+        if (this.props.errors !== []) {
+            errors = <ul>
+                {this.props.errors.map((el) => (
+                    <li key={el}>{el}</li>
+                ))}
+            </ul>
+        }
+
         return <form onSubmit={this.handleSubmit}>
+            {errors}
             {firstNameField}
             {lastNameField}
             <label>Email:

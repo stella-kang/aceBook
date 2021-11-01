@@ -5,6 +5,7 @@ export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
 export const LOGIN_GUEST = "LOGIN_GUEST"
+export const CLEAR_ERRORS = "CLEAR_ERRORS"
 
 const signupUser = (user) => ({
     type: SIGN_UP,
@@ -23,6 +24,10 @@ const logoutUser = () => ({
 const receiveErrors = (errors) => ({
     type: RECEIVE_ERRORS,
     errors
+})
+
+export const clearErrors = () => ({
+    type: CLEAR_ERRORS
 })
 
 export const signup = (user) => dispatch => {
