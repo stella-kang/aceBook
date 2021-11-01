@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
             <CreatePostFormContainer />
             <ul>
                 {this.props.posts.map(post => (
-                    <PostItem post={post} key={`${post.id}-${post.author_id}`} />
+                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} />
                 ))}
             </ul>
         </div>

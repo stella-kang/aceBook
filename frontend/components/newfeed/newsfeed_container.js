@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchNewsfeedPosts } from '../../actions/post_actions';
+import { fetchNewsfeedPosts, removePost } from '../../actions/post_actions';
 import { logout } from "../../actions/session_actions"
 import Newsfeed from "./newsfeed"
 
@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    removePost: (postId) => dispatch(removePost(postId))
 })
 
 export default connect(mSTP, mDTP)(Newsfeed);
