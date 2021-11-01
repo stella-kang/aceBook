@@ -4,7 +4,8 @@ import { logout } from "../../actions/session_actions"
 import Newsfeed from "./newsfeed"
 
 const mSTP = (state, ownProps) => ({
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts),
+    currentUserId: state.session.currentUserId
 })
 
 const mDTP = (dispatch, ownProps) => ({
