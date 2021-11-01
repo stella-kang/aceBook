@@ -9,7 +9,7 @@ import NavBarContainer from './navbar/nav_bar_container';
 const App = (props) => {
 
     return <div>
-        <AuthRoute path="/" component={loginFormContainer} />
+        <AuthRoute exact path="/" component={loginFormContainer} />
         <AuthRoute path="/signup" component={signupFormContainer} />
         <ProtectedRoute path="/" component={NavBarContainer} />
         <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
