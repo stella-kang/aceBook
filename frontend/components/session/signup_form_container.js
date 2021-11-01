@@ -4,7 +4,13 @@ import { signup, clearErrors } from "../../actions/session_actions"
 
 const mSTP = (state, ownProps) => ({
     errors: state.errors.session,
-    formType: "Sign Up"
+    formType: "Sign Up",
+    user: {
+        email: "",
+        password: "",
+        first_name: "",
+        last_name: ""
+    }
 })
 
 const mDTP = (dispatch, ownProps) => ({

@@ -9,12 +9,7 @@ export default class SessionFrom extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            email: "",
-            password: "",
-            first_name: "",
-            last_name: ""
-        }
+        this.state = this.props.user 
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuestLogin = this.handleGuestLogin.bind(this);
@@ -42,26 +37,27 @@ export default class SessionFrom extends React.Component {
     }
 
     render() {
-        let signupLink;
-        let guestLogin;
-        let firstNameField;
-        let lastNameField;
-        let loginLink;
-        let errors;
+        // let signupLink;
+        // let guestLogin;
+        // let firstNameField;
+        // let lastNameField;
+        // let loginLink;
 
-        if (this.props.formType === "Log In") {
-            signupLink = <Link to="/signup">Create a new account</Link>;
-            guestLogin = <button onClick={this.handleGuestLogin}>Login as guest</button>;
-            firstNameField = null;
-            lastNameField = null;
-            loginLink = null;
-        } else {
-            signupLink = null;
-            guestLogin = null;
-            firstNameField = <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label>
-            lastNameField = <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label>
-            loginLink = <Link to="/">Already have an account? Log in</Link>;
-        }
+        // if (this.props.formType === "Log In") {
+        //     signupLink = <Link to="/signup">Create a new account</Link>;
+        //     guestLogin = <button onClick={this.handleGuestLogin}>Login as guest</button>;
+        //     firstNameField = null;
+        //     lastNameField = null;
+        //     loginLink = null;
+        // } else {
+        //     signupLink = null;
+        //     guestLogin = null;
+        //     firstNameField = <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label>
+        //     lastNameField = <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label>
+        //     loginLink = <Link to="/">Already have an account? Log in</Link>;
+        // }
+
+        let errors;
 
         if (this.props.errors !== []) {
             errors = <ul>
@@ -73,8 +69,8 @@ export default class SessionFrom extends React.Component {
 
         return <form onSubmit={this.handleSubmit}>
             {errors}
-            {firstNameField}
-            {lastNameField}
+            {this.props.formType === "Log In" ? null : <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label> }
+            {this.props.formType === "Log In" ? null : <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label> }
             <label>Email:
             <input type="text" value={this.state.email} onChange={this.update("email")} />
             </label>
@@ -85,11 +81,11 @@ export default class SessionFrom extends React.Component {
             <br />
             <button>{this.props.formType}</button>
             <br />
-            {signupLink}
+            {this.props.formType === "Log In" ? <Link to="/signup">Create a new account</Link> : null}
             <br />
-            {loginLink}
+            {this.props.formType === "Log In" ? null : <Link to="/">Already have an account? Log in</Link> }
             <br />
-            {guestLogin}
+            {this.props.formType === "Log In" ? <button onClick={this.handleGuestLogin}>Login as guest</button> : null}
         </form>
     }
 }

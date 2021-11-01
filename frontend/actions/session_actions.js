@@ -1,19 +1,12 @@
 import * as SessionApiUtil from "../util/session_util"
 
-export const SIGN_UP = "SIGN_UP"
-export const LOGIN = "LOGIN"
+export const RECEIVE_USER = "RECEIVE_USER"
 export const LOGOUT = "LOGOUT"
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
-export const LOGIN_GUEST = "LOGIN_GUEST"
 export const CLEAR_ERRORS = "CLEAR_ERRORS"
 
-const signupUser = (user) => ({
-    type: SIGN_UP,
-    user
-})
-
-const loginUser = (user) => ({
-    type: LOGIN,
+export const receiveUser = (user) => ({
+    type: RECEIVE_USER,
     user
 })
 
@@ -33,7 +26,7 @@ export const clearErrors = () => ({
 export const signup = (user) => dispatch => {
     SessionApiUtil.signup(user)
         .then(
-            (user) => dispatch(signupUser(user)),
+            (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
         )
 }
@@ -41,7 +34,7 @@ export const signup = (user) => dispatch => {
 export const login = (user) => dispatch => {
     SessionApiUtil.login(user)
         .then(
-            (user) => dispatch(loginUser(user)),
+            (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
         )
 }
@@ -50,6 +43,14 @@ export const logout = () => dispatch => {
     SessionApiUtil.logout()
         .then(
             () => dispatch(logoutUser()),
+            (err) => dispatch(receiveErrors(err.responseJSON))
+        )
+}
+
+export const edit = (user) => dispatch => {
+    SessionApiUtil.edit(user)
+        .then(
+            (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
         )
 }

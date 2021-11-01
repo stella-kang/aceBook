@@ -1,14 +1,11 @@
-import { SIGN_UP, LOGIN } from "../actions/session_actions";
+import { RECEIVE_USER } from "../actions/session_actions";
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state)
 
     switch(action.type) {
-        case SIGN_UP:
-            nextState[action.user.id] = action.user
-            return nextState;
-        case LOGIN:
+        case RECEIVE_USER:
             nextState[action.user.id] = action.user
             return nextState;
         default:

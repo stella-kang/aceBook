@@ -9,10 +9,10 @@ const App = (props) => {
 
     return <div>
         <h1>aceBook</h1>
-        <AuthRoute exact path="/" component={loginFormContainer} />
         <AuthRoute path="/signup" component={signupFormContainer} />
         <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
         <ProtectedRoute path="/:userId/profile" component={profileContainer}/>
+        <AuthRoute path="/" component={loginFormContainer} />
     </div>
 }
 
