@@ -25,6 +25,9 @@ export default class SessionFrom extends React.Component {
         e.preventDefault();
 
         this.props.action(this.state);
+        this.setState({
+            password: ""
+        })
     }
 
     handleGuestLogin(e) {
@@ -83,7 +86,7 @@ export default class SessionFrom extends React.Component {
             <br />
             {this.props.formType === "Log In" ? <Link to="/signup">Create a new account</Link> : null}
             <br />
-            {this.props.formType === "Log In" ? null : <Link to="/">Already have an account? Log in</Link> }
+            {this.props.formType === "Log In" ? null : this.props.formType === "Save Changes" ? null : <Link to="/">Already have an account? Log in</Link> }
             <br />
             {this.props.formType === "Log In" ? <button onClick={this.handleGuestLogin}>Login as guest</button> : null}
         </form>

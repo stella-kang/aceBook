@@ -10,8 +10,8 @@ export default class Newsfeed extends React.Component {
 
     render() {
         return <div>
-            <button onClick={() => this.props.logout()}>Logout</button>
-            <button onClick={() => this.props.history.push(`/${this.props.currentUserId}/profile`)}>View Profile</button>
+            {/* <button onClick={() => this.props.logout()}>Logout</button>
+            <button onClick={() => this.props.history.push(`/${this.props.currentUserId}/profile`)}>View Profile</button> */}
             <CreatePostFormContainer />
             <ul>
                 {this.props.posts.map(post => (

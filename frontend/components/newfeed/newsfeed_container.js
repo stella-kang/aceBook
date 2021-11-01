@@ -5,12 +5,12 @@ import Newsfeed from "./newsfeed"
 
 const mSTP = (state, ownProps) => ({
     posts: Object.values(state.entities.posts),
-    currentUserId: state.session.currentUserId
+    // currentUserId: state.session.currentUserId
 })
 
 const mDTP = (dispatch, ownProps) => ({
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    logout: () => dispatch(logout()),
+    // logout: () => dispatch(logout()),
     removePost: (postId) => dispatch(removePost(postId))
 })
 
