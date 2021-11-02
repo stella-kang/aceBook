@@ -76,12 +76,20 @@ export default class SessionFrom extends React.Component {
 
         return <form onSubmit={this.handleSubmit} encType="multipart/form-data">
             {errors}
-            {this.props.formType === "Log In" ? null : <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label> }
-            {this.props.formType === "Log In" ? null : <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label> }
+            {this.props.formType === "Log In" ? null : <label> First Name: <input 
+                type="text" 
+                value={this.state.first_name} 
+                onChange={this.update("first_name")} />
+                </label> }
+            {this.props.formType === "Log In" ? null : <label> Last Name: <input 
+                type="text" 
+                value={this.state.last_name} 
+                onChange={this.update("last_name")} />
+                </label> }
             {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
                 type="file" 
                 onChange={this.handleProfilePictureChange} 
-                value={this.state.profile_picture.filename}
+                // value={this.state.profile_picture.filename}
                 accept="image/png, image/jpeg" />
                 </label>}
             <label>Email:
