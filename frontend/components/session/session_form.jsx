@@ -30,7 +30,8 @@ export default class SessionFrom extends React.Component {
         e.preventDefault();
 
         if (this.props.formType === "Log In") {
-            this.props.action(this.state);
+            this.props.action(this.state)
+                .then( () => this.props.closeModal());
         } else {
             const formData = new FormData();
             formData.append('user[email]', this.state.email);
@@ -47,13 +48,12 @@ export default class SessionFrom extends React.Component {
             }
 
             this.props.action(formData)
+                .then(() => this.props.closeModal());
         }
 
         this.setState({
             password: ""
         })
-
-        this.props.closeModal();
     }
 
     handleGuestLogin(e) {
@@ -69,7 +69,8 @@ export default class SessionFrom extends React.Component {
         let errors;
 
         if (this.props.errors !== []) {
-            errors = <ul>
+            if (!(this.props.modal && this.props.formType === "Log In"))
+            errors = <ul className="errors">
                 {this.props.errors.map((el) => (
                     <li key={el}>{el}</li>
                 ))}

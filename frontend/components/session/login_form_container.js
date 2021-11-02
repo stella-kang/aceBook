@@ -12,7 +12,8 @@ const mSTP = (state, ownProps) => ({
         password: "",
         first_name: "",
         last_name: ""
-    }
+    },
+    modal: state.ui.modal
 })
 
 const mDTP = (dispatch, ownProps) => ({
