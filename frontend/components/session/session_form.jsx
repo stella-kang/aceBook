@@ -74,39 +74,48 @@ export default class SessionFrom extends React.Component {
             </ul>
         }
 
-        return <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-            {errors}
-            {this.props.formType === "Log In" ? null : <label> First Name: <input 
-                type="text" 
-                value={this.state.first_name} 
-                onChange={this.update("first_name")} />
-                </label> }
-            {this.props.formType === "Log In" ? null : <label> Last Name: <input 
-                type="text" 
-                value={this.state.last_name} 
-                onChange={this.update("last_name")} />
-                </label> }
-            {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
-                type="file" 
-                onChange={this.handleProfilePictureChange} 
-                // value={this.state.profile_picture.filename}
-                accept="image/png, image/jpeg" />
-                </label>}
-            <label>Email:
-            <input type="text" value={this.state.email} onChange={this.update("email")} />
-            </label>
-            <br />
-            <label>Password:
-            <input type="password" value={this.state.password} onChange={this.update("password")} />
-            </label>
-            <br />
-            <button>{this.props.formType}</button>
-            <br />
-            {this.props.formType === "Log In" ? <Link to="/signup">Create a new account</Link> : null}
-            <br />
-            {this.props.formType === "Log In" ? null : this.props.formType === "Save Changes" ? null : <Link to="/">Already have an account? Log in</Link> }
-            <br />
-            {this.props.formType === "Log In" ? <button onClick={this.handleGuestLogin}>Login as guest</button> : null}
-        </form>
+        return  <div id="form-content">
+                <form encType="multipart/form-data">
+                    {errors}
+
+                    {this.props.formType === "Sign Up" ? <button onClick={this.props.closeModal}>X</button> : null }
+                    {this.props.formType === "Sign Up" ? <div id="signup-header">
+                        <h1>Sign Up</h1>
+                        <p>It's quick and easy.</p>
+                    </div> : null}
+
+                    {this.props.formType === "Log In" ? null : <input 
+                        type="text" 
+                        value={this.state.first_name} 
+                        placeholder="First Name"
+                        onChange={this.update("first_name")} />}
+
+                    {this.props.formType === "Log In" ? null : <label> Last Name: <input 
+                        type="text" 
+                        value={this.state.last_name} 
+                        onChange={this.update("last_name")} />
+                        </label> }
+
+                    {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
+                        type="file" 
+                        onChange={this.handleProfilePictureChange} 
+                        // value={this.state.profile_picture.filename}
+                        accept="image/png, image/jpeg" />
+                        </label>}
+
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.update("email")} />
+
+                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.update("password")} />
+
+                    <button onClick={this.handleSubmit}>{this.props.formType}</button>
+        
+                    {this.props.formType === "Log In" ? null : this.props.formType === "Save Changes" ? null : <Link to="/">Already have an account? Log in</Link> }
+        
+                    {this.props.formType === "Log In" ? <button onClick={this.handleGuestLogin}>Login as guest</button> : null}
+
+                    {this.props.formType === "Log In" ? this.props.signupModal : null}
+
+                </form>
+            </div>
     }
 }

@@ -1,0 +1,43 @@
+import React from 'react';
+import { closeModal } from '../../actions/modal_actions';
+import { connect } from 'react-redux';
+import LoginFormContainer from '../session/login_form_container';
+import SignupFormContainer from '../session/signup_form_container';
+import EditFormContainer from "../session/edit_form_container"
+
+const mSTP = (state, ownProps) => ({
+    modal: state.ui.modal
+})
+
+const mDTP = (dispatch, ownProps) => ({
+    closeModal: () => dispatch(closeModal())
+})
+
+const Modal = (props) => {
+    if (!props.modal) {
+        return null;
+    }
+
+    let component;
+    switch (props.modal) {
+        case 'signup':
+            component = <SignupFormContainer />;
+            break;
+        case 'edit_profile':
+            component = <EditFormContainer />
+            break;
+        default:
+            return null;
+    }
+
+    return (
+        <div className="modal-background" onClick={props.closeModal}>
+            <div className="modal-component" onClick={e => e.stopPropagation()}>
+                {component}
+            </div>
+        </div>
+    );
+}
+
+
+export default connect(mSTP, mDTP)(Modal);

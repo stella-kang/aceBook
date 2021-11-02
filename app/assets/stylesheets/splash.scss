@@ -1,2 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap');
+
+$logo-font: 'Titillium Web', sans-serif;
 $blue: #1778F2;
 $off-white: #F0F2F5;
+
+html {
+    background: $off-white;
+}
+
+#splash-content {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10% 20% 0%;
+    align-items: center;
+    
+    h1 {
+        font-family: $logo-font;
+        font-size: 50px;
+        color: $blue;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 25px;
+        font-weight: 1;
+        margin-bottom: 50px;
+    }
+}
+
+
+#logo-content {
+    // margin-left: 400px;
+    width: 500px;
+}
+
+#form-content {
+    // margin-right: 400px;
+    width: 400px;
+    height: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+
+    button {
+        background-color: $blue;
+        border: none;
+        color: white;
+        font-size: 20px;
+        width: 100%;
+        border-radius: 3px;
+        padding: 10px;
+        font-weight: 700;
+    }
+
+    input {
+        border: 1px lightgrey solid;
+        font-size: 20px;
+        padding: 10px;
+        width: 40%;
+        border-radius: 3px;
+    }
+}
+
+.modal-component {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
