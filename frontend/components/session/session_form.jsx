@@ -9,7 +9,7 @@ export default class SessionFrom extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = this.props.user 
+        this.state = this.props.user
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuestLogin = this.handleGuestLogin.bind(this);
@@ -23,7 +23,7 @@ export default class SessionFrom extends React.Component {
     }
 
     handleProfilePictureChange(e) {
-        this.setState({profile_picture: e.target.files[0]})
+        this.setState({ profile_picture: e.target.files[0] })
     }
 
     handleSubmit(e) {
@@ -74,48 +74,51 @@ export default class SessionFrom extends React.Component {
             </ul>
         }
 
-        return  <div id="form-content">
-                <form encType="multipart/form-data">
-                    {errors}
+        return <div id="form-content">
+            <form id="session-form" encType="multipart/form-data">
+                {errors}
 
-                    {this.props.formType === "Sign Up" ? <button onClick={this.props.closeModal}>X</button> : null }
-                    {this.props.formType === "Sign Up" ? <div id="signup-header">
-                        <h1>Sign Up</h1>
-                        <p>It's quick and easy.</p>
-                    </div> : null}
+                {this.props.formType === "Sign Up" ? <button id="close-modal-button" onClick={this.props.closeModal}>X</button> : null}
+                {this.props.formType === "Sign Up" ? <div id="signup-header">
+                    <h1>Sign Up</h1>
+                    <p>It's quick and easy.</p>
+                </div> : null}
 
-                    {this.props.formType === "Log In" ? null : <input 
-                        type="text" 
-                        value={this.state.first_name} 
-                        placeholder="First Name"
-                        onChange={this.update("first_name")} />}
+                <div id="names-form">
+                {this.props.formType === "Log In" ? null : <input
+                    type="text"
+                    value={this.state.first_name}
+                    placeholder="First Name"
+                    id="first-name"
+                    onChange={this.update("first_name")} />}
 
-                    {this.props.formType === "Log In" ? null : <label> Last Name: <input 
-                        type="text" 
-                        value={this.state.last_name} 
-                        onChange={this.update("last_name")} />
-                        </label> }
+                {this.props.formType === "Log In" ? null : <input
+                    type="text"
+                    value={this.state.last_name}
+                    placeholder="Last Name"
+                    id="last-name"
+                    onChange={this.update("last_name")} />}
+                </div>
 
-                    {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
-                        type="file" 
-                        onChange={this.handleProfilePictureChange} 
-                        // value={this.state.profile_picture.filename}
-                        accept="image/png, image/jpeg" />
-                        </label>}
+                {this.props.formType === "Save Changes" ? <label>Profile Picture <input
+                    type="file"
+                    onChange={this.handleProfilePictureChange}
+                    // value={this.state.profile_picture.filename}
+                    accept="image/png, image/jpeg" />
+                </label> : null}
 
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.update("email")} />
+                <input type="text" value={this.state.email} placeholder="Email" id="email" onChange={this.update("email")} />
 
-                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.update("password")} />
+                <input type="password" value={this.state.password} placeholder="Password" id="password" onChange={this.update("password")} />
 
-                    <button onClick={this.handleSubmit}>{this.props.formType}</button>
-        
-                    {this.props.formType === "Log In" ? null : this.props.formType === "Save Changes" ? null : <Link to="/">Already have an account? Log in</Link> }
-        
-                    {this.props.formType === "Log In" ? <button onClick={this.handleGuestLogin}>Login as guest</button> : null}
+                <button onClick={this.handleSubmit} id="submit-button">{this.props.formType}</button>
 
-                    {this.props.formType === "Log In" ? this.props.signupModal : null}
+                {this.props.formType === "Log In" ? <button id="guest-login" onClick={this.handleGuestLogin}>Log In as Guest</button> : null}
+               
+                {this.props.formType === "Log In" ? <div id="login-separator"></div> : null}
+                {this.props.formType === "Log In" ? this.props.signupModal : null}
 
-                </form>
-            </div>
+            </form>
+        </div>
     }
 }
