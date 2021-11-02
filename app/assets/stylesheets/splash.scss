@@ -90,6 +90,11 @@ html {
   transform: translate(-50%, -50%);
 
   #signup-header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+
     h1 {
         font-size: 30px;
         margin-bottom: 10px;
@@ -97,6 +102,10 @@ html {
 
     p {
         margin-bottom: 20px;
+    }
+
+    .fa-times {
+        size: 3x;
     }
   }
 

@@ -52,6 +52,8 @@ export default class SessionFrom extends React.Component {
         this.setState({
             password: ""
         })
+
+        this.props.closeModal();
     }
 
     handleGuestLogin(e) {
@@ -78,10 +80,12 @@ export default class SessionFrom extends React.Component {
             <form id="session-form" encType="multipart/form-data">
                 {errors}
 
-                {this.props.formType === "Sign Up" ? <button id="close-modal-button" onClick={this.props.closeModal}>X</button> : null}
                 {this.props.formType === "Sign Up" ? <div id="signup-header">
+                    <div>
                     <h1>Sign Up</h1>
                     <p>It's quick and easy.</p>
+                    </div>
+                    <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
                 </div> : null}
 
                 <div id="names-form">

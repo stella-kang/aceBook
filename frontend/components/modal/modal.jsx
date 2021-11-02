@@ -21,17 +21,17 @@ const Modal = (props) => {
     let component;
     switch (props.modal) {
         case 'signup':
-            component = <SignupFormContainer />;
+            component = <SignupFormContainer closeModal={props.closeModal}/>;
             break;
         case 'edit_profile':
-            component = <EditFormContainer />
+            component = <EditFormContainer closeModal={props.closeModal}/>
             break;
         default:
             return null;
     }
 
     return (
-        <div className="modal-background" onClick={props.closeModal}>
+        <div className="modal-background">
             <div className="modal-component" onClick={e => e.stopPropagation()}>
                 {component}
             </div>
