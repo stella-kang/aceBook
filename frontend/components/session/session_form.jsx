@@ -13,6 +13,7 @@ export default class SessionFrom extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuestLogin = this.handleGuestLogin.bind(this);
+        this.handleProfilePictureChange = this.handleProfilePictureChange.bind(this);
     }
 
     update(type) {
@@ -21,10 +22,40 @@ export default class SessionFrom extends React.Component {
         }
     }
 
+    handleProfilePictureChange(e) {
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+            this.setState({ profile_picture_url: reader.result, profile_picture_file: file });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            this.setState({ imageUrl: "", imageFile: null });
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.action(this.state);
+        if (this.props.formType === "Log In") {
+            this.props.action(this.state);
+        } else {
+            const formData = new FormData();
+            formData.append('user[email]', this.state.email);
+            formData.append('user[first_name]', this.state.first_name);
+            formData.append('user[last_name]', this.state.last_name);
+            formData.append('user[password]', this.state.password);
+            if (this.state.id) {
+                formData.append('user[id]', this.state.id)
+            }
+            if (this.state.profile_picture_file) {
+                formData.append('user[profile_picture]', this.state.profile_picture_file);
+            }
+
+            this.props.action(formData)
+        }
+
         this.setState({
             password: ""
         })
@@ -40,26 +71,6 @@ export default class SessionFrom extends React.Component {
     }
 
     render() {
-        // let signupLink;
-        // let guestLogin;
-        // let firstNameField;
-        // let lastNameField;
-        // let loginLink;
-
-        // if (this.props.formType === "Log In") {
-        //     signupLink = <Link to="/signup">Create a new account</Link>;
-        //     guestLogin = <button onClick={this.handleGuestLogin}>Login as guest</button>;
-        //     firstNameField = null;
-        //     lastNameField = null;
-        //     loginLink = null;
-        // } else {
-        //     signupLink = null;
-        //     guestLogin = null;
-        //     firstNameField = <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label>
-        //     lastNameField = <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label>
-        //     loginLink = <Link to="/">Already have an account? Log in</Link>;
-        // }
-
         let errors;
 
         if (this.props.errors !== []) {
@@ -70,10 +81,15 @@ export default class SessionFrom extends React.Component {
             </ul>
         }
 
-        return <form onSubmit={this.handleSubmit}>
+        return <form onSubmit={this.handleSubmit} encType="multipart/form-data">
             {errors}
             {this.props.formType === "Log In" ? null : <label> First Name: <input type="text" value={this.state.first_name} onChange={this.update("first_name")} /></label> }
             {this.props.formType === "Log In" ? null : <label> Last Name: <input type="text" value={this.state.last_name} onChange={this.update("last_name")} /></label> }
+            {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
+                type="file" 
+                onChange={this.handleProfilePictureChange} 
+                accept="image/png, image/jpeg" />
+                </label>}
             <label>Email:
             <input type="text" value={this.state.email} onChange={this.update("email")} />
             </label>

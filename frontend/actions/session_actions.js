@@ -23,8 +23,8 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS
 })
 
-export const signup = (user) => dispatch => {
-    SessionApiUtil.signup(user)
+export const signup = (formData) => dispatch => {
+    SessionApiUtil.signup(formData)
         .then(
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
@@ -47,8 +47,8 @@ export const logout = () => dispatch => {
         )
 }
 
-export const edit = (user) => dispatch => {
-    SessionApiUtil.edit(user)
+export const edit = (formData) => dispatch => {
+    SessionApiUtil.edit(formData)
         .then(
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))

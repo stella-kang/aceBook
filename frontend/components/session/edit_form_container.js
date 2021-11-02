@@ -8,18 +8,12 @@ const mSTP = (state, ownProps) => {
     return {
         errors: state.errors.session,
         formType: "Save Changes",
-        user: {
-            email: user.email,
-            password: "",
-            first_name: user.first_name,
-            last_name: user.last_name,
-            id: user.id
-        }
+        user: user
     }
 }
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (user) => dispatch(edit(user)),
+    action: (formData) => dispatch(edit(formData)),
     clearErrors: () => dispatch(clearErrors())
 })
 

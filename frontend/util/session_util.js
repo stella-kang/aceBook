@@ -1,8 +1,10 @@
-export const signup = (user) => {
+export const signup = (formData) => {
     return $.ajax({
         method: 'POST',
         url: '/api/users',
-        data: { user }
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 
@@ -21,10 +23,13 @@ export const logout = () => {
     })
 }
 
-export const edit = (user) => {
+export const edit = (formData) => {
+    debugger
     return $.ajax({
         method: 'PATCH',
-        url: `/api/users/${user.id}`,
-        data: { user }
+        url: `/api/users/${parseInt(formData.get("user[id]"))}`,
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }

@@ -9,12 +9,14 @@ const mSTP = (state, ownProps) => ({
         email: "",
         password: "",
         first_name: "",
-        last_name: ""
+        last_name: "",
+        profile_picture_url: "",
+        profile_picture_file: ""
     }
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (user) => dispatch(signup(user)),
+    action: (formData) => dispatch(signup(formData)),
     clearErrors: () => dispatch(clearErrors())
 })
 

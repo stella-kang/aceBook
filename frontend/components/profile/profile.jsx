@@ -10,9 +10,12 @@ export default class Profile extends React.Component {
 
 
     render() {
+        debugger
+        
         return <div>
             <EditProfileForm />
             <CreatePostFormContainer />
+            {this.props.user.profile_picture ? <img src={this.props.user.profile_picture}/> : null}
             <ul>
                 {this.props.posts.map(post => (
                     <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} />

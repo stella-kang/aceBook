@@ -58,4 +58,6 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         primary_key: :id,
         class_name: :Friend
+
+    has_one_attached :profile_picture
 end
