@@ -36,7 +36,7 @@ export default class SessionFrom extends React.Component {
             formData.append('user[email]', this.state.email);
             formData.append('user[first_name]', this.state.first_name);
             formData.append('user[last_name]', this.state.last_name);
-            if (this.state.password !== "") {
+            if (this.props.formType === "Sign Up" || this.state.password !== "") {
                 formData.append('user[password]', this.state.password);
             }
             if (this.state.id) {
