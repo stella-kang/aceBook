@@ -8,10 +8,7 @@ export default class Profile extends React.Component {
         this.props.fetchProfilePosts()
     }
 
-
     render() {
-        debugger
-        
         return <div>
             <EditProfileForm />
             <CreatePostFormContainer />

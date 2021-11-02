@@ -23,16 +23,7 @@ export default class SessionFrom extends React.Component {
     }
 
     handleProfilePictureChange(e) {
-        const reader = new FileReader();
-        const file = e.currentTarget.files[0];
-        reader.onloadend = () =>
-            this.setState({ profile_picture_url: reader.result, profile_picture_file: file });
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            this.setState({ imageUrl: "", imageFile: null });
-        }
+        this.setState({profile_picture: e.target.files[0]})
     }
 
     handleSubmit(e) {
@@ -45,12 +36,14 @@ export default class SessionFrom extends React.Component {
             formData.append('user[email]', this.state.email);
             formData.append('user[first_name]', this.state.first_name);
             formData.append('user[last_name]', this.state.last_name);
-            formData.append('user[password]', this.state.password);
+            if (this.state.password !== "") {
+                formData.append('user[password]', this.state.password);
+            }
             if (this.state.id) {
                 formData.append('user[id]', this.state.id)
             }
-            if (this.state.profile_picture_file) {
-                formData.append('user[profile_picture]', this.state.profile_picture_file);
+            if (this.state.profile_picture) {
+                formData.append('user[profile_picture]', this.state.profile_picture);
             }
 
             this.props.action(formData)
@@ -88,6 +81,7 @@ export default class SessionFrom extends React.Component {
             {this.props.formType === "Log In" ? null : <label>Profile Picture <input 
                 type="file" 
                 onChange={this.handleProfilePictureChange} 
+                value={this.state.profile_picture.filename}
                 accept="image/png, image/jpeg" />
                 </label>}
             <label>Email:

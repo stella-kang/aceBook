@@ -10,8 +10,7 @@ const mSTP = (state, ownProps) => ({
         password: "",
         first_name: "",
         last_name: "",
-        profile_picture_url: "",
-        profile_picture_file: ""
+        profile_picture: ""
     }
 })
 

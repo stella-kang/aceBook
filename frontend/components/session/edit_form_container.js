@@ -8,7 +8,15 @@ const mSTP = (state, ownProps) => {
     return {
         errors: state.errors.session,
         formType: "Save Changes",
-        user: user
+        user: {
+            email: user.email,
+            password: "",
+            first_name: user.first_name,
+            last_name: user.last_name,
+            profile_picture: "",
+            id: user.id
+        }
+        // user: user
     }
 }
 

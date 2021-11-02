@@ -24,7 +24,6 @@ export const logout = () => {
 }
 
 export const edit = (formData) => {
-    debugger
     return $.ajax({
         method: 'PATCH',
         url: `/api/users/${parseInt(formData.get("user[id]"))}`,
