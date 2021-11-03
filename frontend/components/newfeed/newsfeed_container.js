@@ -19,7 +19,7 @@ const mDTP = (dispatch, ownProps) => ({
     </button>,
     editPostFormModal: (postId) => (<button id="edit-post-form-button" onClick={() => {
         dispatch(openModal("edit_post", postId));
-    }}>Test
+    }}>Edit post
     </button>)
 })
 

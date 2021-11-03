@@ -23,6 +23,8 @@ export default class PostForm extends React.Component {
     }
 
     handlePhotoChange(e) {
+        let button = document.getElementById("post-save-button");
+        button.disabled = false;
         this.setState({ photo: e.target.files[0] })
         document.getElementById("photo-input-icon").classList.add("green-icon")
     }

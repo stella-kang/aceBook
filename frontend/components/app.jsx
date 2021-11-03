@@ -10,11 +10,17 @@ import NavBarContainer from './navbar/nav_bar_container';
 const App = (props) => {
 
     const handleCloseDropdown = (e) => {
-        const menu = document.getElementById("dropdown-content")
-        const menuButton = document.getElementById("dropdown-button")
+        const menu = document.getElementById("dropdown-content");
+        const menuButton = document.getElementById("dropdown-button");
+        const postMenu = document.getElementById("post-dropdown-content");
+
         if (menu && menu.style.display === "block") {
-            menu.style.display = ""
-            menuButton.classList.remove("focus")
+            menu.style.display = "";
+            menuButton.classList.remove("focus");
+        }
+        
+        if (postMenu && postMenu.style.display === "block") {
+            postMenu.style.display = "";
         }
     }
     

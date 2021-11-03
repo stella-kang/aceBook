@@ -11,16 +11,42 @@ const PostItem = (props) => {
         profile = null;
     }
 
+    const handleDropdownClick = (e) => {
+        e.stopPropagation();
+        const postMenu = document.getElementById("post-dropdown-content");
+        if (postMenu.style.display === "") {
+            postMenu.style.display = "block";
+        } else {
+            postMenu.style.display = "";
+        }
+    }
+
     return <li className="post-item">
-        <div id="post-details">
-            {props.post.author.profile_picture ? <img src={props.post.author.profile_picture} /> : <img src={window.defaultProfile} />}
-            <span>{props.post.author.first_name} {props.post.author.last_name}</span>
+        <div class="post-header">
+            <div id="post-details">
+                {props.post.author.profile_picture ? <img src={props.post.author.profile_picture} /> : <img src={window.defaultProfile} />}
+                <span>{props.post.author.first_name} {props.post.author.last_name}</span>
+            </div>
+            
+            <div id="post-dropdown-menu" >
+                <button id="post-dropdown-button" onClick={handleDropdownClick}>
+                    <i class="fas fa-ellipsis-h fa-2x"></i>
+                </button>
+
+                <div id="post-dropdown-content">
+                    <div>
+                        <button onClick={() => props.removePost(props.post.id)}>Delete post</button>
+                        {props.editPostFormModal(props.post.id)}
+                    </div>
+                </div>
+            </div>
         </div>
-        <span>{props.post.content}</span>
+
         {profile}
+
+        <span>{props.post.content}</span>
+
         {props.post.photo ? <img src={props.post.photo} /> : null}
-        <button onClick={() => props.removePost(props.post.id)}>Delete Post</button>
-        {props.editPostFormModal(props.post.id)}
     </li>
 }
 

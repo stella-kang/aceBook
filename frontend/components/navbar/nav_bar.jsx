@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
     const handleDropdownClick = (e) => {
-        e.stopPropagation()
-        const menu = document.getElementById("dropdown-content")
-        const menuButton = document.getElementById("dropdown-button")
+        e.stopPropagation();
+        const menu = document.getElementById("dropdown-content");
+        const menuButton = document.getElementById("dropdown-button");
         if (menu.style.display === "") {
-            menu.style.display = "block"
-            menuButton.classList.add("focus")
+            menu.style.display = "block";
+            menuButton.classList.add("focus");
         } else {
             menu.style.display = "";
-            menuButton.classList.remove("focus")
+            menuButton.classList.remove("focus");
         }
     } 
 
@@ -28,6 +28,7 @@ const NavBar = (props) => {
                 {props.currentUser.profile_picture ? <img src={props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                 <span>{props.currentUser.first_name} </span>
             </button>
+
             <div id="main-dropdown-menu" >
                 <button id="dropdown-button" onClick={handleDropdownClick}>
                     <i className="fas fa-caret-down fa-2x"></i>
