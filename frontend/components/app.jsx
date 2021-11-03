@@ -11,7 +11,6 @@ const App = (props) => {
     
     return <div>
         <Modal />
-        {/* <AuthRoute path="/signup" component={signupFormContainer} /> */}
         <ProtectedRoute path="/" component={NavBarContainer} />
         <Switch>
             <AuthRoute exact path="/" component={splashGreeting} />

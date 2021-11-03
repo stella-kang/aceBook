@@ -2,6 +2,7 @@ import React from "react";
 import PostItem from "../posts/post_item";
 import CreatePostFormContainer from "../posts/create_post_form_container";
 import EditProfileForm from "../session/edit_form_container"
+import { closeModal } from '../../actions/modal_actions';
 
 export default class Profile extends React.Component {
     componentDidMount() {
@@ -10,7 +11,7 @@ export default class Profile extends React.Component {
 
     render() {
         return <div>
-            <EditProfileForm />
+            <EditProfileForm  closeModal={closeModal}/>
             <CreatePostFormContainer />
             {this.props.user.profile_picture ? <img src={this.props.user.profile_picture}/> : null}
             <ul>
