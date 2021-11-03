@@ -17,10 +17,10 @@ const mDTP = (dispatch, ownProps) => ({
         dispatch(openModal("create_post"));
          }}>
     </button>,
-    editPostFormModal: <button id="edit-post-form-button" onClick={() => {
-        dispatch(openModal("edit_post"));
+    editPostFormModal: (postId) => (<button id="edit-post-form-button" onClick={() => {
+        dispatch(openModal("edit_post", postId));
     }}>Test
-    </button>
+    </button>)
 })
 
 export default connect(mSTP, mDTP)(Newsfeed);

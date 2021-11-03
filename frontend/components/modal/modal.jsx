@@ -24,18 +24,23 @@ const Modal = (props) => {
     }
 
     let component;
-    switch (props.modal) {
-        case 'signup':
-            component = <SignupFormContainer closeModal={props.closeModal}/>;
-            break;
-        case 'profile_form':
-            component = <EditProfileFormContainer closeModal={props.closeModal}/>
-            break;
-        case 'create_post':
-            component = <CreatePostForm closeModal={props.closeModal}/>
-            break;
-        case 'edit_post':
-            component = <EditPostForm closeModal={props.closeModal}/>
+    switch (typeof props.modal === "string") {
+        case true:
+            switch(props.modal) {
+                case 'signup':
+                    component = <SignupFormContainer closeModal={props.closeModal} />;
+                    break;
+                case 'profile_form':
+                    component = <EditProfileFormContainer closeModal={props.closeModal} />
+                    break;
+                case 'create_post':
+                    component = <CreatePostForm closeModal={props.closeModal} />
+                    break;
+                default:
+                    return null;
+            }
+        case false:
+            component = <EditPostForm closeModal={props.closeModal} postId={props.modal}/>
             break;
         default:
             return null;

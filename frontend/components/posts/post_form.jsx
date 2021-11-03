@@ -37,6 +37,9 @@ export default class PostForm extends React.Component {
         if (this.state.photo) {
             formData.append('post[photo]', this.state.photo)
         }
+        if (this.state.id) {
+            formData.append('post[id]', this.state.id)
+        }
 
         if (this.props.match.params.userId) {
             this.props.action(formData)

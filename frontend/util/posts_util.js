@@ -11,7 +11,7 @@ export const createPost = (formData) => {
 export const updatePost = (formData) => {
     return $.ajax({
         method: "PATCH",
-        url: `/api/posts/${post.id}`,
+        url: `/api/posts/${parseInt(formData.get("post[id]"))}`,
         data: formData,
         contentType: false,
         processData: false

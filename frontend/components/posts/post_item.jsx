@@ -17,7 +17,7 @@ const PostItem = (props) => {
         {profile}
         {props.post.photo ? <img src={props.post.photo} /> : null}
         <button onClick={() => props.removePost(props.post.id)}>Delete Post</button>
-        {props.editPostFormModal}
+        {props.editPostFormModal(props.post.id)}
     </li>
 }
 

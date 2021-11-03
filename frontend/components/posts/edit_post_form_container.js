@@ -9,6 +9,7 @@ const mSTP = (state, ownProps) => {
 
     return {
         post: {
+            id: post.id,
             content: post.content,
             author_id: post.author_id,
             photo: "",
