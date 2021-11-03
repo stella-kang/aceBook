@@ -21,8 +21,7 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (formData) => dispatch(edit(formData)),
-    clearErrors: () => dispatch(clearErrors())
+    action: (formData) => dispatch(edit(formData))
 })
 
 export default withRouter(connect(mSTP, mDTP)(SessionForm));

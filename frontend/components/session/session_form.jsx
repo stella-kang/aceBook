@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default class SessionFrom extends React.Component {
-    componentWillUnmount() {
-        this.props.clearErrors();
-    }
 
     constructor(props) {
         super(props);
@@ -29,7 +26,7 @@ export default class SessionFrom extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (this.props.formType === "Log In") {
+        if (this.props.formType === "Log In" || this.props.formType === "Sign Up") {
             this.props.action(this.state)
                 .then( () => this.props.closeModal());
         } else {
@@ -51,9 +48,7 @@ export default class SessionFrom extends React.Component {
                 .then(() => this.props.closeModal());
         }
 
-        this.setState({
-            password: ""
-        })
+        this.setState({ password: "" })
     }
 
     handleGuestLogin(e) {
@@ -69,12 +64,31 @@ export default class SessionFrom extends React.Component {
         let errors;
 
         if (this.props.errors !== []) {
-            if (!(this.props.modal && this.props.formType === "Log In"))
-            errors = <ul className="errors">
-                {this.props.errors.map((el) => (
-                    <li key={el}>{el}</li>
-                ))}
-            </ul>
+            if (!(this.props.modal && this.props.formType === "Log In")) {
+                document.querySelectorAll(".error-field").forEach(el => el.classList.remove("error-field"));
+                this.props.errors.forEach(el => {
+                    if (el.includes("Email")) {
+                        document.getElementById("email").classList.add("error-field")
+                    } else if (el.includes("Password")) {
+                        document.getElementById("password").classList.add("error-field")
+                    } else if (el.includes("First")) {
+                        document.getElementById("first-name").classList.add("error-field")
+                    } else if (el.includes("Last")) {
+                        document.getElementById("last-name").classList.add("error-field")
+                    } else if (el.includes("credentials")) {
+                        document.getElementById("password").classList.add("error-field")
+                        document.getElementById("email").classList.add("error-field")
+                    }
+                })
+
+                debugger
+
+                errors = <ul className="errors">
+                    {this.props.errors.map((el) => (
+                        <li key={el}>{el}</li>
+                    ))}
+                </ul>
+            }
         }
 
         return <div id="form-content">

@@ -24,7 +24,7 @@ export const clearErrors = () => ({
 })
 
 export const signup = (formData) => dispatch => {
-    SessionApiUtil.signup(formData)
+    return SessionApiUtil.signup(formData)
         .then(
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
@@ -32,7 +32,7 @@ export const signup = (formData) => dispatch => {
 }
 
 export const login = (user) => dispatch => {
-    SessionApiUtil.login(user)
+    return SessionApiUtil.login(user)
         .then(
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
@@ -40,7 +40,7 @@ export const login = (user) => dispatch => {
 }
 
 export const logout = () => dispatch => {
-    SessionApiUtil.logout()
+    return SessionApiUtil.logout()
         .then(
             () => dispatch(logoutUser()),
             (err) => dispatch(receiveErrors(err.responseJSON))
@@ -48,7 +48,7 @@ export const logout = () => dispatch => {
 }
 
 export const edit = (formData) => dispatch => {
-    SessionApiUtil.edit(formData)
+    return SessionApiUtil.edit(formData)
         .then(
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))

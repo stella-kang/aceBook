@@ -66,16 +66,6 @@ html {
         }
     }
 
-    input {
-        border: 1px lightgrey solid;
-        box-sizing: border-box;
-        font-size: 18px;
-        width: 100%;
-        padding: 15px;
-        border-radius: 7px;
-        margin-bottom: 15px;
-    }
-
     #signup-button {
         background-color: #42B72A;
         width: 60%;
@@ -90,6 +80,16 @@ html {
         margin: 20px 0px 35px;
         width: 100%;
     }
+}
+
+input {
+    border: 1px lightgrey solid;
+    box-sizing: border-box;
+    font-size: 18px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
+    margin-bottom: 15px;
 }
 
 .modal-component {
@@ -116,10 +116,6 @@ html {
     .fa-times {
         size: 3x;
     }
-  }
-
-  input {
-      font-size: 2px;
   }
 
   #email, #password {
@@ -149,5 +145,17 @@ html {
 .errors {
     color:red;
     font-style: italic;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    list-style: circle;
+    box-sizing: border-box;
+    padding: 0 20px 0;
+    width: 100%;
+
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.error-field {
+    border: 1px red solid;
 }

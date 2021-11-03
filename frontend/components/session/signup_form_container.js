@@ -9,14 +9,12 @@ const mSTP = (state, ownProps) => ({
         email: "",
         password: "",
         first_name: "",
-        last_name: "",
-        profile_picture: ""
+        last_name: ""
     }
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (formData) => dispatch(signup(formData)),
-    clearErrors: () => dispatch(clearErrors())
+    action: (formData) => dispatch(signup(formData))
 })
 
 export default connect(mSTP, mDTP)(SessionForm);
