@@ -4,9 +4,11 @@ class Api::ProfilesController < ApplicationController
         @posts = []
 
         posts.each do |post|
-            author = User.find_by(id: post.author_id)
-            profile = User.find_by(id: post.profile_id)
-            @posts.push([post, author, profile])
+            # author = User.find_by(id: post.author_id)
+            # profile = User.find_by(id: post.profile_id)
+            # @posts.push([post, author, profile])
+
+            @posts.push(post)
         end
 
         render "/api/newsfeeds/show"

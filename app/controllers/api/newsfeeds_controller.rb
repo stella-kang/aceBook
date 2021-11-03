@@ -6,14 +6,16 @@ class Api::NewsfeedsController < ApplicationController
         #     @posts += user.posts
         # end
         current_user.posts.each do |post|
-            author = User.find_by(id: post.author_id)
-            profile = User.find_by(id: post.profile_id)
+            # author = User.find_by(id: post.author_id)
+            # profile = User.find_by(id: post.profile_id)
 
-            if profile
-                @posts.push([post, author, profile])
-            else
-                @posts.push([post, author, nil])
-            end
+            # if profile
+            #     @posts.push([post, author, profile])
+            # else
+            #     @posts.push([post, author, nil])
+            # end
+
+            @posts.push(post)
         end
         render :show
     end

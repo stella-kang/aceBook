@@ -6,6 +6,7 @@ import React from "react";
 import Newsfeed from "./newsfeed"
 
 const mSTP = (state, ownProps) => ({
+    users: state.entities.users,
     posts: Object.values(state.entities.posts),
     currentUser: state.entities.users[state.session.currentUserId]
 })

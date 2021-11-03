@@ -4,6 +4,7 @@ import React from 'react';
 import Profile from "./profile"
 
 const mSTP = (state, ownProps) => ({
+    users: state.entities.users,
     user: state.entities.users[ownProps.match.params.userId],
     posts: Object.values(state.entities.posts)
 })

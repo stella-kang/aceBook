@@ -22,15 +22,15 @@ const PostItem = (props) => {
     }
 
     return <li className="post-item">
-        <div class="post-header">
+        <div className="post-header">
             <div id="post-details">
-                {props.post.author.profile_picture ? <img src={props.post.author.profile_picture} /> : <img src={window.defaultProfile} />}
-                <span>{props.post.author.first_name} {props.post.author.last_name}</span>
+                {props.author.profile_picture ? <img src={props.author.profile_picture} /> : <img src={window.defaultProfile} />}
+                <span>{props.author.first_name} {props.author.last_name}</span>
             </div>
             
             <div id="post-dropdown-menu" >
                 <button id="post-dropdown-button" onClick={handleDropdownClick}>
-                    <i class="fas fa-ellipsis-h fa-2x"></i>
+                    <i className="fas fa-ellipsis-h fa-2x"></i>
                 </button>
 
                 <div id="post-dropdown-content">

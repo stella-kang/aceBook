@@ -18,7 +18,7 @@ export default class Newsfeed extends React.Component {
             </div>
             <ul className="post-list">
                 {this.props.posts.map(post => (
-                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} editPostFormModal={this.props.editPostFormModal}/>
+                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} editPostFormModal={this.props.editPostFormModal} author={this.props.users[post.author_id]}/>
                 )
                 )}
             </ul>

@@ -33,13 +33,22 @@ const NavBar = (props) => {
                 <button id="dropdown-button" onClick={handleDropdownClick}>
                     <i className="fas fa-caret-down fa-2x"></i>
                 </button>
+
                 <div id="dropdown-content">
-                    <Link to={`/${props.currentUserId}/profile`}>View Profile</Link>
-                    <Link to='/newsfeed'>Newsfeed</Link>
-                    {/* <button onClick={() => props.history.push(`/${props.currentUserId}/profile`)}>View Profile</button>
-                <button onClick={() => props.history.push('/newsfeed')}>Newsfeed</button> */}
+                    <div>
+                        {/* <div id="dropdown-profile-link"> */}
+                            <Link id="dropdown-profile-link" to={`/${props.currentUserId}/profile`}>
+                                {props.currentUser.profile_picture ? <img src={props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+
+
+                                <div id="profile-link-text">
+                                    <span>{props.currentUser.first_name} {props.currentUser.last_name}</span>
+                                    <span>See your profile</span>
+                                </div>
+                            </Link>
+                        {/* </div> */}
+                    </div>
                     <a onClick={() => props.logout()}>Logout</a>
-                    {/* <button onClick={() => props.logout()}>Logout</button> */}
                 </div>
             </div>
         </div>
