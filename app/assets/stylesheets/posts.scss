@@ -102,3 +102,23 @@
         }
     }
 }
+
+.post-item {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+
+    img {
+        width: 50px;
+        border-radius: 100%;
+        margin-right: 20px;
+    }
+
+    #post-details {
+        display: flex;
+        align-items: center;
+    }
+}

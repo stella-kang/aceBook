@@ -12,8 +12,11 @@ const PostItem = (props) => {
     }
 
     return <li className="post-item">
+        <div id="post-details">
+            {props.post.author.profile_picture ? <img src={props.post.author.profile_picture} /> : <img src={window.defaultProfile} />}
+            <span>{props.post.author.first_name} {props.post.author.last_name}</span>
+        </div>
         <span>{props.post.content}</span>
-        <span>{props.post.author.first_name} {props.post.author.last_name}</span>
         {profile}
         {props.post.photo ? <img src={props.post.photo} /> : null}
         <button onClick={() => props.removePost(props.post.id)}>Delete Post</button>

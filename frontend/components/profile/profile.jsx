@@ -16,7 +16,7 @@ export default class Profile extends React.Component {
             {this.props.user.profile_picture ? <img src={this.props.user.profile_picture} /> : <img src={window.defaultProfile} />}
             <ul>
                 {this.props.posts.map(post => (
-                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} />
+                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} editPostFormModal={this.props.editPostFormModal}/>
                 ))}
             </ul>
         </div>

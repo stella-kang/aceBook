@@ -24,6 +24,7 @@ const Modal = (props) => {
     }
 
     let component;
+
     switch (typeof props.modal === "string") {
         case true:
             switch(props.modal) {
@@ -39,6 +40,7 @@ const Modal = (props) => {
                 default:
                     return null;
             }
+            break;
         case false:
             component = <EditPostForm closeModal={props.closeModal} postId={props.modal}/>
             break;

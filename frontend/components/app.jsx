@@ -12,7 +12,7 @@ const App = (props) => {
     const handleCloseDropdown = (e) => {
         const menu = document.getElementById("dropdown-content")
         const menuButton = document.getElementById("dropdown-button")
-        if (menu.style.display === "block") {
+        if (menu && menu.style.display === "block") {
             menu.style.display = ""
             menuButton.classList.remove("focus")
         }
