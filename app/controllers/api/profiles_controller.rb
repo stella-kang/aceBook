@@ -9,6 +9,6 @@ class Api::ProfilesController < ApplicationController
             @posts.push([post, author, profile])
         end
 
-        render :show
+        render "/api/newsfeeds/show"
     end
 end

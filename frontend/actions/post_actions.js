@@ -41,20 +41,12 @@ export const fetchProfilePosts = (userId) => dispatch => {
         )
 }
 
-export const createPost = (post) => dispatch => {
-    return PostsApiUtil.createPost(post)
-        .then(
-            null,
-            err => dispatch(receiveErrors(err.responseJSON))
-        )
+export const createPost = (formData) => dispatch => {
+    return PostsApiUtil.createPost(formData)
 }
 
-export const updatePost = (post) => dispatch => {
-    return PostsApiUtil.updatePost(post)
-        .then(
-            null,
-            err => dispatch(receiveErrors(err.responseJSON))
-        )
+export const updatePost = (formData) => dispatch => {
+    return PostsApiUtil.updatePost(formData)
 }
 
 export const removePost = (postId) => dispatch => {

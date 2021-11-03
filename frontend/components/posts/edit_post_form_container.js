@@ -4,15 +4,23 @@ import { updatePost, fetchNewsfeedPosts, fetchProfilePosts } from "../../actions
 import PostForm from "./post_form";
 
 
-const mSTP = (state, ownProps) => ({
-    post: state.entities.posts[ownProps.postId],
-    user: state.entities.users[state.session.currentUserId],
-    formType: "Edit post"
-})
+const mSTP = (state, ownProps) => {
+    let post = state.entities.posts[ownProps.postId]
+
+    return {
+        post: {
+            content: post.content,
+            author_id: post.author_id,
+            photo: "",
+            profile_id: post.profile_id
+        },
+        user: state.entities.users[state.session.currentUserId],
+        formType: "Edit post"}
+}
 
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (post) => dispatch(updatePost(post)),
+    action: (formData) => dispatch(updatePost(formData)),
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
     fetchProfilePosts: (userId) => dispatch(fetchProfilePosts(userId))
 })

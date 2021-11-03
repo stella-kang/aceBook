@@ -7,6 +7,7 @@ export default class PostForm extends React.Component {
         this.state = this.props.post
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePhotoChange = this.handlePhotoChange.bind(this);
     }
 
     componentDidMount() {
@@ -21,15 +22,28 @@ export default class PostForm extends React.Component {
         }
     }
 
+    handlePhotoChange(e) {
+        this.setState({ photo: e.target.files[0] })
+        document.getElementById("photo-input-icon").classList.add("green-icon")
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
+        const formData = new FormData();
+        formData.append('post[content]', this.state.content)
+        formData.append('post[profile_id]', this.state.profile_id)
+        formData.append('post[author_id]', this.state.author_id)
+        if (this.state.photo) {
+            formData.append('post[photo]', this.state.photo)
+        }
+
         if (this.props.match.params.userId) {
-            this.props.action(this.state)
+            this.props.action(formData)
                 .then(() => this.props.fetchProfilePosts(this.props.match.params.userId))
         } else {
-            this.props.action(this.state)
-                .then(() => { this.props.fetchNewsfeedPosts() })
+            this.props.action(formData)
+                .then(() => this.props.fetchNewsfeedPosts())
         }
 
         this.props.closeModal();
@@ -52,8 +66,8 @@ export default class PostForm extends React.Component {
                 
                 <div id="picture-input">
                     <span>Add a picture to your post</span>
-                    <input id="post-photo-input" type="file" accept="image/png, image/jpeg" />
-                    <i className="far fa-images fa-2x" onClick={() => document.getElementById("post-photo-input").click()}></i>
+                    <input id="post-photo-input" type="file" accept="image/png, image/jpeg" onChange={this.handlePhotoChange}/>
+                    <i id="photo-input-icon" className="far fa-images fa-2x" onClick={() => document.getElementById("post-photo-input").click()}></i>
                 </div>
                 
                 <button id="post-save-button" disabled>{this.props.formType === "Create post" ? "Post" : "Save"}</button>

@@ -7,7 +7,7 @@ import PostForm from "./post_form";
 const mSTP = (state, ownProps) => {
     let profileId;
 
-    if (ownProps.match.params.userId) {
+    if (ownProps.match.params.userId && ownProps.match.params.userId !== state.session.currentUserId) {
         profileId = ownProps.match.params.userId
     } else {
         profileId = null;
@@ -16,7 +16,8 @@ const mSTP = (state, ownProps) => {
     return { post: {
                 content: "",
                 author_id: state.session.currentUserId,
-                profile_id: "test"
+                profile_id: profileId,
+                photo: ""
                 },
             user: state.entities.users[state.session.currentUserId],
             formType: "Create post"
@@ -29,7 +30,7 @@ const mSTP = (state, ownProps) => {
 
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (post) => dispatch(createPost(post)),
+    action: (formData) => dispatch(createPost(formData)),
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
     fetchProfilePosts: (userId) => dispatch(fetchProfilePosts(userId))
 })
