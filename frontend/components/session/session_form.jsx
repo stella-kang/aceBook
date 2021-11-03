@@ -81,8 +81,6 @@ export default class SessionFrom extends React.Component {
                     }
                 })
 
-                debugger
-
                 errors = <ul className="errors">
                     {this.props.errors.map((el) => (
                         <li key={el}>{el}</li>
