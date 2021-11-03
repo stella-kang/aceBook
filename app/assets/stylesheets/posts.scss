@@ -11,13 +11,6 @@
         border-radius: 100%;
     }
 
-    h1 {
-        text-align: center;
-        padding: 20px;
-        border-bottom: 1px lightgrey solid;
-        font-size: 20px;
-    }
-
     #current-user-info {
         display: flex;
         align-items: center;
@@ -73,6 +66,31 @@
             background-color: grey;
         }
     }
+}
 
+.post-form-heading {
+    border-bottom: 1px lightgrey solid;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px 0;
 
+    h1 {
+        text-align: center;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    i {
+        border: none;
+        background-color: lightgrey;
+        border-radius: 100%;
+        margin-left: 27%;
+        padding: 5px 10px 5px;
+        color: grey;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+    }
 }

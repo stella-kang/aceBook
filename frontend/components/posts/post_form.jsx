@@ -38,17 +38,24 @@ export default class PostForm extends React.Component {
     render() {
         return <div>
             <form className="post-form" onSubmit={this.handleSubmit}>
-                <h1>{this.props.formType}</h1>
+                <div className="post-form-heading">
+                    <h1>{this.props.formType}</h1>
+                    <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
+                </div>
+
                 <div id="current-user-info">
                     {this.props.user.profile_picture ? <img src={this.props.user.profile_picture} /> : <img src={window.defaultProfile} />}
                     {this.props.user.first_name}
                 </div>
+
                 <textarea id="content" value={this.state.content} onChange={this.update("content")} placeholder={`What's on your mind, ${this.props.user.first_name}?`} />
+                
                 <div id="picture-input">
                     <span>Add a picture to your post</span>
                     <input id="post-photo-input" type="file" accept="image/png, image/jpeg" />
                     <i className="far fa-images fa-2x" onClick={() => document.getElementById("post-photo-input").click()}></i>
                 </div>
+                
                 <button id="post-save-button" disabled>{this.props.formType === "Create post" ? "Post" : "Save"}</button>
             </form>
         </div>
