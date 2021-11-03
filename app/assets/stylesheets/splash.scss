@@ -86,7 +86,6 @@ input {
     border: 1px lightgrey solid;
     box-sizing: border-box;
     font-size: 18px;
-    width: 100%;
     padding: 15px;
     border-radius: 7px;
     margin-bottom: 15px;
@@ -118,10 +117,6 @@ input {
     }
   }
 
-  #email, #password {
-      width: 100%;
-  }
-
   #first-name, #last-name {
       width: 48%;
   }
@@ -130,6 +125,10 @@ input {
       display: flex;
       justify-content: space-between;
   }
+}
+
+#email, #password {
+    width: 100%;
 }
 
 .modal-background {

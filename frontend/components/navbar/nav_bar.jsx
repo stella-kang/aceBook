@@ -1,19 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => (
-    <div id="nav-bar">
-        <input type="text" placeholder="Search aceBook" id="search-bar"/>
-        <button onClick={() => props.history.push(`/${props.currentUserId}/profile`)}>{props.currentUser.first_name} {props.currentUser.last_name}</button>
-        <div id="topright-dropdown" >
-            <i class="fas fa-caret-down fa-2x" id="dropdown-button"></i>
-            <Link to={`/${props.currentUserId}/profile`}>View Profile</Link>
-            <Link to='/newsfeed'>Newsfeed</Link>
-            {/* <button onClick={() => props.history.push(`/${props.currentUserId}/profile`)}>View Profile</button>
-            <button onClick={() => props.history.push('/newsfeed')}>Newsfeed</button> */}
-            <button onClick={() => props.logout()}>Logout</button>
+
+const NavBar = (props) => {
+    const handleDropdownClick = (e) => {
+        e.stopPropagation()
+        const menu = document.getElementById("dropdown-content")
+        const menuButton = document.getElementById("dropdown-button")
+        if (menu.style.display === "") {
+            menu.style.display = "block"
+            menuButton.classList.add("focus")
+        } else {
+            menu.style.display = "";
+            menuButton.classList.remove("focus")
+        }
+    } 
+
+    return (<div className="nav-bar">
+        <input type="text" placeholder="Search aceBook" id="search-bar" />
+        <div className="middle-icons" onClick={(() => props.history.push('/newsfeed'))}>
+            <button>
+            <i className="fas fa-home fa-2x"></i>
+            </button>
         </div>
-    </div>
-)
+        <div className="navbar-buttons">
+            <button id="profile-button" onClick={() => props.history.push(`/${props.currentUserId}/profile`)}>
+                {props.currentUser.profile_picture ? <img src={props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                <span>{props.currentUser.first_name} </span>
+            </button>
+            <div id="main-dropdown-menu" >
+                <button id="dropdown-button" >
+                    <i className="fas fa-caret-down fa-2x" onClick={handleDropdownClick}></i>
+                </button>
+                <div id="dropdown-content">
+                    <Link to={`/${props.currentUserId}/profile`}>View Profile</Link>
+                    <Link to='/newsfeed'>Newsfeed</Link>
+                    {/* <button onClick={() => props.history.push(`/${props.currentUserId}/profile`)}>View Profile</button>
+                <button onClick={() => props.history.push('/newsfeed')}>Newsfeed</button> */}
+                    <a onClick={() => props.logout()}>Logout</a>
+                    {/* <button onClick={() => props.logout()}>Logout</button> */}
+                </div>
+            </div>
+        </div>
+    </div>)
+}
 
 export default NavBar;

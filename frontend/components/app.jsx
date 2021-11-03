@@ -8,8 +8,17 @@ import profileContainer from "./profile/profile_container"
 import NavBarContainer from './navbar/nav_bar_container';
 
 const App = (props) => {
+
+    const handleCloseDropdown = (e) => {
+        const menu = document.getElementById("dropdown-content")
+        const menuButton = document.getElementById("dropdown-button")
+        if (menu.style.display === "block") {
+            menu.style.display = ""
+            menuButton.classList.remove("focus")
+        }
+    }
     
-    return <div>
+    return <div className="app" onClick={handleCloseDropdown}>
         <Modal />
         <ProtectedRoute path="/" component={NavBarContainer} />
         <Switch>

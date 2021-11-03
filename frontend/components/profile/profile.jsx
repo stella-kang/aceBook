@@ -13,7 +13,7 @@ export default class Profile extends React.Component {
         return <div>
             <EditProfileForm  closeModal={closeModal}/>
             <CreatePostFormContainer />
-            {this.props.user.profile_picture ? <img src={this.props.user.profile_picture}/> : null}
+            {this.props.user.profile_picture ? <img src={this.props.user.profile_picture} /> : <img src={window.defaultProfile} />}
             <ul>
                 {this.props.posts.map(post => (
                     <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} />
