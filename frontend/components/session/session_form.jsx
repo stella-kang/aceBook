@@ -90,7 +90,6 @@ export default class SessionFrom extends React.Component {
 
         return <div id="form-content">
             <form id="session-form" encType="multipart/form-data">
-                {errors}
 
                 {this.props.formType === "Sign Up" ? <div id="signup-header">
                     <div>
@@ -99,6 +98,8 @@ export default class SessionFrom extends React.Component {
                     </div>
                     <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
                 </div> : null}
+
+                {errors}
 
                 <div id="names-form">
                 {this.props.formType === "Log In" ? null : <input

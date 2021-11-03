@@ -145,14 +145,18 @@ input {
 .errors {
     color:red;
     font-style: italic;
+    font-size: 12px;
     margin-bottom: 20px;
-    list-style: circle;
     box-sizing: border-box;
     padding: 0 20px 0;
-    width: 100%;
 
     li {
         margin-bottom: 10px;
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(255, 0, 0, 0.1);
+        border-radius: 5px;
+        border: 1px red solid;
     }
 }
 
