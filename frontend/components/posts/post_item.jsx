@@ -11,13 +11,13 @@ const PostItem = (props) => {
         profile = null;
     }
 
-    return <li>
+    return <li className="post-item">
         <span>{props.post.content}</span>
         <span>{props.post.author.first_name} {props.post.author.last_name}</span>
         {profile}
         {props.post.photo ? <img src={props.post.photo} /> : null}
         <button onClick={() => props.removePost(props.post.id)}>Delete Post</button>
-        <EditPostFormContainer postId={props.post.id}/>
+        {props.editPostFormModal}
     </li>
 }
 

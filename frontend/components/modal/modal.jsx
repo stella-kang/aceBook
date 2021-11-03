@@ -3,8 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { clearErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from '../session/signup_form_container';
-import EditFormContainer from "../session/edit_form_container"
+import EditProfileFormContainer from "../session/edit_form_container"
 import CreatePostForm from "../posts/create_post_form_container"
+import EditPostForm from "../posts/edit_post_form_container"
 
 const mSTP = (state, ownProps) => ({
     modal: state.ui.modal
@@ -28,10 +29,13 @@ const Modal = (props) => {
             component = <SignupFormContainer closeModal={props.closeModal}/>;
             break;
         case 'profile_form':
-            component = <EditFormContainer closeModal={props.closeModal}/>
+            component = <EditProfileFormContainer closeModal={props.closeModal}/>
             break;
         case 'create_post':
             component = <CreatePostForm closeModal={props.closeModal}/>
+            break;
+        case 'edit_post':
+            component = <EditPostForm closeModal={props.closeModal}/>
             break;
         default:
             return null;

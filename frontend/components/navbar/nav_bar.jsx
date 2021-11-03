@@ -29,8 +29,8 @@ const NavBar = (props) => {
                 <span>{props.currentUser.first_name} </span>
             </button>
             <div id="main-dropdown-menu" >
-                <button id="dropdown-button" >
-                    <i className="fas fa-caret-down fa-2x" onClick={handleDropdownClick}></i>
+                <button id="dropdown-button" onClick={handleDropdownClick}>
+                    <i className="fas fa-caret-down fa-2x"></i>
                 </button>
                 <div id="dropdown-content">
                     <Link to={`/${props.currentUserId}/profile`}>View Profile</Link>

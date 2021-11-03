@@ -7,17 +7,19 @@ import Newsfeed from "./newsfeed"
 
 const mSTP = (state, ownProps) => ({
     posts: Object.values(state.entities.posts),
-    // currentUserId: state.session.currentUserId
+    currentUser: state.entities.users[state.session.currentUserId]
 })
 
 const mDTP = (dispatch, ownProps) => ({
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
     removePost: (postId) => dispatch(removePost(postId)),
-    postFormModal: <button id="post-form-button" onClick={() => {
+    createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));
-        dispatch(clearErrors());
          }}>
-    Test
+    </button>,
+    editPostFormModal: <button id="edit-post-form-button" onClick={() => {
+        dispatch(openModal("edit_post"));
+    }}>Test
     </button>
 })
 
