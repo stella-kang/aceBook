@@ -37,7 +37,7 @@ const PostItem = (props) => {
                     <div>
                         <div className="post-dropdown-button">
                             <button onClick={() => props.removePost(props.post.id)}>
-                                <i class="fas fa-edit"></i>
+                                <i className="fas fa-edit"></i>
                                 Delete post
                             </button>
 

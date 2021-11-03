@@ -36,7 +36,6 @@ const NavBar = (props) => {
 
                 <div id="dropdown-content">
                     <div>
-                        {/* <div id="dropdown-profile-link"> */}
                             <Link id="dropdown-profile-link" to={`/${props.currentUserId}/profile`}>
                                 {props.currentUser.profile_picture ? <img src={props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
 
@@ -46,9 +45,12 @@ const NavBar = (props) => {
                                     <span>See your profile</span>
                                 </div>
                             </Link>
-                        {/* </div> */}
                     </div>
-                    <a onClick={() => props.logout()}>Logout</a>
+                    <div id="dropdown-separator"></div>
+                    <button id="logout-button" onClick={() => props.logout()}>
+                        <i className="fas fa-door-open fa-2x"></i>
+                        <span>Logout</span>
+                    </button>
                 </div>
             </div>
         </div>
