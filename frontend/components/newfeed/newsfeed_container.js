@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { fetchNewsfeedPosts, removePost } from '../../actions/post_actions';
-import { logout } from "../../actions/session_actions"
+import { openModal } from '../../actions/modal_actions';
+import { clearErrors } from '../../actions/session_actions';
+import React from "react";
 import Newsfeed from "./newsfeed"
 
 const mSTP = (state, ownProps) => ({
@@ -10,8 +12,13 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    // logout: () => dispatch(logout()),
-    removePost: (postId) => dispatch(removePost(postId))
+    removePost: (postId) => dispatch(removePost(postId)),
+    postFormModal: <button id="post-form-button" onClick={() => {
+        dispatch(openModal("create_post"));
+        dispatch(clearErrors());
+         }}>
+    Test
+    </button>
 })
 
 export default connect(mSTP, mDTP)(Newsfeed);

@@ -4,6 +4,7 @@ import { clearErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from '../session/signup_form_container';
 import EditFormContainer from "../session/edit_form_container"
+import CreatePostForm from "../posts/create_post_form_container"
 
 const mSTP = (state, ownProps) => ({
     modal: state.ui.modal
@@ -26,15 +27,18 @@ const Modal = (props) => {
         case 'signup':
             component = <SignupFormContainer closeModal={props.closeModal}/>;
             break;
-        case 'edit_profile':
+        case 'profile_form':
             component = <EditFormContainer closeModal={props.closeModal}/>
+            break;
+        case 'create_post':
+            component = <CreatePostForm closeModal={props.closeModal}/>
             break;
         default:
             return null;
     }
 
     return (
-        <div className="modal-background">
+        <div className="modal-background" onClick={props.closeModal}>
             <div className="modal-component" onClick={e => e.stopPropagation()}>
                 {component}
             </div>

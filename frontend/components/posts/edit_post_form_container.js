@@ -5,7 +5,9 @@ import PostForm from "./post_form";
 
 
 const mSTP = (state, ownProps) => ({
-    post: state.entities.posts[ownProps.postId]
+    post: state.entities.posts[ownProps.postId],
+    user: state.entities.users[state.session.currentUserId],
+    formType: "Edit post"
 })
 
 

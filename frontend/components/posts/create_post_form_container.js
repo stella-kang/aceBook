@@ -14,12 +14,18 @@ const mSTP = (state, ownProps) => {
     }
 
     return { post: {
-            content: "",
-            author_id: state.session.currentUserId,
-            profile_id: profileId
+                content: "",
+                author_id: state.session.currentUserId,
+                profile_id: "test"
+                },
+            user: state.entities.users[state.session.currentUserId],
+            formType: "Create post"
             }
-        }
 }
+
+// const mSTP = (state, ownProps) => ({
+//     user: state.entities.users[state.session.currentUserId]
+// })
 
 
 const mDTP = (dispatch, ownProps) => ({

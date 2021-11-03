@@ -10,6 +10,6 @@ const mSTP = (state, ownProps) => ({
 const mDTP = (dispatch, ownProps) => ({
     fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
     removePost: (postId) => dispatch(removePost(postId))
-})
+});
 
 export default connect(mSTP, mDTP)(Profile)
