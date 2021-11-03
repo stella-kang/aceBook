@@ -35,8 +35,14 @@ const PostItem = (props) => {
 
                 <div id="post-dropdown-content">
                     <div>
-                        <button onClick={() => props.removePost(props.post.id)}>Delete post</button>
-                        {props.editPostFormModal(props.post.id)}
+                        <div className="post-dropdown-button">
+                            <button onClick={() => props.removePost(props.post.id)}>
+                                <i class="fas fa-edit"></i>
+                                Delete post
+                            </button>
+
+                            {props.editPostFormModal(props.post.id)}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -164,12 +164,22 @@
                 display: flex;
                 flex-direction: column;
                 padding: 5px;
-            }
 
-            button {
-                text-align: left;
-                &:hover {
-                    border-radius: 5px;
+                button {
+                    text-align: left;
+                    display: flex;
+                    
+                    &:hover {
+                        border-radius: 5px;
+                    }
+
+                    .fa-edit {
+                        margin-right: 10px;
+                    }
+
+                    .fa-trash-alt {
+                        margin-right: 14px;
+                    }
                 }
             }
         }
