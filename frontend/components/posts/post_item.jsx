@@ -1,5 +1,4 @@
 import React from 'react';
-import EditPostFormContainer from './edit_post_form_container';
 
 const PostItem = (props) => {
 

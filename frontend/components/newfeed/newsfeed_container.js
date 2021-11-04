@@ -21,7 +21,7 @@ const mDTP = (dispatch, ownProps) => ({
     editPostFormModal: (postId) => (<button id="edit-post-form-button" onClick={() => {
         dispatch(openModal("edit_post", postId));
     }}>
-        <i class="far fa-trash-alt"></i>
+        <i className="far fa-trash-alt"></i>
         Edit post
     </button>)
 })
