@@ -5,7 +5,8 @@ import { fetchNewsfeedComments, fetchProfileComments } from "../../actions/comme
 import CommentForm from "./comment_form";
 
 const mSTP = (state, ownProps) => ({
-    comment: ownProps.comment
+    comment: ownProps.comment,
+    formType: "edit"
 })
 
 const mDTP = (dispatch, ownProps) => ({

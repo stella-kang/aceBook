@@ -12,6 +12,7 @@ export default class Newsfeed extends React.Component {
     }
 
     render() {
+        debugger
         return <div className="newsfeed">
             <div className="create-post-form">
                 {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
@@ -24,6 +25,7 @@ export default class Newsfeed extends React.Component {
                         removePost={this.props.removePost} 
                         key={`${post.id}-${post.author_id}`} 
                         editPostFormModal={this.props.editPostFormModal} 
+                        currentUser={this.props.currentUser}
                         author={this.props.users[post.author_id]}
                         comments={this.props.comments.filter(comment => comment.post_id === post.id)}
                         />

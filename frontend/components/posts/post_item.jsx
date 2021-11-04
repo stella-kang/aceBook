@@ -36,7 +36,7 @@ class PostItem extends React.Component {
 
                     <div id="post-dropdown-content">
                         <div>
-                            <div className="post-dropdown-button">
+                            <div className="post-dropdown-items">
                                 {this.props.editPostFormModal(this.props.post.id)}
 
                                 <button onClick={() => this.props.removePost(this.props.post.id)}>
@@ -61,8 +61,11 @@ class PostItem extends React.Component {
                         <CommentContainer comment={el} key={el.id} />
                     ))}
                 </ul>
-
-                <CreateCommentForm postId={this.props.post.id} />
+                
+                <div className="comment-form">
+                    {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                    <CreateCommentForm postId={this.props.post.id} />
+                </div>
             </div>
         </li>
     }

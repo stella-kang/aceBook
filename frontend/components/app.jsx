@@ -13,6 +13,7 @@ const App = (props) => {
         const menu = document.querySelector(".dropdown-content");
         const menuButton = document.getElementById("dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
+        const commentMenu = document.getElementById("comment-dropdown-content");
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";
@@ -21,6 +22,10 @@ const App = (props) => {
         
         if (postMenu && postMenu.style.display === "block") {
             postMenu.style.display = "";
+        }
+
+        if (commentMenu && commentMenu.style.display === "block") {
+            commentMenu.style.display = "";
         }
     }
     

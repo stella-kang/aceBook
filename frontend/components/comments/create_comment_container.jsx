@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => ({
         content: "",
         author_id: state.session.currentUserId,
         post_id: ownProps.postId
-    }
+    },
+    formType: "create"
 })
 
 const mDTP = (dispatch, ownProps) => ({

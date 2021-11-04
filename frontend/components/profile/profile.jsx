@@ -37,6 +37,7 @@ export default class Profile extends React.Component {
                         post={post} 
                         removePost={this.props.removePost} 
                         key={`${post.id}-${post.author_id}`} 
+                        currentUser={this.props.currentUser}
                         editPostFormModal={this.props.editPostFormModal} 
                         author={this.props.users[post.author_id]}
                         comments={this.props.comments.filter(comment => comment.post_id === post.id)}

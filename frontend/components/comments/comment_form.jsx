@@ -17,8 +17,6 @@ export default class CommentForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        this.setState({ "content": "" });
-
         this.props.action(this.state)
             .then(() => {
                 if (this.props.match.params.userId) {
@@ -27,6 +25,16 @@ export default class CommentForm extends React.Component {
                     this.props.fetchNewsfeedComments();
                 }
             })
+
+        if (this.props.formType === "create") {
+            this.setState({ "content": "" });
+        }
+
+        const editForm = document.getElementById("comment-edit-form")
+        editForm.style.display = "";
+
+        const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+        commentItem.style.display = "flex";
     }
 
     render() {

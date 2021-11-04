@@ -1,0 +1,134 @@
+.comment-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+    img {
+        width: 37px;
+        height: 37px;
+        border-radius: 100%;
+        margin-right: 10px;
+        margin-top: 3px;
+    }
+}
+
+.comment-body {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+
+    p:first-child {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    #comment-content {
+        background-color: #EFEFEF;
+        box-sizing: border-box;
+        padding: 15px;
+        border-radius: 20px;
+        margin-right: 20px;
+    }
+}
+
+.comment-dropdown-menu {
+    position: relative;
+}
+
+.comment-summary:hover #comment-dropdown-button {
+    display: block;
+}
+
+#comment-dropdown-button {
+    border-radius: 100%;
+    padding: 8px;
+    display: none;
+
+    &:focus {
+        display: block;
+    }
+
+    i {
+        color: grey;
+    }
+
+    &:hover {
+        background-color: #f2f2f2;
+    }
+}
+
+#comment-dropdown-content {
+    position : absolute;
+    z-index: 1;
+    display: none;
+    width: 150px;
+    background-color: white;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2);
+    font-size: 18px;
+    border-radius: 10px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 10px;
+
+        button {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+
+            &:hover {
+                background-color: #f2f2f2;
+            }
+        }
+    }
+}
+
+.comment-summary {
+    display: flex;
+    align-items: flex-start;
+}
+
+#comment-edit-form {
+    display: none;
+}
+
+.comment-section {
+    box-sizing: border-box;
+    padding: 0 40px 20px;
+}
+
+.comment-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        margin-right: 10px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    input {
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 15px;
+        margin-top: 20px;
+        width: 100%;
+    }
+}

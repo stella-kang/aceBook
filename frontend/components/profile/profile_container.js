@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => ({
     users: state.entities.users,
     user: state.entities.users[ownProps.match.params.userId],
     posts: Object.values(state.entities.posts),
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    currentUser: state.entities.users[state.session.currentUserId]
 })
 
 const mDTP = (dispatch, ownProps) => ({
