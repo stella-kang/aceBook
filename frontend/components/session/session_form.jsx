@@ -19,6 +19,7 @@ export default class SessionFrom extends React.Component {
     }
 
     handleProfilePictureChange(e) {
+        document.getElementById("photo-input-icon").classList.add("green-icon")
         this.setState({ profile_picture: e.target.files[0] })
     }
 
@@ -88,7 +89,7 @@ export default class SessionFrom extends React.Component {
             }
         }
 
-        return <div id="form-content">
+        return <div className="form-content">
             <form className="session-form" encType="multipart/form-data">
 
                 {this.props.formType === "Sign Up" ? <div id="signup-header">
@@ -97,9 +98,13 @@ export default class SessionFrom extends React.Component {
                     <p>It's quick and easy.</p>
                     </div>
                     <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
+                </div> : this.props.formType === "Save Changes" ? <div id="edit-profile-header">
+                    <h1>Edit Profile</h1>
+                    <div></div>
                 </div> : null}
 
                 {errors}
+
 
                 <div id="names-form">
                 {this.props.formType === "Log In" ? null : <input
@@ -117,12 +122,11 @@ export default class SessionFrom extends React.Component {
                     onChange={this.update("last_name")} />}
                 </div>
 
-                {this.props.formType === "Save Changes" ? <label>Profile Picture <input
-                    type="file"
-                    onChange={this.handleProfilePictureChange}
-                    // value={this.state.profile_picture.filename}
-                    accept="image/png, image/jpeg" />
-                </label> : null}
+                {this.props.formType === "Save Changes" ? <div className="picture-input" onClick={() => document.getElementById("photo-input").click()}>
+                    <span>Edit profile picture</span>
+                    <input id="photo-input" type="file" accept="image/png, image/jpeg" onChange={this.handleProfilePictureChange} />
+                    <i id="photo-input-icon" className="far fa-images fa-2x"></i>
+                </div> : null}
 
                 <input type="text" value={this.state.email} placeholder="Email" id="email" onChange={this.update("email")} />
 

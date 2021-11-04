@@ -38,28 +38,6 @@
         }
     }
 
-    .picture-input {
-        display: flex;
-        align-items: center;
-        margin: 20px 50px 20px;
-        justify-content: space-between;
-        border: 1px solid lightgrey;
-        padding: 20px;
-        border-radius: 10px;
-
-        input[type=file] {
-            display: none;
-        }
-
-        i {
-            color: grey;
-        }
-
-        .green-icon {
-            color: #42B72A;
-        }
-    }
-
     button {
         background-color: $blue;
         border: none;
@@ -73,6 +51,29 @@
         &:disabled {
             background-color: grey;
         }
+    }
+}
+
+.picture-input {
+    display: flex;
+    align-items: center;
+    margin: 20px 50px 20px;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+
+    input[type=file] {
+        display: none;
+    }
+
+    i {
+        color: grey;
+    }
+
+    .green-icon {
+        color: #42B72A;
     }
 }
 

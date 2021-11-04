@@ -58,3 +58,24 @@
         }
     }
 }
+
+.session-form .picture-input {
+    width: 100%;
+    margin: 0 0 15px;
+}
+
+#edit-profile-header {
+    width: 100%;
+
+    h1 {
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    div {
+        border: 1px solid lightgrey;
+        margin: 20px 0 10px;
+        width: 100%;
+    }
+}
