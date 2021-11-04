@@ -10,7 +10,7 @@ end
 json.comments do
     @comments.each do |comment|
         json.set! comment.id do
-            json.extract! comment, :content, :author_id, :post_id, :id, :parent_comment_id
+            json.extract! comment, :content, :author_id, :post_id, :id
         end
     end    
 end

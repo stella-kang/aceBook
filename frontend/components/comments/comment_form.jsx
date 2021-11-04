@@ -31,10 +31,17 @@ export default class CommentForm extends React.Component {
         }
 
         const editForm = document.querySelectorAll(".comment-edit-form");
-        editForm.forEach(el => el.style.display = "");
+        if (editForm) {
+            editForm.forEach(el => {
+                el.style.display = ""
+            }
+            );
+        }
 
         const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
-        commentItem.style.display = "flex";
+        if (commentItem) {
+            commentItem.style.display = "flex";
+        }
     }
 
     render() {
