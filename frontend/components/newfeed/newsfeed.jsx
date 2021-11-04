@@ -12,7 +12,6 @@ export default class Newsfeed extends React.Component {
     }
 
     render() {
-        debugger
         return <div className="newsfeed">
             <div className="create-post-form">
                 {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}

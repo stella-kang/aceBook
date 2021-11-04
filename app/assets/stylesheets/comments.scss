@@ -105,7 +105,8 @@
 
 .comment-section {
     box-sizing: border-box;
-    padding: 0 40px 20px;
+    padding: 15px 15px 0;
+    margin: 0 30px 30px;
 }
 
 .comment-form {
@@ -130,5 +131,9 @@
         font-size: 15px;
         margin-top: 20px;
         width: 100%;
+        
+        &:focus {
+            outline: none;
+        }
     }
 }

@@ -31,6 +31,9 @@ class Comment extends React.Component {
 
         const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
         commentItem.style.display = "none";
+
+        const commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`)
+        commentInput.focus();
     }
 
     render () {

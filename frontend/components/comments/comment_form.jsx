@@ -39,7 +39,7 @@ export default class CommentForm extends React.Component {
 
     render() {
         return <form>
-            <input type="text" onChange={this.update} placeholder="Write a comment..." value={this.state.content}/>
+            <input id={`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`} type="text" onChange={this.update} placeholder="Write a comment..." value={this.state.content}/>
             <button id="create-comment-button" onClick={this.handleSubmit}></button>
         </form>
     }

@@ -2,13 +2,12 @@
 #
 # Table name: comments
 #
-#  id                :bigint           not null, primary key
-#  author_id         :integer          not null
-#  parent_comment_id :integer
-#  content           :text             not null
-#  post_id           :integer          not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id         :bigint           not null, primary key
+#  author_id  :integer          not null
+#  content    :text             not null
+#  post_id    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 class Comment < ApplicationRecord
     validates :content, :author_id, :post_id, presence: true
@@ -22,9 +21,5 @@ class Comment < ApplicationRecord
         primary_key: :id,
         foreign_key: :author_id,
         class_name: :User
-
-    has_many :children_comments,
-        primary_key: :id,
-        foreign_key: :parent_comment_id,
-        class_name: :Comment
+        
 end

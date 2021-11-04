@@ -55,6 +55,15 @@ class PostItem extends React.Component {
 
             {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
+            <div className="post-icons-outer-div">
+                <div className="post-icons">
+                    <div id="comment" onClick={() => document.getElementById(`comment-input-${this.props.post.id}-undefined`).focus()}>
+                        <i className="far fa-comment fa-1x"></i>
+                        <span>Comment</span>
+                    </div>
+                </div>
+            </div>
+
             <div className="comment-section">
                 <ul className="comments-list">
                     {this.props.comments.map(el => (
