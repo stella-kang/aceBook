@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('users') 
 Post.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('posts') 
 Comment.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('comments') 
 
 user1 = User.create(first_name: "stella", last_name: "kang", password: "password", email: "stella@email.com")
 user2 = User.create(first_name: "heajin", last_name: "Jeong", password: "password", email: "heajin@email.com")

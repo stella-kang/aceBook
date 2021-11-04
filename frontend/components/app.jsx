@@ -13,7 +13,7 @@ const App = (props) => {
         const menu = document.querySelector(".dropdown-content");
         const menuButton = document.getElementById("dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
-        const commentMenu = document.querySelector(".comment-dropdown-content");
+        const commentMenus = document.querySelectorAll(".comment-dropdown-content");
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";
@@ -24,8 +24,10 @@ const App = (props) => {
             postMenu.style.display = "";
         }
 
-        if (commentMenu && commentMenu.style.display === "block") {
-            commentMenu.style.display = "";
+        if (commentMenus) {
+            commentMenus.forEach(el => {
+                if (el.style.display === "block") el.style.display = "";
+            })
         }
     }
     

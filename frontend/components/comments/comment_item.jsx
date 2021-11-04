@@ -12,6 +12,14 @@ class Comment extends React.Component {
 
     handleDropDownClick(e) {
         e.stopPropagation();
+
+        const commentMenus = document.querySelectorAll(".comment-dropdown-content");
+        if (commentMenus) {
+            commentMenus.forEach(el => {
+                if (el.style.display === "block") el.style.display = "";
+            })
+        }
+
         const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         if (commentMenu.style.display === "") {
             commentMenu.style.display = "block";
