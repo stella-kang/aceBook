@@ -5,12 +5,12 @@ import { openModal } from '../../actions/modal_actions';
 import React from 'react';
 import Profile from "./profile"
 
-const mSTP = (state, ownProps) => {
-    return {users: state.entities.users,
+const mSTP = (state, ownProps) => ({
+    users: state.entities.users,
     user: state.entities.users[ownProps.match.params.userId],
     posts: Object.values(state.entities.posts),
-    comments: Object.values(state.entities.comments)}
-}
+    comments: Object.values(state.entities.comments)
+})
 
 const mDTP = (dispatch, ownProps) => ({
     fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),

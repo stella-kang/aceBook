@@ -3,7 +3,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
 
         unless @comment.save
-            render :json @comment.errors.full_messages, status: 422
+            render json: @comment.errors.full_messages, status: 422
         end
     end
 
@@ -11,7 +11,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.find(params[:id])
 
         unless @comment.update(comment_params)
-            render :json @comment.errors.full_messages, status: 422
+            render json: @comment.errors.full_messages, status: 422
         end 
     end
 
