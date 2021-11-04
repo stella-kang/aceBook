@@ -61,4 +61,9 @@ class User < ApplicationRecord
         class_name: :Friend
 
     has_one_attached :profile_picture
+
+    has_many :comments,
+        foreign_key: :author_id,
+        primary_key: :id,
+        class_name: :Comment
 end
