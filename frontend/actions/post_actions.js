@@ -17,16 +17,16 @@ const deletePost = (postId) => ({
 })
 
 export const fetchNewsfeedPosts = () => dispatch => {
-    return NewsfeedApiUtil.fetchNewsfeedPosts()
+    return NewsfeedApiUtil.fetchNewsfeedContent()
         .then(
-            posts => dispatch(receivePosts(posts)),
+            res => dispatch(receivePosts(res.posts)),
             )
 }
 
 export const fetchProfilePosts = (userId) => dispatch => {
-    return ProfileApiUtil.fetchProfilePosts(userId)
+    return ProfileApiUtil.fetchProfileContent(userId)
         .then(
-            posts => dispatch(receivePosts(posts))
+            res => { dispatch(receivePosts(res.posts)) }
         )
 }
 
