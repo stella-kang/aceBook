@@ -13,7 +13,7 @@ const App = (props) => {
         const menu = document.querySelector(".dropdown-content");
         const menuButton = document.getElementById("dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
-        const commentMenu = document.getElementById("comment-dropdown-content");
+        const commentMenu = document.querySelector(".comment-dropdown-content");
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";

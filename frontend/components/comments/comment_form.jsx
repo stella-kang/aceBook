@@ -30,8 +30,8 @@ export default class CommentForm extends React.Component {
             this.setState({ "content": "" });
         }
 
-        const editForm = document.getElementById("comment-edit-form")
-        editForm.style.display = "";
+        const editForm = document.querySelectorAll(".comment-edit-form");
+        editForm.forEach(el => el.style.display = "");
 
         const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
         commentItem.style.display = "flex";

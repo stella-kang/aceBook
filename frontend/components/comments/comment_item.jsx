@@ -6,12 +6,13 @@ class Comment extends React.Component {
         super(props);
 
         this.showEditForm = this.showEditForm.bind(this);
+        this.handleDropDownClick = this.handleDropDownClick.bind(this);
     }
 
 
     handleDropDownClick(e) {
         e.stopPropagation();
-        const commentMenu = document.getElementById("comment-dropdown-content");
+        const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         if (commentMenu.style.display === "") {
             commentMenu.style.display = "block";
         } else {
@@ -21,10 +22,11 @@ class Comment extends React.Component {
 
     showEditForm(e) {
         e.stopPropagation();
-        const editForm = document.getElementById("comment-edit-form");
+    
+        const editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
         editForm.style.display = "flex";
 
-        const commentMenu = document.getElementById("comment-dropdown-content");
+        const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         commentMenu.style.display = "";
 
         const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
@@ -44,12 +46,12 @@ class Comment extends React.Component {
                         <p>{this.props.comment.content}</p>
                     </div>
 
-                    <div className="comment-dropdown-menu">
+                    <div id={`comment-dropdown-menu`}>
                         <button id="comment-dropdown-button" onClick={this.handleDropDownClick}>
                             <i className="fas fa-ellipsis-h fa-1x"></i>
                         </button>
 
-                        <div id="comment-dropdown-content">
+                        <div className="comment-dropdown-content" id={`comment-dropdown-content-${this.props.comment.id}`}>
                             <div>
                                 <button onClick={() => this.props.removeComment(this.props.comment.id)}>Delete</button>
                                 <button onClick={this.showEditForm}>Edit</button>
@@ -59,7 +61,7 @@ class Comment extends React.Component {
                 </div>
             </div>
 
-            <div className="comment-form" id="comment-edit-form">
+            <div className="comment-form comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>
                 {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                 <EditCommentContainer comment={this.props.comment} />
             </div>
