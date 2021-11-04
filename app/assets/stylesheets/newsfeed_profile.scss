@@ -1,0 +1,60 @@
+.newsfeed, .profile-wall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#white-rectangle {
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+#profile-picture {
+    width: 250px;
+    border-radius: 100%;
+    position: absolute;
+    transform: translateY(-50%);
+    border: 20px solid white;
+}
+
+#profile-summary {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+
+        i {
+            margin-right: 10px;
+        }
+    }
+}

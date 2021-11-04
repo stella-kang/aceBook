@@ -35,12 +35,12 @@ const PostItem = (props) => {
                 <div id="post-dropdown-content">
                     <div>
                         <div className="post-dropdown-button">
+                            {props.editPostFormModal(props.post.id)}
+                            
                             <button onClick={() => props.removePost(props.post.id)}>
-                                <i className="fas fa-edit"></i>
+                                <i className="far fa-trash-alt"></i>
                                 Delete post
                             </button>
-
-                            {props.editPostFormModal(props.post.id)}
                         </div>
                     </div>
                 </div>

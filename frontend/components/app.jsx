@@ -10,7 +10,7 @@ import NavBarContainer from './navbar/nav_bar_container';
 const App = (props) => {
 
     const handleCloseDropdown = (e) => {
-        const menu = document.getElementById("dropdown-content");
+        const menu = document.querySelector(".dropdown-content");
         const menuButton = document.getElementById("dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
 

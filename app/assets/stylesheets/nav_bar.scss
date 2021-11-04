@@ -74,17 +74,18 @@
     }
 }
 
-#main-dropdown-menu {
+.main-dropdown-menu {
     position: relative;
 }
 
-#dropdown-content {
+.dropdown-content {
     transform: translate(-80%, 7px);
     box-sizing: border-box;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     position: absolute;
+    z-index: 1;
     display: none;
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2);
     width: 280px;
@@ -167,12 +168,12 @@
     width: 30%;
     display: flex;
     justify-content: center;
-    height: 100%;
 
     button {
         width: 20%;
         background-color: transparent;
         border-radius: 0px;
+        border-bottom: 2px solid transparent;
 
         &:hover {
             background-color: #f2f2f2;
@@ -187,7 +188,6 @@
 
 .current-url {
     color: $blue;
-    box-sizing: border-box;
 }
 
 #newsfeed-nav-icon.current-url {

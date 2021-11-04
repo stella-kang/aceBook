@@ -89,7 +89,7 @@ export default class SessionFrom extends React.Component {
         }
 
         return <div id="form-content">
-            <form id="session-form" encType="multipart/form-data">
+            <form className="session-form" encType="multipart/form-data">
 
                 {this.props.formType === "Sign Up" ? <div id="signup-header">
                     <div>

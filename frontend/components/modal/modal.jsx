@@ -6,6 +6,7 @@ import SignupFormContainer from '../session/signup_form_container';
 import EditProfileFormContainer from "../session/edit_form_container"
 import CreatePostForm from "../posts/create_post_form_container"
 import EditPostForm from "../posts/edit_post_form_container"
+import EditUserContainer from '../session/edit_form_container';
 
 const mSTP = (state, ownProps) => ({
     modal: state.ui.modal
@@ -37,12 +38,21 @@ const Modal = (props) => {
                 case 'create_post':
                     component = <CreatePostForm closeModal={props.closeModal} />
                     break;
+                case 'edit_user':
+                    component = <EditUserContainer closeModal={props.closeModal}/>
+                    break;
                 default:
                     return null;
             }
             break;
         case false:
-            component = <EditPostForm closeModal={props.closeModal} postId={props.modal}/>
+            switch (typeof props.modal === "number") {
+                case true:
+                    component = <EditPostForm closeModal={props.closeModal} postId={props.modal} />
+                    break;
+                default:
+                    return null;
+            }
             break;
         default:
             return null;

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchProfilePosts, removePost } from '../../actions/post_actions';
+import { openModal } from '../../actions/modal_actions';
 import React from 'react';
 import Profile from "./profile"
 
@@ -14,12 +15,21 @@ const mDTP = (dispatch, ownProps) => ({
     removePost: (postId) => dispatch(removePost(postId)),
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));
-    }}>
-    </button>,
+        }}>
+        </button>,
     editPostFormModal: (postId) => (<button id="edit-post-form-button" onClick={() => {
         dispatch(openModal("edit_post", postId));
-    }}>Test
-    </button>)
+        }}>
+            <i className="fas fa-edit"></i>
+            Edit post
+        </button>),
+    editUserModal: () => (<button id="edit-user-button" onClick={() => {
+        dispatch(openModal("edit_user"))
+        }}>
+            <i className="fas fa-edit"></i>
+            Edit Profile
+        </button>
+    )
 });
 
 export default connect(mSTP, mDTP)(Profile)

@@ -20,10 +20,10 @@ const mDTP = (dispatch, ownProps) => ({
     </button>,
     editPostFormModal: (postId) => (<button id="edit-post-form-button" onClick={() => {
         dispatch(openModal("edit_post", postId));
-    }}>
-        <i className="far fa-trash-alt"></i>
-        Edit post
-    </button>)
+        }}>
+            <i className="fas fa-edit"></i>
+             Edit post
+        </button>)
 })
 
 export default connect(mSTP, mDTP)(Newsfeed);

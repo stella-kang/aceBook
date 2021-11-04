@@ -4,7 +4,8 @@ import { withRouter } from "react-router";
 import { edit } from "../../actions/session_actions"
 
 const mSTP = (state, ownProps) => {
-    let user = state.entities.users[ownProps.match.params.userId];
+    let user = state.entities.users[state.session.currentUserId];
+    
     return {
         errors: state.errors.session,
         formType: "Save Changes",
@@ -16,7 +17,6 @@ const mSTP = (state, ownProps) => {
             profile_picture: "",
             id: user.id
         }
-        // user: user
     }
 }
 

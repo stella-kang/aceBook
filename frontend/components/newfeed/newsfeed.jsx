@@ -12,7 +12,7 @@ export default class Newsfeed extends React.Component {
 
     render() {
         return <div className="newsfeed">
-            <div className="newsfeed-post-form">
+            <div className="create-post-form">
                 {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                 {this.props.createPostFormModal}
             </div>

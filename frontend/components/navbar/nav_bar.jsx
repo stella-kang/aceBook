@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class NavBar extends React.Component {
     handleDropdownClick(e) {
         e.stopPropagation();
-        const menu = document.getElementById("dropdown-content");
+        const menu = document.querySelector(".dropdown-content");
         const menuButton = document.getElementById("dropdown-button");
         if (menu.style.display === "") {
             menu.style.display = "block";
@@ -41,12 +41,12 @@ class NavBar extends React.Component {
                         <span>{this.props.currentUser.first_name} </span>
                 </button>
 
-                <div id="main-dropdown-menu" >
+                <div className="main-dropdown-menu" >
                     <button id="dropdown-button" onClick={this.handleDropdownClick}>
                         <i className="fas fa-caret-down fa-2x"></i>
                     </button>
 
-                    <div id="dropdown-content">
+                    <div className="dropdown-content">
                         <div>
                             <Link 
                                 id="dropdown-profile-link" 
