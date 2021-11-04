@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SessionForm from "./session_form";
 import { withRouter } from "react-router";
-import { edit } from "../../actions/session_actions"
+import { edit, clearErrors } from "../../actions/session_actions"
 
 const mSTP = (state, ownProps) => {
     let user = state.entities.users[state.session.currentUserId];
@@ -21,7 +21,8 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (formData) => dispatch(edit(formData))
+    action: (formData) => dispatch(edit(formData)),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default withRouter(connect(mSTP, mDTP)(SessionForm));

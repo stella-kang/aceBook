@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchNewsfeedPosts, removePost } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
-import { clearErrors } from '../../actions/session_actions';
 import React from "react";
 import Newsfeed from "./newsfeed"
 

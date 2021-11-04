@@ -25,6 +25,7 @@ export default class SessionFrom extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.clearErrors();
 
         if (this.props.formType === "Log In" || this.props.formType === "Sign Up") {
             this.props.action(this.state)
@@ -53,6 +54,7 @@ export default class SessionFrom extends React.Component {
 
     handleGuestLogin(e) {
         e.preventDefault()
+        this.props.clearErrors();
 
         this.props.action({
             email: "stella@email.com",
