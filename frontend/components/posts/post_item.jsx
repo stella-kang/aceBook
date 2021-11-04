@@ -29,7 +29,7 @@ class PostItem extends React.Component {
                     <span>{this.props.author.first_name} {this.props.author.last_name}</span>
                 </div>
 
-                <div id="post-dropdown-menu" >
+                <div className="post-dropdown-menu">
                     <button id="post-dropdown-button" onClick={this.handleDropDownClick}>
                         <i className="fas fa-ellipsis-h fa-2x"></i>
                     </button>

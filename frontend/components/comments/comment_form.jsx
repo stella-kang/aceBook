@@ -19,7 +19,7 @@ export default class CommentForm extends React.Component {
 
         this.setState({ "content": "" });
 
-        this.props.createComment(this.state)
+        this.props.action(this.state)
             .then(() => {
                 if (this.props.match.params.userId) {
                     this.props.fetchProfileComments();

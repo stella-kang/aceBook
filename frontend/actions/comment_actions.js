@@ -18,14 +18,18 @@ const deleteComment = (commentId) => ({
 export const fetchNewsfeedComments = () => dispatch => {
     return NewsfeedApiUtil.fetchNewsfeedContent()
         .then(
-            res => dispatch(receiveComments(res.comments))
+            res => {
+                console.log(res.comments)
+                dispatch(receiveComments(res.comments))
+            }
         )
 }
 
 export const fetchProfileComments = (userId) => dispatch => {
     return ProfileApiUtil.fetchProfileContent(userId)
         .then(
-            res => dispatch(receiveComments(res.comments))
+            res => { 
+                dispatch(receiveComments(res.comments))}
         )
 }
 

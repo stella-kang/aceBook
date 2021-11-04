@@ -6,7 +6,11 @@ const commentsReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_COMMENTS:
-            return action.comments;
+            if (action.comments) {
+                return action.comments;
+            } else {
+                return {};
+            }
         case DELETE_COMMENT:
             delete nextState[action.commentId];
             return nextState;

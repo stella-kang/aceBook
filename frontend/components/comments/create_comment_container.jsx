@@ -13,7 +13,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    createComment: (comment) => dispatch(createComment(comment)),
+    action: (comment) => dispatch(createComment(comment)),
     fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
     fetchProfileComments: () => dispatch(fetchProfileComments())
 })
