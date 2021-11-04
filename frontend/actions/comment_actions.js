@@ -22,8 +22,8 @@ export const fetchNewsfeedComments = () => dispatch => {
         )
 }
 
-export const fetchProfileComments = () => dispatch => {
-    return ProfileApiUtil.fetchProfileContent()
+export const fetchProfileComments = (userId) => dispatch => {
+    return ProfileApiUtil.fetchProfileContent(userId)
         .then(
             res => dispatch(receiveComments(res.comments))
         )

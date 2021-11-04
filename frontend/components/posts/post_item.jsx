@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentContainer from '../comments/comment_container';
 
 const PostItem = (props) => {
 
@@ -52,6 +53,12 @@ const PostItem = (props) => {
         <span>{props.post.content}</span>
 
         {props.post.photo ? <img src={props.post.photo} /> : null}
+
+        <ul className="comments-list">
+            {props.comments.map(el => (
+                <CommentContainer comment={el} key={el.id}/>
+            ))}
+        </ul>
     </li>
 }
 

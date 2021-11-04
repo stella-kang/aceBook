@@ -6,7 +6,8 @@ import { closeModal } from '../../actions/modal_actions';
 
 export default class Profile extends React.Component {
     componentDidMount() {
-        this.props.fetchProfilePosts()
+        this.props.fetchProfilePosts();
+        this.props.fetchProfileComments();
 
         document.getElementById("create-post-form-button").innerText = `What's on your mind, ${this.props.user.first_name}?`
     }
@@ -32,7 +33,14 @@ export default class Profile extends React.Component {
 
             <ul className="post-list">
                 {this.props.posts.map(post => (
-                    <PostItem post={post} removePost={this.props.removePost} key={`${post.id}-${post.author_id}`} editPostFormModal={this.props.editPostFormModal} author={this.props.users[post.author_id]}/>
+                    <PostItem 
+                        post={post} 
+                        removePost={this.props.removePost} 
+                        key={`${post.id}-${post.author_id}`} 
+                        editPostFormModal={this.props.editPostFormModal} 
+                        author={this.props.users[post.author_id]}
+                        comments={this.props.comments.filter(comment => comment.post_id === post.id)}
+                        />
                 ))}
             </ul>
         </div>

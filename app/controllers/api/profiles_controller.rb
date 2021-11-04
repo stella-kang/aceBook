@@ -2,13 +2,14 @@ class Api::ProfilesController < ApplicationController
     def show
         posts = Post.where(profile_id: params[:id]).or(Post.where(author_id: params[:id]))
         @posts = []
+        @comments = []
 
         posts.each do |post|
-            # author = User.find_by(id: post.author_id)
-            # profile = User.find_by(id: post.profile_id)
-            # @posts.push([post, author, profile])
-
             @posts.push(post)
+
+            post.comments.each do |comment|
+                @comments.push(comment)
+            end
         end
 
         render "/api/newsfeeds/show"
