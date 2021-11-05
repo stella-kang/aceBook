@@ -87,4 +87,21 @@
         }
     }
 
+    button {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: lightgray;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+
+        i {
+            color: grey;
+        }
+    }
+
 }
