@@ -35,5 +35,4 @@ comment1 = Comment.create(content: "comment1", author_id: user1.id, post_id: pos
 comment2 = Comment.create(content: "comment2", author_id: user1.id, post_id: post2.id)
 comment3 = Comment.create(content: "comment3", author_id: 1, post_id: post3.id)
 
-friend1 = Friend.create(user_id: 1, friend_id: 2, status: true)
-friend3 = Friend.create(user_id: 2, friend_id: 1, status: true)
+friend1 = Friend.create(user_id: user1.id, friend_id: user2.id, status: false)

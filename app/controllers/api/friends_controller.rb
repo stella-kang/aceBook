@@ -24,7 +24,7 @@ class Api::FriendsController < ApplicationController
     def update
         @friend = Friend.find(params[:id])
 
-        if @friend.update(params[:friend][:status])
+        if @friend.update(friend_params)
             render :show
         else
             render json: @friend.errors.full_messages, status: 422

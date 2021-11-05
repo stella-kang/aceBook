@@ -29,7 +29,7 @@ export default class SessionFrom extends React.Component {
 
         if (this.props.formType === "Log In" || this.props.formType === "Sign Up") {
             this.props.action(this.state)
-                .then( () => this.props.closeModal());
+                .then(() => { if (this.props.closeModal) this.props.closeModal() });
         } else {
             const formData = new FormData();
             formData.append('user[email]', this.state.email);

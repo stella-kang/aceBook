@@ -3,7 +3,7 @@ import { fetchProfileComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
 import { fetchProfilePosts, removePost } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
-import { createFriendRequest, fetchFriendRequests, removeFriendRequest } from '../../actions/friends_actions';
+import { createFriendRequest, fetchFriendRequests, removeFriendRequest, editFriendRequest } from '../../actions/friends_actions';
 import React from 'react';
 import Profile from "./profile"
 
@@ -31,6 +31,7 @@ const mDTP = (dispatch, ownProps) => ({
     fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
     createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
     deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
+    updateFriendRequest: (friend) => dispatch(editFriendRequest(friend)),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));

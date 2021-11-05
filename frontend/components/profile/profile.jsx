@@ -7,6 +7,7 @@ export default class Profile extends React.Component {
 
         this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
         this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
+        this.handleUpdateFriendRequest = this.handleUpdateFriendRequest.bind(this);
     }
 
     componentDidMount() {
@@ -38,9 +39,27 @@ export default class Profile extends React.Component {
         })
     }
 
+    handleUpdateFriendRequest(e) {
+        let originalRequest = this.props.userFriends.find(friend => friend.friend_id === this.props.currentUser.id)
+        debugger
+        this.props.updateFriendRequest({
+            user_id: originalRequest.user_id,
+            friend_id: originalRequest.friend_id,
+            status: true,
+            id: originalRequest.id
+        })
+
+        this.props.createFriendRequest({
+            user_id: this.props.currentUser.id,
+            friend_id: this.props.user.id,
+            status: true
+        })
+    }
+
     render() {
         if (this.props.user) {
             let friendButton;
+            let friendButtonDropdown;
 
             if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
                 friendButton = <button onClick={this.handleDeleteFriendRequest}>
@@ -57,6 +76,11 @@ export default class Profile extends React.Component {
                     <i className="fas fa-user-plus"></i>
                     <span>Respond</span>
                 </button>
+
+                friendButtonDropdown = <div>
+                    <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
+                    <button onClick={this.handleDeleteFriendRequest}>Delete request</button>
+                </div>
             } else if (!(this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true))) {
                 friendButton = <button onClick={this.handleCreateFriendRequest}>
                     <i className="fas fa-user-plus"></i>
@@ -75,6 +99,7 @@ export default class Profile extends React.Component {
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                         {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
                         {this.props.user === this.props.currentUser ? null : friendButton }
+                        {this.props.user === this.props.currentUser ? null : friendButtonDropdown }
                     </div>
                 </div>
 
