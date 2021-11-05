@@ -14,7 +14,9 @@ class Api::FriendsController < ApplicationController
     def create
         @friend = Friend.new(friend_params)
 
-        unless @friend.save
+        if @friend.save
+            render :show
+        else
             render json: @friend.errors.full_messages, status: 422
         end
     end
@@ -22,7 +24,9 @@ class Api::FriendsController < ApplicationController
     def update
         @friend = Friend.find(params[:id])
 
-        unless @friend.update(params[:friend][:status])
+        if @friend.update(params[:friend][:status])
+            render :show
+        else
             render json: @friend.errors.full_messages, status: 422
         end
     end
