@@ -16,8 +16,16 @@ Friend.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('friends') 
 
 user1 = User.create(first_name: "stella", last_name: "kang", password: "password", email: "stella@email.com")
+# file1 = open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/pikachu.jpeg')
+# user1.profile_picutre.attach(io: file1, filename: 'pikachu.jpg')
+
 user2 = User.create(first_name: "heajin", last_name: "Jeong", password: "password", email: "heajin@email.com")
+# file2 = open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/heajin.jpeg')
+# user2.profile_picutre.attach(io: file2, filename: 'heajin.jpg')
+
 user3 = User.create(first_name: "Michelle", last_name: "Lee", password: "password", email: "michelle@email.com")
+# file3 = open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user3.profile_picture.attach(io: file3, filename: 'michelle.jpg')
 
 post1 = Post.create(content: "post1", author_id: 1)
 post2 = Post.create(content: "post2", author_id: 2)
