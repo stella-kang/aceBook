@@ -1,8 +1,5 @@
 import React from "react";
 import PostItem from "../posts/post_item";
-import CreatePostFormContainer from "../posts/create_post_form_container";
-import EditProfileForm from "../session/edit_form_container"
-import { closeModal } from '../../actions/modal_actions';
 
 export default class Profile extends React.Component {
     componentDidMount() {
@@ -17,7 +14,6 @@ export default class Profile extends React.Component {
 
     render() {
         if (this.props.user) {
-
             return <div className="profile-wall">
 
                 <div className="profile-header">
@@ -28,6 +24,7 @@ export default class Profile extends React.Component {
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                         {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
+                        {/* {this.props.user === this.props.currentUser ? null :  } */}
                     </div>
                 </div>
 

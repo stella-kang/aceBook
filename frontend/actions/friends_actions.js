@@ -17,10 +17,10 @@ const receiveFriendRequest = (friendRequest) => ({
     friendRequest
 })
 
-const updateFriendRequest = (friendRequest) => ({
-    type: UPDATE_FRIEND_REQUEST,
-    friendRequest
-})
+// const updateFriendRequest = (friendRequest) => ({
+//     type: UPDATE_FRIEND_REQUEST,
+//     friendRequest
+// })
 
 const deleteFriendRequest = (friendRequestId) => ({
     type: DELETE_FRIEND_REQUEST,
@@ -47,7 +47,7 @@ export const createFriendRequest = (friend) => dispatch => {
         .then(friendrequest => dispatch(receiveFriendRequest(friendrequest)))
 }
 
-export const updateFriendRequest = (friend) => dispatch => {
+export const editFriendRequest = (friend) => dispatch => {
     return FriendsApiUtil.updateFriend(friend)
         .then(friendrequest => dispatch(deleteFriendRequest(friendrequest.id)))
 }

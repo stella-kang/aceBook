@@ -22,61 +22,65 @@ class PostItem extends React.Component {
             profile = null;
         }
 
-        return <li className="post-item">
-            <div className="post-header">
-                <div id="post-details">
-                    {this.props.author.profile_picture ? <img src={this.props.author.profile_picture} /> : <img src={window.defaultProfile} />}
-                    <span>{this.props.author.first_name} {this.props.author.last_name}</span>
-                </div>
+        if (this.props.author) {
+            return <li className="post-item">
+                <div className="post-header">
+                    <div id="post-details">
+                        {this.props.author.profile_picture ? <img src={this.props.author.profile_picture} /> : <img src={window.defaultProfile} />}
+                        <span>{this.props.author.first_name} {this.props.author.last_name}</span>
+                    </div>
 
-                <div className="post-dropdown-menu">
-                    <button id="post-dropdown-button" onClick={this.handleDropDownClick}>
-                        <i className="fas fa-ellipsis-h fa-2x"></i>
-                    </button>
+                    <div className="post-dropdown-menu">
+                        <button id="post-dropdown-button" onClick={this.handleDropDownClick}>
+                            <i className="fas fa-ellipsis-h fa-2x"></i>
+                        </button>
 
-                    <div id="post-dropdown-content">
-                        <div>
-                            <div className="post-dropdown-items">
-                                {this.props.editPostFormModal(this.props.post.id)}
+                        <div id="post-dropdown-content">
+                            <div>
+                                <div className="post-dropdown-items">
+                                    {this.props.editPostFormModal(this.props.post.id)}
 
-                                <button onClick={() => this.props.removePost(this.props.post.id)}>
-                                    <i className="far fa-trash-alt"></i>
-                                    Delete post
-                                </button>
+                                    <button onClick={() => this.props.removePost(this.props.post.id)}>
+                                        <i className="far fa-trash-alt"></i>
+                                        Delete post
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {profile}
+                {profile}
 
-            <span>{this.props.post.content}</span>
+                <span>{this.props.post.content}</span>
 
-            {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
+                {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
-            <div className="post-icons-outer-div">
-                <div className="post-icons">
-                    <div id="comment" onClick={() => document.getElementById(`comment-input-${this.props.post.id}-undefined`).focus()}>
-                        <i className="far fa-comment fa-1x"></i>
-                        <span>Comment</span>
+                <div className="post-icons-outer-div">
+                    <div className="post-icons">
+                        <div id="comment" onClick={() => document.getElementById(`comment-input-${this.props.post.id}-undefined`).focus()}>
+                            <i className="far fa-comment fa-1x"></i>
+                            <span>Comment</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="comment-section">
-                <ul className="comments-list">
-                    {this.props.comments.map(el => (
-                        <CommentContainer comment={el} key={el.id} />
-                    ))}
-                </ul>
-                
-                <div className="comment-form">
-                    {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                    <CreateCommentForm postId={this.props.post.id} />
+                <div className="comment-section">
+                    <ul className="comments-list">
+                        {this.props.comments.map(el => (
+                            <CommentContainer comment={el} key={el.id} />
+                        ))}
+                    </ul>
+
+                    <div className="comment-form">
+                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                        <CreateCommentForm postId={this.props.post.id} />
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        } else {
+            return null;
+        }
     }
 }
 

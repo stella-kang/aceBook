@@ -101,7 +101,10 @@ export default class SessionFrom extends React.Component {
                     </div>
                     <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
                 </div> : this.props.formType === "Save Changes" ? <div id="edit-profile-header">
-                    <h1>Edit Profile</h1>
+                    <div>
+                        <h1>Edit Profile</h1>
+                        <i className="fas fa-times fa-2x" onClick={this.props.closeModal}></i>
+                    </div>
                     <div></div>
                 </div> : null}
 
