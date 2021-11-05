@@ -1,8 +1,13 @@
 import React from "react";
+import FriendNotificationListContainer from "../friends/friend_notification_list_container";
 import { Link } from "react-router-dom";
 
 
 class NavBar extends React.Component {
+    componentDidMount() {
+        this.props.fetchCurrentFriendRequests(this.props.currentUserId);
+    }
+
     handleDropdownClick(e) {
         e.stopPropagation();
         const menu = document.querySelector(".dropdown-content");
@@ -43,8 +48,10 @@ class NavBar extends React.Component {
 
                 <div className="notifications-dropdown-menu">
                     <button id="notifications-dropdown-button">
-                        <i class="fas fa-bell"></i>
+                        <i className="fas fa-bell"></i>
                     </button>
+
+                    <FriendNotificationListContainer />
                 </div>
 
                 <div className="main-dropdown-menu" >

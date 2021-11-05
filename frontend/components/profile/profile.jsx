@@ -12,8 +12,7 @@ export default class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
-        this.props.fetchProfileFriends();
-        this.props.fetchCurrentUserFriends(this.props.currentUser.id);
+        this.props.fetchFriends();
         this.props.fetchProfilePosts();
         this.props.fetchProfileComments();
 
@@ -41,7 +40,7 @@ export default class Profile extends React.Component {
 
     handleUpdateFriendRequest(e) {
         let originalRequest = this.props.userFriends.find(friend => friend.friend_id === this.props.currentUser.id)
-        debugger
+
         this.props.updateFriendRequest({
             user_id: originalRequest.user_id,
             friend_id: originalRequest.friend_id,

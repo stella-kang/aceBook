@@ -55,8 +55,13 @@ class User < ApplicationRecord
         primary_key: :id,
         class_name: :Post
 
-    has_many :friends,
+    has_many :friend_requests,
         foreign_key: :user_id,
+        primary_key: :id,
+        class_name: :Friend
+    
+    has_many :received_requests,
+        foreign_key: :friend_id,
         primary_key: :id,
         class_name: :Friend
 
