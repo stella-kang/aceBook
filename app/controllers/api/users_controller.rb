@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
-    def show
-        @user = User.new(param[:id])
-        render :show
+    def index
+        @users = User.all
+        render :index
     end
 
     def create

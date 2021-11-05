@@ -12,17 +12,22 @@ Post.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('posts') 
 Comment.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('comments') 
+Friend.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('friends') 
 
 user1 = User.create(first_name: "stella", last_name: "kang", password: "password", email: "stella@email.com")
 user2 = User.create(first_name: "heajin", last_name: "Jeong", password: "password", email: "heajin@email.com")
 user3 = User.create(first_name: "Michelle", last_name: "Lee", password: "password", email: "michelle@email.com")
 
 post1 = Post.create(content: "post1", author_id: 1)
-post2 = Post.create(content: "post2", author_id: 1)
-post3 = Post.create(content: "post3", author_id: 1)
+post2 = Post.create(content: "post2", author_id: 2)
+post3 = Post.create(content: "post3", author_id: 3)
 post4 = Post.create(content: "post4", author_id: 1)
-post5 = Post.create(content: "post5", author_id: 1)
+post5 = Post.create(content: "post5", author_id: 2, profile_id: 1)
 
 comment1 = Comment.create(content: "comment1", author_id: 1, post_id: 1)
 comment2 = Comment.create(content: "comment2", author_id: 1, post_id: 1)
 comment3 = Comment.create(content: "comment3", author_id: 1, post_id: 1)
+
+friend1 = Friend.create(user_id: 1, friend_id: 2, status: true)
+friend1 = Friend.create(user_id: 1, friend_id: 3, status: true)

@@ -1,14 +1,20 @@
 import * as SessionApiUtil from "../util/session_util"
 import * as UserApiUtil from "../util/user_util"
 
-export const RECEIVE_USER = "RECEIVE_USER"
-export const LOGOUT = "LOGOUT"
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
-export const CLEAR_ERRORS = "CLEAR_ERRORS"
+export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USERS = "RECEIVE_USERS";
+export const LOGOUT = "LOGOUT";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user
+})
+
+export const receiveUsers = (users) => ({
+    type: RECEIVE_USERS,
+    users
 })
 
 const logoutUser = () => ({
@@ -59,4 +65,11 @@ export const edit = (formData) => dispatch => {
 export const fetchUser = (userId) => dispatch => {
     return UserApiUtil.fetchUser(userId)
         .then((user) => dispatch(receiveUser(user)))
+}
+
+export const fetchUsers = () => dispatch => {
+    return UserApiUtil.fetchUsers()
+        .then((users) => {
+            dispatch(receiveUsers(users))
+        })
 }

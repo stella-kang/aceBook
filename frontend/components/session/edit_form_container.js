@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SessionForm from "./session_form";
 import { withRouter } from "react-router";
-import { edit, clearErrors } from "../../actions/session_actions"
+import { edit, clearErrors } from "../../actions/user&session_actions"
 
 const mSTP = (state, ownProps) => {
     let user = state.entities.users[state.session.currentUserId];

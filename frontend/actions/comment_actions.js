@@ -19,7 +19,6 @@ export const fetchNewsfeedComments = () => dispatch => {
     return NewsfeedApiUtil.fetchNewsfeedContent()
         .then(
             res => {
-                console.log(res.comments)
                 dispatch(receiveComments(res.comments))
             }
         )
