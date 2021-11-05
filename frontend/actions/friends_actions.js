@@ -4,6 +4,7 @@ export const RECEIVE_FRIEND_REQUESTS = "RECEIVE_FRIEND_REQUESTS"
 export const RECEIVE_FRIEND_REQUEST = "RECEIVE_FRIEND_REQUEST"
 export const UPDATE_FRIEND_REQUEST = "UPDATE_FRIEND_REQUEST"
 export const DELETE_FRIEND_REQUEST = "DELETE_FRIEDN_REQUEST"
+export const CLEAR_FRIENDS = "CLEAR_FRIENDS"
 // export const RECEIVE_FRIEND = "RECEIVE_FRIEND"
 // export const REMOVE_FRIEND = "REMOVE_FRIEND"
 
@@ -25,6 +26,10 @@ const receiveFriendRequest = (friendRequest) => ({
 const deleteFriendRequest = (friendRequestId) => ({
     type: DELETE_FRIEND_REQUEST,
     friendRequestId
+})
+
+export const clearFriends = () => ({
+    type: CLEAR_FRIENDS
 })
 
 // const receiveFriend = (friend) => ({

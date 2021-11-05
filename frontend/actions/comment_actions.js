@@ -34,8 +34,6 @@ export const fetchProfileComments = (userId) => dispatch => {
     return ProfileApiUtil.fetchProfileContent(userId)
         .then(
             res => { 
-                console.log(res)
-                console.log(userId)
                 dispatch(receiveComments(res.comments))}
         )
 }
