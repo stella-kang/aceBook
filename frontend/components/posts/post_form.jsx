@@ -45,10 +45,8 @@ export default class PostForm extends React.Component {
 
         if (this.props.match.params.userId) {
             this.props.action(formData)
-                // .then(() => this.props.fetchProfilePosts(this.props.match.params.userId))
         } else {
             this.props.action(formData)
-                // .then(() => this.props.fetchNewsfeedPosts())
         }
 
         this.props.closeModal();

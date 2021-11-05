@@ -41,8 +41,14 @@ class NavBar extends React.Component {
                         <span>{this.props.currentUser.first_name} </span>
                 </button>
 
+                <div className="notifications-dropdown-menu">
+                    <button id="notifications-dropdown-button">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+
                 <div className="main-dropdown-menu" >
-                    <button id="dropdown-button" onClick={this.handleDropdownClick}>
+                    <button id="main-dropdown-button" onClick={this.handleDropdownClick}>
                         <i className="fas fa-caret-down fa-2x"></i>
                     </button>
 

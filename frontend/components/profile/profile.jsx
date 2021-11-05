@@ -73,10 +73,19 @@ export default class Profile extends React.Component {
             let friendButtonDropdown;
 
             if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
-                friendButton = <button onClick={this.handleDeleteFriendRequest}>
-                    <i className="fas fa-user-minus"></i>
-                    <span>Unfriend</span>
+                friendButton = <button onClick={this.handleDropDownClick}>
+                    <i class="fas fa-user-check"></i>
+                    <span>Friends</span>
                 </button>
+
+                friendButtonDropdown = <div id="friend-request-content">
+                    <div>
+                        <button onClick={this.handleDeleteFriendRequest}>
+                            <i className="fas fa-user-minus"></i>
+                            <span>Unfriend</span>
+                        </button>
+                    </div>
+                </div>
             } else if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false)) {
                 friendButton = <button onClick={this.handleDeleteFriendRequest}>
                     <i className="fas fa-user-minus"></i>
