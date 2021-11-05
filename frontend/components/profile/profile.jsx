@@ -56,6 +56,17 @@ export default class Profile extends React.Component {
         })
     }
 
+    handleDropDownClick(e) {
+        e.stopPropagation()
+
+        const friendRequestMenu = document.getElementById("friend-request-content");
+        if (friendRequestMenu.style.display === "") {
+            friendRequestMenu.style.display = "block"
+        } else {
+            friendRequestMenu.style.display = ""
+        }
+    }
+
     render() {
         if (this.props.user) {
             let friendButton;
@@ -72,14 +83,16 @@ export default class Profile extends React.Component {
                     <span>Cancel Request</span>
                 </button>
             } else if (this.props.userFriends.some(friend => friend.friend_id === this.props.currentUser.id && friend.status === false)) {
-                friendButton = <button>
+                friendButton = <button onClick={this.handleDropDownClick}>
                     <i className="fas fa-user-plus"></i>
                     <span>Respond</span>
                 </button>
 
-                friendButtonDropdown = <div>
-                    <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
-                    <button onClick={this.handleDeleteFriendRequest}>Delete request</button>
+                friendButtonDropdown = <div id="friend-request-content">
+                    <div>
+                        <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
+                        <button onClick={this.handleDeleteFriendRequest}>Delete request</button>
+                    </div>
                 </div>
             } else if (!(this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true))) {
                 friendButton = <button onClick={this.handleCreateFriendRequest}>
@@ -98,8 +111,11 @@ export default class Profile extends React.Component {
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                         {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
-                        {this.props.user === this.props.currentUser ? null : friendButton }
-                        {this.props.user === this.props.currentUser ? null : friendButtonDropdown }
+                        
+                        <div className="friend-request-dropdown">
+                            {this.props.user === this.props.currentUser ? null : friendButton}
+                            {this.props.user === this.props.currentUser ? null : friendButtonDropdown}
+                        </div>
                     </div>
                 </div>
 

@@ -103,5 +103,34 @@
             color: grey;
         }
     }
+}
 
+.friend-request-dropdown {
+    position: relative;
+    margin: 0;
+}
+
+#friend-request-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.2);
+    width: 200px;
+    border-radius: 10px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        button {
+            text-align: left;
+            margin: 0;
+            background-color: white;
+
+            &:hover {
+                background-color: #f2f2f2;
+            }
+        }
+    }
 }

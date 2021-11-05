@@ -14,6 +14,7 @@ const App = (props) => {
         const menuButton = document.getElementById("dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
+        const friendRequestMenu = document.getElementById("friend-request-content");
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";
@@ -28,6 +29,10 @@ const App = (props) => {
             commentMenus.forEach(el => {
                 if (el.style.display === "block") el.style.display = "";
             })
+        }
+
+        if (friendRequestMenu && friendRequestMenu.style.display === "block") {
+            friendRequestMenu.style.display = "";
         }
     }
     
