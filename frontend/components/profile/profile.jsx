@@ -27,7 +27,7 @@ export default class Profile extends React.Component {
 
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
-                        {this.props.editUserModal()}
+                        {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
                     </div>
                 </div>
 
