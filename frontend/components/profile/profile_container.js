@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchProfileComments, removeComment } from '../../actions/comment_actions';
+import { fetchProfileComments } from '../../actions/comment_actions';
+import { fetchUser } from '../../actions/session_actions';
 import { fetchProfilePosts, removePost } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import React from 'react';
@@ -15,6 +16,7 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
+    fetchUser: () => dispatch(fetchUser(ownProps.match.params.userId)),
     fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     removePost: (postId) => dispatch(removePost(postId)),
 

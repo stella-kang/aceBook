@@ -6,6 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 export default class Profile extends React.Component {
     componentDidMount() {
+        this.props.fetchUser();
         this.props.fetchProfilePosts();
         this.props.fetchProfileComments();
 

@@ -1,4 +1,5 @@
 import * as SessionApiUtil from "../util/session_util"
+import * as UserApiUtil from "../util/user_util"
 
 export const RECEIVE_USER = "RECEIVE_USER"
 export const LOGOUT = "LOGOUT"
@@ -53,4 +54,9 @@ export const edit = (formData) => dispatch => {
             (user) => dispatch(receiveUser(user)),
             (err) => dispatch(receiveErrors(err.responseJSON))
         )
+}
+
+export const fetchUser = (userId) => dispatch => {
+    return UserApiUtil.fetchUser(userId)
+        .then((user) => dispatch(receiveUser(user)))
 }
