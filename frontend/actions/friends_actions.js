@@ -3,7 +3,7 @@ import * as FriendsApiUtil from "../util/friends_util"
 export const RECEIVE_FRIEND_REQUESTS = "RECEIVE_FRIEND_REQUESTS"
 export const RECEIVE_FRIEND_REQUEST = "RECEIVE_FRIEND_REQUEST"
 export const UPDATE_FRIEND_REQUEST = "UPDATE_FRIEND_REQUEST"
-export const DELETE_FRIEND_REQUEST = "DELETE_FRIEDN_REQUEST"
+export const REMOVE_FRIEND_REQUEST = "REMOVE_FRIEND_REQUEST"
 export const CLEAR_FRIENDS = "CLEAR_FRIENDS"
 // export const RECEIVE_FRIEND = "RECEIVE_FRIEND"
 // export const REMOVE_FRIEND = "REMOVE_FRIEND"
@@ -18,13 +18,13 @@ const receiveFriendRequest = (friendRequest) => ({
     friendRequest
 })
 
-// const updateFriendRequest = (friendRequest) => ({
-//     type: UPDATE_FRIEND_REQUEST,
-//     friendRequest
-// })
+const updateFriendRequest = (friendRequest) => ({
+    type: UPDATE_FRIEND_REQUEST,
+    friendRequest
+})
 
 const deleteFriendRequest = (friendRequestId) => ({
-    type: DELETE_FRIEND_REQUEST,
+    type: REMOVE_FRIEND_REQUEST,
     friendRequestId
 })
 
@@ -54,7 +54,7 @@ export const createFriendRequest = (friend) => dispatch => {
 
 export const editFriendRequest = (friend) => dispatch => {
     return FriendsApiUtil.updateFriend(friend)
-        .then(friendrequest => dispatch(deleteFriendRequest(friendrequest.id)))
+        .then(friendrequest => dispatch(updateFriendRequest(friendrequest)))
 }
 
 export const removeFriendRequest = (friendId) => dispatch => {

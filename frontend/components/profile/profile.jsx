@@ -6,12 +6,13 @@ export default class Profile extends React.Component {
         super(props);
 
         this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
+        this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchUsers();
         this.props.fetchProfileFriends();
-        this.props.fetchCurrentUserFriends(this.props.currentUser.id)
+        this.props.fetchCurrentUserFriends(this.props.currentUser.id);
         this.props.fetchProfilePosts();
         this.props.fetchProfileComments();
 
@@ -20,18 +21,49 @@ export default class Profile extends React.Component {
         }
     }
 
-    handleCreateFriendRequest() {
+    handleCreateFriendRequest(e) {
         this.props.createFriendRequest({
             user_id: this.props.currentUser.id,
             friend_id: this.props.user.id
         })
     }
 
-    render() {
-        console.log(this.props.currentUserFriends)
-        console.log(this.props.userFriends)
+    handleDeleteFriendRequest(e) {
+        const requests = Object.values(this.props.friends).filter(friend => {
+            return (friend.user_id === this.props.user.id && friend.friend_id === this.props.currentUser.id) || (friend.user_id === this.props.currentUser.id && friend.friend_id === this.props.user.id)
+        })
 
+        requests.forEach(request => {
+            this.props.deleteFriendRequest(request.id)
+        })
+    }
+
+    render() {
         if (this.props.user) {
+            let friendButton;
+
+            if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
+                friendButton = <button onClick={this.handleDeleteFriendRequest}>
+                    <i className="fas fa-user-minus"></i>
+                    <span>Unfriend</span>
+                </button>
+            } else if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false)) {
+                friendButton = <button onClick={this.handleDeleteFriendRequest}>
+                    <i className="fas fa-user-minus"></i>
+                    <span>Cancel Request</span>
+                </button>
+            } else if (this.props.userFriends.some(friend => friend.friend_id === this.props.currentUser.id && friend.status === false)) {
+                friendButton = <button>
+                    <i className="fas fa-user-plus"></i>
+                    <span>Respond</span>
+                </button>
+            } else if (!(this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true))) {
+                friendButton = <button onClick={this.handleCreateFriendRequest}>
+                    <i className="fas fa-user-plus"></i>
+                    <span>Add Friend</span>
+                </button>
+            }
+
             return <div className="profile-wall">
 
                 <div className="profile-header">
@@ -42,10 +74,7 @@ export default class Profile extends React.Component {
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                         {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
-                        {this.props.user === this.props.currentUser ? null : <button onClick={this.handleCreateFriendRequest}>
-                            <i className="fas fa-user-plus"></i>
-                            <span>Add Friend</span>
-                        </button> }
+                        {this.props.user === this.props.currentUser ? null : friendButton }
                     </div>
                 </div>
 

@@ -31,7 +31,7 @@ class Api::FriendsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         Friend.destroy(params[:id])
     end
 

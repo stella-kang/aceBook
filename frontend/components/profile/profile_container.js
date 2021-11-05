@@ -3,20 +3,24 @@ import { fetchProfileComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
 import { fetchProfilePosts, removePost } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
-import { createFriendRequest, fetchFriendRequests } from '../../actions/friends_actions';
+import { createFriendRequest, fetchFriendRequests, removeFriendRequest } from '../../actions/friends_actions';
 import React from 'react';
 import Profile from "./profile"
 
-const mSTP = (state, ownProps) => ({
-    users: state.entities.users,
-    user: state.entities.users[ownProps.match.params.userId],
-    posts: Object.values(state.entities.posts).reverse(),
-    comments: Object.values(state.entities.comments),
-    currentUser: state.entities.users[state.session.currentUserId],
-    currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
-    userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === ownProps.match.params.userId),
-    friends: Object.values(state.entities.friends)
-})
+const mSTP = (state, ownProps) => {
+    return {
+        users: state.entities.users,
+        user: state.entities.users[ownProps.match.params.userId],
+        currentUser: state.entities.users[state.session.currentUserId],
+        posts: Object.values(state.entities.posts).reverse(),
+        comments: Object.values(state.entities.comments),
+        friends: state.entities.friends,
+        currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
+        userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
+    }
+}
+
+
 
 const mDTP = (dispatch, ownProps) => ({
     fetchUsers: () => dispatch(fetchUsers()),
@@ -25,7 +29,8 @@ const mDTP = (dispatch, ownProps) => ({
     fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
     fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
-    createFriendRequest: (friend) => createFriendRequest(friend),
+    createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
+    deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));

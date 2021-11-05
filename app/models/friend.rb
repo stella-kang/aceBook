@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Friend < ApplicationRecord
-    validates :user_id, :friend_id, :status, presence: true
+    validates :user_id, :friend_id, presence: true
 
     belongs_to :user,
         primary_key: :id,
