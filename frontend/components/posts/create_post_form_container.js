@@ -24,15 +24,9 @@ const mSTP = (state, ownProps) => {
             }
 }
 
-// const mSTP = (state, ownProps) => ({
-//     user: state.entities.users[state.session.currentUserId]
-// })
-
 
 const mDTP = (dispatch, ownProps) => ({
     action: (formData) => dispatch(createPost(formData)),
-    fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    fetchProfilePosts: (userId) => dispatch(fetchProfilePosts(userId))
 })
 
 export default withRouter(connect(mSTP, mDTP)(PostForm));

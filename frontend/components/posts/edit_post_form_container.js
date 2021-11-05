@@ -22,8 +22,6 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch, ownProps) => ({
     action: (formData) => dispatch(updatePost(formData)),
-    fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    fetchProfilePosts: (userId) => dispatch(fetchProfilePosts(userId))
 })
 
 export default withRouter(connect(mSTP, mDTP)(PostForm));

@@ -11,6 +11,11 @@ const receivePosts = (posts) => ({
     posts
 });
 
+const receivePost = (post) => ({
+    type: RECEIVE_POST,
+    post
+})
+
 const deletePost = (postId) => ({
     type: DELETE_POST,
     postId
@@ -32,10 +37,12 @@ export const fetchProfilePosts = (userId) => dispatch => {
 
 export const createPost = (formData) => dispatch => {
     return PostsApiUtil.createPost(formData)
+        .then(post => dispatch(receivePost(post)))
 }
 
 export const updatePost = (formData) => dispatch => {
     return PostsApiUtil.updatePost(formData)
+        .then(post => dispatch(receivePost(post)))
 }
 
 export const removePost = (postId) => dispatch => {

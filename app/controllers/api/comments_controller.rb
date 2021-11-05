@@ -2,7 +2,9 @@ class Api::CommentsController < ApplicationController
     def create
         @comment = Comment.new(comment_params)
 
-        unless @comment.save
+        if @comment.save
+            render :show
+        else
             render json: @comment.errors.full_messages, status: 422
         end
     end
@@ -10,7 +12,9 @@ class Api::CommentsController < ApplicationController
     def update
         @comment = Comment.find(params[:id])
 
-        unless @comment.update(comment_params)
+        if @comment.update(comment_params) 
+            render :show
+        else
             render json: @comment.errors.full_messages, status: 422
         end 
     end

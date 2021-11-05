@@ -15,8 +15,6 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     action: (comment) => dispatch(createComment(comment)),
-    fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
-    fetchProfileComments: () => dispatch(fetchProfileComments())
 })
 
 export default withRouter(connect(mSTP, mDTP)(CommentForm));
