@@ -8,16 +8,37 @@ class NavBar extends React.Component {
         this.props.fetchCurrentFriendRequests(this.props.currentUserId);
     }
 
-    handleDropdownClick(e) {
+    handleDropdownMainMenu(e) {
         e.stopPropagation();
-        const menu = document.querySelector(".dropdown-content");
-        const menuButton = document.getElementById("dropdown-button");
+        const menu = document.querySelector(".main-dropdown-content");
+        const menuButton = document.getElementById("main-dropdown-button");
+        const notifications = document.querySelector(".notifications-dropdown-content");
+        const notificationsButton = document.getElementById("notifications-dropdown-button");
         if (menu.style.display === "") {
             menu.style.display = "block";
             menuButton.classList.add("focus");
+            notifications.style.display = "";
+            notificationsButton.classList.remove("focus");
         } else {
             menu.style.display = "";
             menuButton.classList.remove("focus");
+        }
+    }
+
+    handleDropdownNotifications(e) {
+        e.stopPropagation();
+        const notifications = document.querySelector(".notifications-dropdown-content");
+        const notificationsButton = document.getElementById("notifications-dropdown-button");
+        const menu = document.querySelector(".main-dropdown-content");
+        const menuButton = document.getElementById("main-dropdown-button");
+        if (notifications.style.display === "") {
+            notifications.style.display = "block";
+            notificationsButton.classList.add("focus");
+            menu.style.display = "";
+            menuButton.classList.remove("focus");
+        } else {
+            notifications.style.display = "";
+            notificationsButton.classList.remove("focus");
         }
     }
 
@@ -47,19 +68,21 @@ class NavBar extends React.Component {
                 </button>
 
                 <div className="notifications-dropdown-menu">
-                    <button id="notifications-dropdown-button">
+                    <button id="notifications-dropdown-button" onClick={this.handleDropdownNotifications }>
                         <i className="fas fa-bell"></i>
                     </button>
 
-                    <FriendNotificationListContainer />
+                    <div className="notifications-dropdown-content">
+                        <FriendNotificationListContainer />
+                    </div>
                 </div>
 
                 <div className="main-dropdown-menu" >
-                    <button id="main-dropdown-button" onClick={this.handleDropdownClick}>
+                    <button id="main-dropdown-button" onClick={this.handleDropdownMainMenu}>
                         <i className="fas fa-caret-down fa-2x"></i>
                     </button>
 
-                    <div className="dropdown-content">
+                    <div className="main-dropdown-content">
                         <div>
                             <Link 
                                 id="dropdown-profile-link" 

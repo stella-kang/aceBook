@@ -10,8 +10,10 @@ import NavBarContainer from './navbar/nav_bar_container';
 const App = (props) => {
 
     const handleCloseDropdown = (e) => {
-        const menu = document.querySelector(".dropdown-content");
-        const menuButton = document.getElementById("dropdown-button");
+        const menu = document.querySelector(".main-dropdown-content");
+        const menuButton = document.getElementById("main-dropdown-button");
+        const notifications = document.querySelector(".notifications-dropdown-content");
+        const notificationsButton = document.getElementById("notifications-dropdown-button");
         const postMenu = document.getElementById("post-dropdown-content");
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
         const friendRequestMenu = document.getElementById("friend-request-content");
@@ -33,6 +35,11 @@ const App = (props) => {
 
         if (friendRequestMenu && friendRequestMenu.style.display === "block") {
             friendRequestMenu.style.display = "";
+        }
+
+        if (notifications && notifications.style.display === "block") {
+            notifications.style.display = "";
+            notificationsButton.classList.remove("focus");
         }
     }
     

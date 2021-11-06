@@ -31,14 +31,13 @@ class FriendNotificationItem extends React.Component {
         let requestor = this.props.users[this.props.request.user_id];
 
         if (requestor) {
-            return <li>
-                <div>
-                    <span>{requestor.first_name} {requestor.last_name} </span>
-                    <span>sent you a friend request</span>
-                </div>
+            return <li id="list-notification-item">
+                <span> {requestor.first_name} {requestor.last_name} sent you a friend request</span>
 
-                <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
-                <button onClick={this.handleDeleteFriendRequest}>Delete</button>
+                <div>
+                    <button id="confirm-request-button" onClick={this.handleUpdateFriendRequest}>Confirm</button>
+                    <button onClick={this.handleDeleteFriendRequest}>Delete</button>
+                </div>
             </li>
         } else {
             return null;

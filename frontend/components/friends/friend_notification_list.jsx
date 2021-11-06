@@ -9,7 +9,7 @@ export default class FriendNotificationList extends React.Component {
     render() {
         const currentFriendRequests = this.props.friends.filter(friend => friend.friend_id === this.props.currentUserId && friend.status === false)
 
-        return <ul>
+        return <ul className="friend-request-list">
             {currentFriendRequests.map(request => {
                 return <FriendNotificationItem 
                     users={this.props.users}
