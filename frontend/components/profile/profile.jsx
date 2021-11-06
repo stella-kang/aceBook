@@ -64,6 +64,27 @@ export default class Profile extends React.Component {
         }
     }
 
+    showPostsSection(e) {
+        let postsSection = document.getElementById("profile-post-section")
+        let friendsSection = document.getElementById("profile-friend-section")
+
+        if (postsSection.style.display === 'none') {
+            postsSection.style.display = "block"
+        }
+
+        if (friendsSection.style.display === "block") {
+            friendsSection.style.display = "";
+        }
+    }
+
+    showFriendsSection(e) {
+        let postsSection = document.getElementById("profile-post-section")
+        let friendsSection = document.getElementById("profile-friend-section")
+
+        postsSection.style.display = 'none';
+        friendsSection.style.display = "block";
+    }
+
     render() {
         if (this.props.user) {
             let friendButton;
@@ -130,33 +151,42 @@ export default class Profile extends React.Component {
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                         {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
                         
-                        <div className="friend-request-dropdown">
-                            {this.props.user === this.props.currentUser ? null : friendButton}
-                            {this.props.user === this.props.currentUser ? null : friendButtonDropdown}
+                        <div className="profile-buttons">
+                            <div className="profile-links">
+                                <a onClick={this.showPostsSection}>Posts</a>
+                                <a onClick={this.showFriendsSection}>Friends</a>
+                            </div>
+
+                            <div className="friend-request-dropdown">
+                                {this.props.user === this.props.currentUser ? null : friendButton}
+                                {this.props.user === this.props.currentUser ? null : friendButtonDropdown}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false) ? null :
-                    <div className="create-post-form">
-                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                        {this.props.createPostFormModal}
-                    </div> 
-                }
+                <div id="profile-post-section">
+                    {this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false) ? null :
+                        <div className="create-post-form">
+                            {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                            {this.props.createPostFormModal}
+                        </div>
+                    }
 
-                <ul className="post-list">
-                    {this.props.posts.map(post => (
-                        <PostItem 
-                            post={post} 
-                            removePost={this.props.removePost} 
-                            key={`${post.id}-${post.author_id}`} 
-                            currentUser={this.props.currentUser}
-                            editPostFormModal={this.props.editPostFormModal} 
-                            author={this.props.users[post.author_id]}
-                            comments={this.props.comments.filter(comment => comment.post_id === post.id)}
+                    <ul className="post-list">
+                        {this.props.posts.map(post => (
+                            <PostItem
+                                post={post}
+                                removePost={this.props.removePost}
+                                key={`${post.id}-${post.author_id}`}
+                                currentUser={this.props.currentUser}
+                                editPostFormModal={this.props.editPostFormModal}
+                                author={this.props.users[post.author_id]}
+                                comments={this.props.comments.filter(comment => comment.post_id === post.id)}
                             />
-                    ))}
-                </ul>
+                        ))}
+                    </ul>
+                </div>
 
                 <FriendsSectionContainer />
             </div>

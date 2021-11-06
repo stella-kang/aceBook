@@ -9,7 +9,7 @@ class FriendsSection extends React.Component {
     render() {
         const userFriends = this.props.profileFriendRequests.filter(friend => friend.user_id === parseInt(this.props.match.params.userId))
 
-        return <div className="profile-friend-section">
+        return <div id="profile-friend-section">
             <div className="friend-section-heading">
                 <h5>Friends</h5>
             </div>
