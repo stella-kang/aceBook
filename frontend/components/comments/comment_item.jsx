@@ -10,6 +10,10 @@ class Comment extends React.Component {
         this.handleDropDownClick = this.handleDropDownClick.bind(this);
     }
 
+    componentDidMount() {
+        if (this.author !== this.props.currentUser)
+        document.getElementById(`comment-dropdown-menu-${this.props.comment.id}`).style.display = "none";
+    }
 
     handleDropDownClick(e) {
         e.stopPropagation();
@@ -46,20 +50,20 @@ class Comment extends React.Component {
     }
 
     render () {
-        let author = this.props.users[this.props.comment.author_id];
+        this.author = this.props.users[this.props.comment.author_id];
 
-        if (author) {
+        if (this.author) {
             return <li className="comment-item">
                 <div className="comment-summary" id={`comment-${this.props.comment.id}`}>
-                    {author.profile_picture ? <img src={author.profile_picture} /> : <img src={window.defaultProfile} />}
+                    {this.author.profile_picture ? <img src={this.author.profile_picture} /> : <img src={window.defaultProfile} />}
 
                     <div className="comment-body">
                         <div id="comment-content">
-                            <p onClick={() => this.props.history.push(`/${author.id}/profile`)}>{author.first_name} {author.last_name}</p>
+                            <p onClick={() => this.props.history.push(`/${this.author.id}/profile`)}>{this.author.first_name} {this.author.last_name}</p>
                             <p>{this.props.comment.content}</p>
                         </div>
 
-                        <div id={`comment-dropdown-menu`}>
+                        <div className={`comment-dropdown-menu`} id={`comment-dropdown-menu-${this.props.comment.id}`}>
                             <button id="comment-dropdown-button" onClick={this.handleDropDownClick}>
                                 <i className="fas fa-ellipsis-h fa-1x"></i>
                             </button>

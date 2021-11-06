@@ -4,9 +4,22 @@ import CreateCommentForm from "../comments/create_comment_container"
 import { withRouter, Redirect} from 'react-router-dom'
 
 class PostItem extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleDropDownClick = this.handleDropDownClick.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.props.author !== this.props.currentUser) {
+            let dropdown = document.getElementById(`post-dropdown-${this.props.post.id}`);
+            if (dropdown) dropdown.style.display = "none";
+        }
+    }
+
     handleDropDownClick(e) {
         e.stopPropagation();
-        const postMenu = document.getElementById("post-dropdown-content");
+        const postMenu = document.getElementById(`post-dropdown-content-${this.props.post.id}`);
         if (postMenu.style.display === "") {
             postMenu.style.display = "block";
         } else {
@@ -29,12 +42,12 @@ class PostItem extends React.Component {
                         <span onClick={() => this.props.history.push(`/${this.props.author.id}/profile`)}>{this.props.author.first_name} {this.props.author.last_name}</span>
                     </div>
 
-                    <div className="post-dropdown-menu">
+                    <div className="post-dropdown-menu" id={`post-dropdown-${this.props.post.id}`}>
                         <button id="post-dropdown-button" onClick={this.handleDropDownClick}>
                             <i className="fas fa-ellipsis-h fa-2x"></i>
                         </button>
 
-                        <div id="post-dropdown-content">
+                        <div className="post-dropdown-content" id={`post-dropdown-content-${this.props.post.id}`}>
                             <div>
                                 <div className="post-dropdown-items">
                                     {this.props.editPostFormModal(this.props.post.id)}

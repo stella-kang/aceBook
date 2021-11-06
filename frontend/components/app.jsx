@@ -18,7 +18,7 @@ class App extends React.Component {
         const menuButton = document.getElementById("main-dropdown-button");
         const notifications = document.querySelector(".notifications-dropdown-content");
         const notificationsButton = document.getElementById("notifications-dropdown-button");
-        const postMenu = document.getElementById("post-dropdown-content");
+        const postMenu = document.querySelectorAll(".post-dropdown-content");
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
         const friendRequestMenu = document.getElementById("friend-request-content");
 
@@ -27,8 +27,8 @@ class App extends React.Component {
             menuButton.classList.remove("focus");
         }
         
-        if (postMenu && postMenu.style.display === "block") {
-            postMenu.style.display = "";
+        if (postMenu) {
+            postMenu.forEach(el => el.style.display = "")
         }
 
         if (commentMenus) {
