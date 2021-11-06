@@ -1,4 +1,5 @@
 import React from "react";
+import { createPost } from "../../util/posts_util";
 import PostItem from "../posts/post_item";
 
 export default class Profile extends React.Component {
@@ -15,10 +16,6 @@ export default class Profile extends React.Component {
         this.props.fetchFriends();
         this.props.fetchProfilePosts();
         this.props.fetchProfileComments();
-
-        if (this.props.user) {
-            document.getElementById("create-post-form-button").innerText = `What's on your mind, ${this.props.user.first_name}?`
-        }
     }
 
     handleCreateFriendRequest(e) {
@@ -109,6 +106,18 @@ export default class Profile extends React.Component {
                 </button>
             }
 
+            let createPostButton = document.getElementById("create-post-form-button")
+            if (createPostButton) {
+                let text;
+                if (this.props.user.id === this.props.currentUser.id) {
+                    text = `What's on your mind, ${this.props.user.first_name}?`
+                }
+                else {
+                    text = `Write something to ${this.props.user.first_name}...`
+                }
+                createPostButton.innerText = text;
+            }
+
             return <div className="profile-wall">
 
                 <div className="profile-header">
@@ -127,10 +136,12 @@ export default class Profile extends React.Component {
                     </div>
                 </div>
 
-                <div className="create-post-form">
-                    {this.props.user.profile_picture ? <img src={this.props.user.profile_picture} /> : <img src={window.defaultProfile} />}
-                    {this.props.createPostFormModal}
-                </div>
+                {this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false) ? null :
+                    <div className="create-post-form">
+                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                        {this.props.createPostFormModal}
+                    </div> 
+                }
 
                 <ul className="post-list">
                     {this.props.posts.map(post => (

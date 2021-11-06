@@ -5,13 +5,21 @@ import PostForm from "./post_form";
 
 
 const mSTP = (state, ownProps) => {
+    let urlArray = ownProps.location.pathname.split("/")
     let profileId;
 
-    if (ownProps.match.params.userId && ownProps.match.params.userId !== state.session.currentUserId) {
-        profileId = ownProps.match.params.userId
+    debugger
+    
+    if (urlArray.includes("profile") && ownProps.match.params.userId !== state.session.currentUserId) {
+        debugger
+        const currentProfileId = parseInt(urlArray[1]);
+        if (currentProfileId !== state.session.currentUserId) profileId = currentProfileId;
     } else {
+        debugger
         profileId = null;
     }
+
+    debugger
 
     return { post: {
                 content: "",
@@ -20,6 +28,7 @@ const mSTP = (state, ownProps) => {
                 photo: ""
                 },
             user: state.entities.users[state.session.currentUserId],
+            profile: state.entities.users[profileId],
             formType: "Create post"
             }
 }

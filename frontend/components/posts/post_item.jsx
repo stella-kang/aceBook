@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentContainer from '../comments/comment_container';
 import CreateCommentForm from "../comments/create_comment_container"
+import { withRouter, Redirect} from 'react-router-dom'
 
 class PostItem extends React.Component {
     handleDropDownClick(e) {
@@ -20,12 +21,12 @@ class PostItem extends React.Component {
             profile = <span>{this.props.post.profile.first_name} {this.props.post.profile.last_name}</span>
         }
 
-        if (this.props.post) {
+        if (this.props.author) {
             return <li className="post-item">
                 <div className="post-header">
                     <div id="post-details">
                         {this.props.author.profile_picture ? <img src={this.props.author.profile_picture} /> : <img src={window.defaultProfile} />}
-                        <span>{this.props.author.first_name} {this.props.author.last_name}</span>
+                        <span onClick={() => this.props.history.push(`/${this.props.author.id}/profile`)}>{this.props.author.first_name} {this.props.author.last_name}</span>
                     </div>
 
                     <div className="post-dropdown-menu">
@@ -147,4 +148,4 @@ class PostItem extends React.Component {
 //     </li>
 // }
 
-export default PostItem;
+export default withRouter(PostItem);

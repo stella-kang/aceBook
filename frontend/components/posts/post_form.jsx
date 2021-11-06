@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router";
 
-export default class PostForm extends React.Component {
+class PostForm extends React.Component {
     constructor(props) {
         super(props)
 
@@ -31,6 +32,8 @@ export default class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        debugger
 
         const formData = new FormData();
         formData.append('post[content]', this.state.content)
@@ -65,7 +68,7 @@ export default class PostForm extends React.Component {
                     {this.props.user.first_name}
                 </div>
 
-                <textarea id="content" value={this.state.content} onChange={this.update("content")} placeholder={`What's on your mind, ${this.props.user.first_name}?`} />
+                <textarea id="content" value={this.state.content} onChange={this.update("content")} placeholder={this.props.profile ? `Write something to ${this.props.profile.first_name}...` : `What's on your mind, ${this.props.user.first_name}?`} />
                 
                 <div className="picture-input" onClick={() => document.getElementById("post-photo-input").click()}>
                     <span>Add a picture to your post</span>
@@ -78,3 +81,5 @@ export default class PostForm extends React.Component {
         </div>
     }
 }
+
+export default PostForm;

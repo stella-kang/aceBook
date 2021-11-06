@@ -1,5 +1,6 @@
 import React from "react";
 import EditCommentContainer from "./edit_comment_container"
+import {withRouter} from "react-router-dom"
 
 class Comment extends React.Component {
     constructor(props) {
@@ -54,7 +55,7 @@ class Comment extends React.Component {
 
                     <div className="comment-body">
                         <div id="comment-content">
-                            <p>{author.first_name} {author.last_name}</p>
+                            <p onClick={() => this.props.history.push(`/${author.id}/profile`)}>{author.first_name} {author.last_name}</p>
                             <p>{this.props.comment.content}</p>
                         </div>
 
@@ -85,4 +86,4 @@ class Comment extends React.Component {
     }
 }
 
-export default Comment
+export default withRouter(Comment);
