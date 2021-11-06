@@ -64,6 +64,15 @@
             margin-right: 10px;
         }
     }
+
+    #friends-approved {
+    background-color: $blue;
+    color: white;
+
+        &:hover {
+            background-color: #146cd9;
+        }
+    }
 }
 
 .session-form .picture-input {
@@ -140,9 +149,4 @@
             }
         }
     }
-}
-
-#friends-approved {
-    background-color: $blue;
-    color: white;
 }
