@@ -26,7 +26,7 @@ const mSTP = (state, ownProps) => {
 
 
 const mDTP = (dispatch, ownProps) => ({
-    action: (formData) => dispatch(createPost(formData)),
+    action: (formData) => dispatch(createPost(formData))
 })
 
 export default withRouter(connect(mSTP, mDTP)(PostForm));

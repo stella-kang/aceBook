@@ -6,8 +6,8 @@ import CreatePostFormContainer from "../posts/create_post_form_container";
 export default class Newsfeed extends React.Component {
     componentDidMount() {
         this.props.fetchUsers();
-        this.props.fetchNewsfeedPosts();
         this.props.fetchNewsfeedComments();
+        this.props.fetchNewsfeedPosts();
 
         document.getElementById("create-post-form-button").innerText = `What's on your mind, ${this.props.currentUser.first_name}?`
     }
@@ -27,6 +27,9 @@ export default class Newsfeed extends React.Component {
                         editPostFormModal={this.props.editPostFormModal} 
                         currentUser={this.props.currentUser}
                         author={this.props.users[post.author_id]}
+                        // comments={selectComments(this.props.comments, post.comments)}
+                        // commentsSlice={this.props.comments}
+                        // fetchNewsfeedPosts={this.props.fetchNewsfeedPosts}
                         comments={this.props.comments.filter(comment => comment.post_id === post.id)}
                         />
                 )

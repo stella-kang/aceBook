@@ -18,11 +18,9 @@ class PostItem extends React.Component {
 
         if (this.props.post.profile) {
             profile = <span>{this.props.post.profile.first_name} {this.props.post.profile.last_name}</span>
-        } else {
-            profile = null;
         }
 
-        if (this.props.author) {
+        if (this.props.post) {
             return <li className="post-item">
                 <div className="post-header">
                     <div id="post-details">
