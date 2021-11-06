@@ -10,7 +10,6 @@ const friendsReducer = (state = {}, action) => {
             //     nextState[friendRequest.id] = friendRequest;
             // })
             // return nextState;
-            debugger
             return action.friendRequests;
         case RECEIVE_FRIEND_REQUEST:
             nextState[action.friendRequest.id] = action.friendRequest;

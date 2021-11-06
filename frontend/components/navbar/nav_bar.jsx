@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 class NavBar extends React.Component {
     componentDidMount() {
-        debugger
         this.props.fetchCurrentFriendRequests(this.props.currentUserId);
     }
 

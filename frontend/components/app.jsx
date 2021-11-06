@@ -21,6 +21,7 @@ class App extends React.Component {
         const postMenu = document.querySelectorAll(".post-dropdown-content");
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
         const friendRequestMenu = document.getElementById("friend-request-content");
+        const friendSectionMenu = document.querySelectorAll(".friend-section-dropdown-content")
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";
@@ -44,6 +45,10 @@ class App extends React.Component {
         if (notifications && notifications.style.display === "block") {
             notifications.style.display = "";
             notificationsButton.classList.remove("focus");
+        }
+
+        if (friendSectionMenu) {
+            friendSectionMenu.forEach(el => el.style.display = "");
         }
     }
 
