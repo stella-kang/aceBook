@@ -72,8 +72,8 @@ export default class Profile extends React.Component {
             let friendButtonDropdown;
 
             if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
-                friendButton = <button onClick={this.handleDropDownClick}>
-                    <i class="fas fa-user-check"></i>
+                friendButton = <button id="friends-approved" onClick={this.handleDropDownClick}>
+                    <i className="fas fa-user-check"></i>
                     <span>Friends</span>
                 </button>
 

@@ -21,7 +21,7 @@ class FriendNotificationItem extends React.Component {
         })
 
         this.props.createFriendRequest({
-            user_id: this.props.currentUser.id,
+            user_id: this.props.currentUserId,
             friend_id: this.props.request.user_id,
             status: true
         })

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import { removeFriendRequest, updateFriendRequest, createFriendRequest } from "../../actions/friends_actions"
+import { removeFriendRequest, editFriendRequest, createFriendRequest } from "../../actions/friends_actions"
 import FriendNotificationList from './friend_notification_list';
 
 const mSTP = (state, ownProps) => ({
@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
-    updateFriendRequest: (request) => dispatch(updateFriendRequest(request)),
+    updateFriendRequest: (request) => dispatch(editFriendRequest(request)),
     createFriendRequest: (request) => dispatch(createFriendRequest(request))
 })
 

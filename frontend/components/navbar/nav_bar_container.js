@@ -6,7 +6,8 @@ import NavBar from "./nav_bar"
 
 const mSTP = (state, ownProps) => ({
     currentUserId: state.session.currentUserId,
-    currentUser: state.entities.users[state.session.currentUserId]
+    currentUser: state.entities.users[state.session.currentUserId],
+    currentUserReceivedRequests: Object.values(state.entities.friends).filter(friend => friend.friend_id === state.session.currentUserId && friend.status === false)
 })
 
 const mDTP = (dispatch, ownProps) => ({

@@ -209,7 +209,7 @@
 //     width: 280px;
 // }
 
-#notification-dropdown-content {
+.notification-dropdown-content {
     display: flex;
     flex-direction: column;
 }
@@ -254,4 +254,14 @@
             background-color: #146cd9;
         }
     }
+}
+
+#no-notifications {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    color: grey;
+    display: flex;
+    justify-content: center;
 }
