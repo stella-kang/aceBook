@@ -1,6 +1,7 @@
 import React from "react";
 import { createPost } from "../../util/posts_util";
 import PostItem from "../posts/post_item";
+import FriendsSectionContainer from "../friends/friends_section_container";
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -156,6 +157,8 @@ export default class Profile extends React.Component {
                             />
                     ))}
                 </ul>
+
+                <FriendsSectionContainer />
             </div>
         } else {
             return null;

@@ -6,10 +6,12 @@ const friendsReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_FRIEND_REQUESTS:
-            Object.values(action.friendRequests).forEach(friendRequest => {
-                nextState[friendRequest.id] = friendRequest;
-            })
-            return nextState;
+            // Object.values(action.friendRequests).forEach(friendRequest => {
+            //     nextState[friendRequest.id] = friendRequest;
+            // })
+            // return nextState;
+            debugger
+            return action.friendRequests;
         case RECEIVE_FRIEND_REQUEST:
             nextState[action.friendRequest.id] = action.friendRequest;
             return nextState;

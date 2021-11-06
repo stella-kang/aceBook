@@ -22,7 +22,9 @@ const mSTP = (state, ownProps) => {
 
 
 
-const mDTP = (dispatch, ownProps) => ({
+const mDTP = (dispatch, ownProps) => {
+    const profileId = parseInt(ownProps.match.params.userId)
+    return {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
     removePost: (postId) => dispatch(removePost(postId)),
@@ -52,6 +54,6 @@ const mDTP = (dispatch, ownProps) => ({
             Edit Profile
         </button>
     )
-});
+}};
 
 export default connect(mSTP, mDTP)(Profile)

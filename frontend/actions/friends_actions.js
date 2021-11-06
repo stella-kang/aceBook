@@ -44,7 +44,9 @@ export const clearFriends = () => ({
 
 export const fetchFriendRequests = (userId) => dispatch => {
     return FriendsApiUtil.fetchFriends(userId)
-        .then(friendrequests => {dispatch(receiveFriendRequests(friendrequests));})
+        .then(friendrequests => {
+            dispatch(receiveFriendRequests(friendrequests));
+        })
 }
 
 export const createFriendRequest = (friend) => dispatch => {

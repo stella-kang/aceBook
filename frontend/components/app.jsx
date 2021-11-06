@@ -55,7 +55,8 @@ class App extends React.Component {
                 <AuthRoute exact path="/" component={splashGreeting} />
                 <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
                 <ProtectedRoute path="/:userId/profile" component={profileContainer} />
-                <AuthRoute component={splashGreeting} />
+                <ProtectedRoute path="/:userId/profile/friends" component={profileContainer} />
+                {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
         </div>
     }

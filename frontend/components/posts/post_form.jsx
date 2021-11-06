@@ -5,7 +5,7 @@ class PostForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = this.props.post
+        this.state = this.props.post;
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePhotoChange = this.handlePhotoChange.bind(this);
