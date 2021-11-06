@@ -46,11 +46,7 @@ class PostForm extends React.Component {
             formData.append('post[id]', this.state.id)
         }
 
-        if (this.props.match.params.userId) {
-            this.props.action(formData)
-        } else {
-            this.props.action(formData)
-        }
+        this.props.action(formData)
 
         this.props.closeModal();
     }

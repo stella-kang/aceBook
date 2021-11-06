@@ -6,10 +6,14 @@ import newsfeedContainer from "./newfeed/newsfeed_container"
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import profileContainer from "./profile/profile_container"
 import NavBarContainer from './navbar/nav_bar_container';
+import {withRouter} from 'react-router-dom';
 
-const App = (props) => {
+class App extends React.Component {
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) window.scrollTo(0, 0);
+    }
 
-    const handleCloseDropdown = (e) => {
+    handleCloseDropdown(e) {
         const menu = document.querySelector(".main-dropdown-content");
         const menuButton = document.getElementById("main-dropdown-button");
         const notifications = document.querySelector(".notifications-dropdown-content");
@@ -42,17 +46,19 @@ const App = (props) => {
             notificationsButton.classList.remove("focus");
         }
     }
-    
-    return <div className="app" onClick={handleCloseDropdown}>
-        <Modal />
-        <ProtectedRoute path="/" component={NavBarContainer} />
-        <Switch>
-            <AuthRoute exact path="/" component={splashGreeting} />
-            <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
-            <ProtectedRoute path="/:userId/profile" component={profileContainer}/>
-            <AuthRoute component={splashGreeting}/>
-        </Switch>
-    </div>
+
+    render() {
+        return <div className="app" onClick={this.handleCloseDropdown}>
+            <Modal />
+            <ProtectedRoute path="/" component={NavBarContainer} />
+            <Switch>
+                <AuthRoute exact path="/" component={splashGreeting} />
+                <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
+                <ProtectedRoute path="/:userId/profile" component={profileContainer} />
+                <AuthRoute component={splashGreeting} />
+            </Switch>
+        </div>
+    }
 }
 
-export default App;
+export default withRouter(App);
