@@ -21,6 +21,7 @@ export default class Profile extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.clearPosts();
             this.props.fetchUsers();
             this.props.fetchFriends();
             this.props.fetchProfilePosts();
