@@ -2,9 +2,9 @@ import React from "react";
 import FriendItem from "./friend_item";
 
 class FriendsSection extends React.Component {
-    componentDidMount() {
-        this.props.fetchFriendRequests();
-    }
+    // componentDidMount() {
+    //     this.props.fetchFriendRequests();
+    // }
 
     render() {
         const userFriends = this.props.profileFriendRequests.filter(friend => friend.user_id === parseInt(this.props.match.params.userId) && friend.status === true)
@@ -14,6 +14,7 @@ class FriendsSection extends React.Component {
                 <h5>Friends</h5>
             </div>
 
+            {userFriends.length !== 0 ? 
             <ul className="profile-friend-list">
                 {userFriends.map(friend => {
                     return <FriendItem
@@ -21,10 +22,11 @@ class FriendsSection extends React.Component {
                         friendRequest={friend}
                         friend={this.props.users[friend.friend_id]}
                         key={friend.id}
+                        currentUserId={this.props.currentUserId}
                         deleteFriendRequest={this.props.deleteFriendRequest}
                     />
                 })}
-            </ul>
+            </ul> : <span>No friends.</span>}
         </div>
     }
 }

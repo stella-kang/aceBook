@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    fetchFriendRequests: () => dispatch(fetchFriendRequests(parseInt(ownProps.match.params.userId))),
+    // fetchFriendRequests: () => dispatch(fetchFriendRequests(parseInt(ownProps.match.params.userId))),
     deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
     updateFriendRequest: (request) => dispatch(editFriendRequest(request))
 })

@@ -1,8 +1,12 @@
 class Api::FriendsController < ApplicationController
     def index
         @user = User.find(params[:user_id])
-        @friend_requests = @user.friend_requests;
-        @received_requests = @user.received_requests;
+        @friend_requests = @user.friend_requests
+        @received_requests = @user.received_requests
+        
+        @friend_requests += current_user.friend_requests
+        @received_requests += current_user.received_requests
+
         # @friends = @user.friends.where(status: true);
         # @friends = []
 

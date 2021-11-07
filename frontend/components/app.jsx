@@ -10,23 +10,27 @@ import {withRouter} from 'react-router-dom';
 
 class App extends React.Component {
     componentDidUpdate(prevProps) {
-        if (prevProps.location.pathname !== this.props.location.pathname) window.scrollTo(0, 0);
+        if (prevProps.location.pathname !== this.props.location.pathname)  {
+            window.scrollTo(0, 0);
 
-        let postsSection = document.getElementById("profile-post-section")
-        let friendsSection = document.getElementById("profile-friend-section")
+            if (this.props.location.pathname.includes("profile")) {
+                let postsSection = document.getElementById("profile-post-section")
+                let friendsSection = document.getElementById("profile-friend-section")
 
-        if (postsSection && postsSection.style.display === 'none') {
-            postsSection.style.display = "block"
+                if (postsSection && postsSection.style.display === 'none') {
+                    postsSection.style.display = "block"
+                }
+
+                if (friendsSection && friendsSection.style.display === "block") {
+                    friendsSection.style.display = "";
+                }
+
+                let postsLink = document.getElementById("show-posts-link");
+                if (postsLink) postsLink.classList.add("displayed");
+                let friendLink = document.getElementById("show-friends-link");
+                if (friendLink) friendLink.classList.remove("displayed");
+            }
         }
-
-        if (friendsSection && friendsSection.style.display === "block") {
-            friendsSection.style.display = "";
-        }
-
-        let postsLink = document.getElementById("show-posts-link");
-        if (postsLink) postsLink.classList.add("displayed");
-        let friendLink = document.getElementById("show-friends-link");
-        if (friendLink) friendLink.classList.remove("displayed");
     }
 
     handleCloseDropdown(e) {
@@ -76,6 +80,7 @@ class App extends React.Component {
                 <AuthRoute exact path="/" component={splashGreeting} />
                 <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
                 <ProtectedRoute path="/:userId/profile" component={profileContainer} />
+                {/* <ProtectedRoute path="/search" component={searchContainer} /> */}
                 {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
         </div>
