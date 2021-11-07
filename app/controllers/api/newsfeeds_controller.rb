@@ -5,7 +5,7 @@ class Api::NewsfeedsController < ApplicationController
 
         friend_requests = current_user.friend_requests.where(status: true).includes(:requestee)
     
-        friend_posts.each do |post|
+        friend_requests.each do |request|
             @posts += request.requestee.posts
         end
 

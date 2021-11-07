@@ -235,7 +235,6 @@
 
     div {
         width: 100%;
-        margin-top: 10px;
         justify-content: space-between;
         align-items: center;
 
@@ -254,6 +253,16 @@
 
         &:hover {
             background-color: #146cd9;
+        }
+    }
+
+    #requestor-information {
+        display: flex;
+        padding: 0;
+        margin-bottom: 20px;
+
+        img {
+            margin-right: 10px;
         }
     }
 }

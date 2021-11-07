@@ -32,7 +32,10 @@ class FriendNotificationItem extends React.Component {
 
         if (requestor) {
             return <li id="list-notification-item">
-                <span> {requestor.first_name} {requestor.last_name} sent you a friend request</span>
+                <div id="requestor-information">
+                    {requestor.profile_picture ? <img src={requestor.profile_picture} /> : <img src={window.defaultProfile} />}
+                    <span> {requestor.first_name} {requestor.last_name} sent you a friend request</span>
+                </div>
 
                 <div>
                     <button id="confirm-request-button" onClick={this.handleUpdateFriendRequest}>Confirm</button>
