@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class FriendItem extends React.Component {
     constructor(props) {
@@ -32,8 +33,10 @@ class FriendItem extends React.Component {
         if (this.props.friend) {
             return <li className="profile-friend-list-item">
                 <div className="friend-item-heading">
-                    {this.props.friend.profile_picture ? <img src={this.props.friend.profile_picture} /> : <img src={window.defaultProfile} />}
-                    <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
+                    {this.props.friend.profile_picture ? <img onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)} src={this.props.friend.profile_picture} /> : 
+                    <img onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)} src={window.defaultProfile} />}
+                    
+                    <span onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)}>{this.props.friend.first_name} {this.props.friend.last_name}</span>
                 </div>
 
                 <div className="friend-section-dropdown-menu">
@@ -57,4 +60,4 @@ class FriendItem extends React.Component {
     }
 }
 
-export default FriendItem;
+export default withRouter(FriendItem);

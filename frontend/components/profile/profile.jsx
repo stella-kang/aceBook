@@ -19,6 +19,15 @@ export default class Profile extends React.Component {
         this.props.fetchProfileComments();
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.fetchUsers();
+            this.props.fetchFriends();
+            this.props.fetchProfilePosts();
+            this.props.fetchProfileComments();
+        }
+    }
+
     handleCreateFriendRequest(e) {
         this.props.createFriendRequest({
             user_id: this.props.currentUser.id,
@@ -75,6 +84,11 @@ export default class Profile extends React.Component {
         if (friendsSection.style.display === "block") {
             friendsSection.style.display = "";
         }
+
+        let postsLink = document.getElementById("show-posts-link");
+        postsLink.classList.add("displayed");
+        let friendLink = document.getElementById("show-friends-link");
+        friendLink.classList.remove("displayed");
     }
 
     showFriendsSection(e) {
@@ -83,6 +97,11 @@ export default class Profile extends React.Component {
 
         postsSection.style.display = 'none';
         friendsSection.style.display = "block";
+
+        let postsLink = document.getElementById("show-posts-link");
+        postsLink.classList.remove("displayed");
+        let friendLink = document.getElementById("show-friends-link");
+        friendLink.classList.add("displayed");
     }
 
     render() {
@@ -149,15 +168,22 @@ export default class Profile extends React.Component {
 
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
-                        {this.props.user === this.props.currentUser ? this.props.editUserModal() : null }
-                        
+
                         <div className="profile-buttons">
                             <div className="profile-links">
-                                <a onClick={this.showPostsSection}>Posts</a>
-                                <a onClick={this.showFriendsSection}>Friends</a>
+                                <a id="show-posts-link" onClick={this.showPostsSection} className="displayed">
+                                    Posts
+                                    <div></div>
+                                </a>
+
+                                <a id="show-friends-link" onClick={this.showFriendsSection}>
+                                    Friends
+                                    <div></div>
+                                </a>
                             </div>
 
                             <div className="friend-request-dropdown">
+                                {this.props.user === this.props.currentUser ? this.props.editUserModal() : null}
                                 {this.props.user === this.props.currentUser ? null : friendButton}
                                 {this.props.user === this.props.currentUser ? null : friendButtonDropdown}
                             </div>

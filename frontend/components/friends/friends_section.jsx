@@ -2,12 +2,12 @@ import React from "react";
 import FriendItem from "./friend_item";
 
 class FriendsSection extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchFriendRequests();
-    // }
+    componentDidMount() {
+        this.props.fetchFriendRequests();
+    }
 
     render() {
-        const userFriends = this.props.profileFriendRequests.filter(friend => friend.user_id === parseInt(this.props.match.params.userId))
+        const userFriends = this.props.profileFriendRequests.filter(friend => friend.user_id === parseInt(this.props.match.params.userId) && friend.status === true)
 
         return <div id="profile-friend-section">
             <div className="friend-section-heading">

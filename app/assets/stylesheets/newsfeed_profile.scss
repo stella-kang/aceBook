@@ -15,7 +15,7 @@
 }
 
 #white-rectangle {
-    width: 900px;
+    width: 800px;
     height: 60px;
     background-color: white;
     border-top-left-radius: 20px;
@@ -36,7 +36,7 @@
 }
 
 #profile-summary {
-    width: 900px;
+    width: 800px;
     background-color: white;
     display: flex;
     border-bottom-left-radius: 20px;
@@ -44,25 +44,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 
     h1 {
         font-size: 30px;
         margin-bottom: 20px;
-    }
-
-    button {
-        padding: 10px;
-        font-size: 15px;
-        border-radius: 10px;
-
-        &:hover {
-            background-color: #cccccc;
-        }
-
-        i {
-            margin-right: 10px;
-        }
     }
 
     #friends-approved {
@@ -151,6 +137,54 @@
     }
 }
 
-#profile-post-section {
-    display: block;
+.profile-buttons {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 20px 0;
+    justify-content: space-between;
+    border-top: 1px solid lightgrey;
+
+    button {
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .profile-links {
+        display: flex;
+        align-items: center;
+
+        a {
+            margin-right: 20px;
+            padding: 10px;
+            color: #545454;
+            border: 3px solid transparent;
+            text-align: center;
+
+            &:hover {
+                background-color: #f2f2f2;
+                border-radius: 10px;
+            }
+        }
+
+        .displayed {
+            color: $blue;
+            border-bottom: 3px solid $blue;
+
+            &:hover {
+                background-color: white;
+                border-bottom: 3px solid $blue;
+                border-radius: 0;
+            }
+        }
+    }
 }
