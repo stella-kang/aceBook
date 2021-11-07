@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchNewsfeedComments,} from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
-import { fetchNewsfeedPosts, removePost } from '../../actions/post_actions';
+import { fetchNewsfeedPosts, removePost, clearAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import React from "react";
 import Newsfeed from "./newsfeed"
@@ -17,6 +17,7 @@ const mDTP = (dispatch, ownProps) => ({
     fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
     fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
     removePost: (postId) => dispatch(removePost(postId)),
+    clearPosts: () => dispatch(clearAllPosts()),
     fetchUsers: () => dispatch(fetchUsers()),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {

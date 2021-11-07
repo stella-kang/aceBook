@@ -28,6 +28,10 @@ export default class Profile extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.clearPosts();
+    }
+
     handleCreateFriendRequest(e) {
         this.props.createFriendRequest({
             user_id: this.props.currentUser.id,

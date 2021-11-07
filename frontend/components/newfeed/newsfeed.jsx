@@ -12,6 +12,9 @@ export default class Newsfeed extends React.Component {
         document.getElementById("create-post-form-button").innerText = `What's on your mind, ${this.props.currentUser.first_name}?`
     }
 
+    componentWillUnmount() {
+        this.props.clearPosts();
+    }
     render() {
         return <div className="newsfeed">
             <div className="create-post-form">

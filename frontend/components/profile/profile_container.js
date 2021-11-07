@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchProfileComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
-import { fetchProfilePosts, removePost } from '../../actions/post_actions';
+import { fetchProfilePosts, removePost, clearAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import { createFriendRequest, fetchFriendRequests, removeFriendRequest, editFriendRequest } from '../../actions/friends_actions';
 import React from 'react';
@@ -27,6 +27,7 @@ const mDTP = (dispatch, ownProps) => {
     return {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
+    clearPosts: () => dispatch(clearAllPosts()),
     removePost: (postId) => dispatch(removePost(postId)),
     fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     // fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
