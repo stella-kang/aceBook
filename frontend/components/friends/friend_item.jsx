@@ -57,7 +57,6 @@ class FriendItem extends React.Component {
             //         </div>
             //     </div>
             // }
-            debugger
 
             return <li className="profile-friend-list-item">
                 <div className="friend-item-heading">

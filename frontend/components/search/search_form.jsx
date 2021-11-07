@@ -19,13 +19,13 @@ class SearchForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.receiveSearch(this.state.search);
+        this.props.receiveSearch(this.state.search.toLowerCase());
         this.props.history.push("./search");
     }
 
     render() {
         return <form onSubmit={this.handleSubmit}>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
             <input type="text" placeholder="Search aceBook" value={this.state.search} onChange={this.update}/>
             <button></button>
         </form>

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { fetchUsers } from '../../actions/user&session_actions';
 import Search from './search';
 
 const mSTP = (state, ownProps) => ({
@@ -7,7 +8,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-
+    fetchUsers: () => dispatch(fetchUsers())
 })
 
 export default connect(mSTP, mDTP)(Search)

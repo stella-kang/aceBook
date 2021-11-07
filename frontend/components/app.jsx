@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import profileContainer from "./profile/profile_container"
 import NavBarContainer from './navbar/nav_bar_container';
 import {withRouter} from 'react-router-dom';
+import searchContainer from './search/search_container';
 
 class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -80,7 +81,7 @@ class App extends React.Component {
                 <AuthRoute exact path="/" component={splashGreeting} />
                 <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
                 <ProtectedRoute path="/:userId/profile" component={profileContainer} />
-                {/* <ProtectedRoute path="/search" component={searchContainer} /> */}
+                <ProtectedRoute path="/search" component={searchContainer} />
                 {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
         </div>

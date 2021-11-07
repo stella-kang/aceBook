@@ -1,4 +1,4 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { receiveSearch } from "../../actions/search_action";
 import { withRouter } from 'react-router-dom'
 import SearchForm from "./search_form";

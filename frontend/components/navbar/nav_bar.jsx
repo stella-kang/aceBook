@@ -1,5 +1,6 @@
 import React from "react";
 import FriendNotificationListContainer from "../friends/friend_notification_list_container";
+import SearchFormContainer from "../search/search_form_container";
 import { Link } from "react-router-dom";
 
 
@@ -44,7 +45,7 @@ class NavBar extends React.Component {
 
     render() {
         return (<div className="nav-bar">
-            <input type="text" placeholder="Search aceBook" id="search-bar" />
+            <SearchFormContainer />
 
             <div className="middle-icons" onClick={(() => this.props.history.push('/newsfeed'))}>
                 <button 
