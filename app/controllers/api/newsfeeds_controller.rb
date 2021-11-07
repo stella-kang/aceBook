@@ -3,9 +3,10 @@ class Api::NewsfeedsController < ApplicationController
         @posts = []
         @comments = []
 
-        current_user.friend_requests.where(status: true).each do |friend|
-            user = User.find(friend.friend_id)
-            @posts += user.posts
+        friend_requests = current_user.friend_requests.where(status: true).includes(:requestee)
+    
+        friend_posts.each do |post|
+            @posts += request.requestee.posts
         end
 
         @posts += current_user.posts
