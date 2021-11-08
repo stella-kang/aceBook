@@ -25,8 +25,7 @@ class SearchForm extends React.Component {
     }
 
     render() {
-        return <form onSubmit={this.handleSubmit}>
-            <i className="fas fa-arrow-left"></i>
+        return <form id="search-form" onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Search aceBook" value={this.state.search} onChange={this.update}/>
             <button></button>
         </form>

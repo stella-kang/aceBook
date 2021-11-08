@@ -15,7 +15,7 @@ class Search extends React.Component {
         })
 
         if (users.length !== 0) {
-            return <ul>
+            return <ul className="search-results">
                 {users.map(user => <SearchItem
                     user={user}
                     friendRequests={this.props.friendRequests}

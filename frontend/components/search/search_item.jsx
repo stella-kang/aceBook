@@ -28,7 +28,6 @@ class SearchItem extends React.Component {
     }
 
     render() {
-        debugger
         return <li className="search-item">
             <div className="search-item-user-info">
                 {this.props.user.profile_picture ? <img onClick={this.redirectToProfilePage} src={this.props.user.profile_picture}/> : 

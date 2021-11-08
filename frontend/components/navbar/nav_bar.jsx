@@ -45,7 +45,9 @@ class NavBar extends React.Component {
 
     render() {
         return (<div className="nav-bar">
-            <SearchFormContainer />
+            <div className="search-form-div">
+                <SearchFormContainer />
+            </div>
 
             <div className="middle-icons" onClick={(() => this.props.history.push('/newsfeed'))}>
                 <button 
