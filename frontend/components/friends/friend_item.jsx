@@ -8,6 +8,11 @@ class FriendItem extends React.Component {
 
         this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
         this.handleDropDownClick = this.handleDropDownClick.bind(this);
+        this.redirectToProfilePage = this.redirectToProfilePage.bind(this);
+    }
+
+    redirectToProfilePage(e) {
+        this.props.history.push(`/${this.props.friend.id}/profile`)
     }
 
     handleDropDownClick(e) {
@@ -69,10 +74,10 @@ class FriendItem extends React.Component {
 
             return <li className="profile-friend-list-item">
                 <div className="friend-item-heading">
-                    {this.props.friend.profile_picture ? <img onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)} src={this.props.friend.profile_picture} /> : 
-                    <img onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)} src={window.defaultProfile} />}
+                    {this.props.friend.profile_picture ? <img onClick={this.redirectToProfilePage} src={this.props.friend.profile_picture} /> : 
+                    <img onClick={this.redirectToProfilePage} src={window.defaultProfile} />}
                     
-                    <span onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)}>{this.props.friend.first_name} {this.props.friend.last_name}</span>
+                    <span onClick={this.redirectToProfilePage}>{this.props.friend.first_name} {this.props.friend.last_name}</span>
                 </div>
 
                 {this.props.friendRequests.some(friend => friend.user_id === this.props.currentUserId && friend.friend_id == this.props.friend.id && friend.status === true) ? 

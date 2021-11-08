@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom'
 
 class FriendNotificationItem extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class FriendNotificationItem extends React.Component {
         let requestor = this.props.users[this.props.request.user_id];
 
         if (requestor) {
-            return <li id="list-notification-item">
+            return <li id="list-notification-item" onClick={() => this.props.history.push(`/${requestor.id}/profile`)}>
                 <div id="requestor-information">
                     {requestor.profile_picture ? <img src={requestor.profile_picture} /> : <img src={window.defaultProfile} />}
                     <span> {requestor.first_name} {requestor.last_name} sent you a friend request</span>

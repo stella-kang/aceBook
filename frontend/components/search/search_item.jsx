@@ -7,6 +7,11 @@ class SearchItem extends React.Component {
 
         this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
         this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
+        this.redirectToProfilePage = this.redirectToProfilePage.bind(this);
+    }
+
+    redirectToProfilePage(e) {
+        this.props.history.push(`/${this.props.user.id}/profile`)
     }
 
     handleCreateFriendRequest(e) {
@@ -26,9 +31,9 @@ class SearchItem extends React.Component {
         debugger
         return <li className="search-item">
             <div className="search-item-user-info">
-                {this.props.user.profile_picture ? <img onClick={() => this.props.history.push(`/${this.props.user.id}/profile`)} src={this.props.user.profile_picture}/> : 
-                    <img onClick={() => this.props.history.push(`/${this.props.user.id}/profile`)} src={window.defaultProfile}/>}
-                <span>{this.props.user.first_name} {this.props.user.last_name}</span>
+                {this.props.user.profile_picture ? <img onClick={this.redirectToProfilePage} src={this.props.user.profile_picture}/> : 
+                    <img onClick={this.redirectToProfilePage} src={window.defaultProfile}/>}
+                <span onClick={this.redirectToProfilePage} >{this.props.user.first_name} {this.props.user.last_name}</span>
             </div>
 
 

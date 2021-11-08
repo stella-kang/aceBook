@@ -14,9 +14,9 @@ const mSTP = (state, ownProps) => {
         currentUser: state.entities.users[state.session.currentUserId],
         posts: Object.values(state.entities.posts).reverse(),
         comments: Object.values(state.entities.comments),
-        friends: state.entities.friends,
-        currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
-        userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
+        friends: Object.values(state.entities.friends),
+        // currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
+        // userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
     }
 }
 
@@ -32,10 +32,10 @@ const mDTP = (dispatch, ownProps) => {
     fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     // fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
     // fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
-    fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
-    createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
-    deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
-    updateFriendRequest: (friend) => dispatch(editFriendRequest(friend)),
+    // fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
+    // createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
+    // deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
+    // updateFriendRequest: (friend) => dispatch(editFriendRequest(friend)),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));

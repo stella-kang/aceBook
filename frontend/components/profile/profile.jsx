@@ -199,11 +199,11 @@ export default class Profile extends React.Component {
                 </div>
 
                 <div id="profile-post-section">
-                    {!this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true) ? null :
+                    {this.props.friends.some(friend => friend.friend_id === this.props.currentUser.id && friend.user_id === this.props.user.id && friend.status === true) || this.props.user.id === this.props.currentUser.id ?
                         <div className="create-post-form">
                             {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                             {this.props.createPostFormModal}
-                        </div>
+                        </div> : null
                     }
 
                     <ul className="post-list">
