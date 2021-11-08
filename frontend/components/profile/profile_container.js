@@ -32,7 +32,7 @@ const mDTP = (dispatch, ownProps) => {
     fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     // fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
     // fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
-    // fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
+    fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
     // createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
     // deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
     // updateFriendRequest: (friend) => dispatch(editFriendRequest(friend)),
