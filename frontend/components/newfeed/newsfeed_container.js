@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchNewsfeedComments,} from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
 import { fetchNewsfeedPosts, removePost, clearAllPosts } from '../../actions/post_actions';
+import { fetchNewsfeedContent } from '../../actions/newsfeed_profile_actions';
 import { openModal } from '../../actions/modal_actions';
 import React from "react";
 import Newsfeed from "./newsfeed"
@@ -14,8 +15,9 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
+    // fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
+    // fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
+    fetchNewsfeedContent: (num1, num2) => dispatch(fetchNewsfeedContent(num1, num2)),
     removePost: (postId) => dispatch(removePost(postId)),
     clearPosts: () => dispatch(clearAllPosts()),
     fetchUsers: () => dispatch(fetchUsers()),

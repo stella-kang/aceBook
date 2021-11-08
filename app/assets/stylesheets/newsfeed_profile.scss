@@ -1,9 +1,46 @@
 @import "./splash.scss";
 
-.newsfeed, .profile-wall {
+.profile-wall {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.newsfeed {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newsfeed-links {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+
+    a {
+        padding: 5px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            border-radius: 10px;
+            background-color: #e6e6e6;
+            cursor: pointer;
+        }
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        margin-right: 10px;
+    }
 }
 
 .profile-header {

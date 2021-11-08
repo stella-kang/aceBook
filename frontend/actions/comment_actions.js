@@ -6,7 +6,7 @@ export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT"
 export const DELETE_COMMENT = "DELETE_COMMENT"
 
-const receiveComments = (comments) => ({
+export const receiveComments = (comments) => ({
     type: RECEIVE_COMMENTS,
     comments
 })
@@ -21,14 +21,14 @@ const deleteComment = (commentId) => ({
     commentId
 })
 
-export const fetchNewsfeedComments = () => dispatch => {
-    return NewsfeedApiUtil.fetchNewsfeedContent()
-        .then(
-            res => {
-                dispatch(receiveComments(res.comments))
-            }
-        )
-}
+// export const fetchNewsfeedComments = () => dispatch => {
+//     return NewsfeedApiUtil.fetchNewsfeedContent()
+//         .then(
+//             res => {
+//                 dispatch(receiveComments(res.comments))
+//             }
+//         )
+// }
 
 export const fetchProfileComments = (userId) => dispatch => {
     return ProfileApiUtil.fetchProfileContent(userId)

@@ -7,7 +7,7 @@ export const RECEIVE_POST = "RECEIVE_POST"
 export const DELETE_POST = "DELETE_POST"
 export const CLEAR_ALL_POSTS = "CLEAR_ALL_POSTS"
 
-const receivePosts = (posts) => ({
+export const receivePosts = (posts) => ({
     type: RECEIVE_POSTS,
     posts
 });
@@ -26,12 +26,12 @@ export const clearAllPosts = () => ({
     type: CLEAR_ALL_POSTS
 })
 
-export const fetchNewsfeedPosts = () => dispatch => {
-    return NewsfeedApiUtil.fetchNewsfeedContent()
-        .then(
-            res => dispatch(receivePosts(res.posts)),
-            )
-}
+// export const fetchNewsfeedPosts = () => dispatch => {
+//     return NewsfeedApiUtil.fetchNewsfeedContent()
+//         .then(
+//             res => dispatch(receivePosts(res.posts)),
+//             )
+// }
 
 export const fetchProfilePosts = (userId) => dispatch => {
     return ProfileApiUtil.fetchProfileContent(userId)
