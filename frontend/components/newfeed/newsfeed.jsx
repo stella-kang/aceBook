@@ -30,6 +30,7 @@ export default class Newsfeed extends React.Component {
                         editPostFormModal={this.props.editPostFormModal} 
                         currentUser={this.props.currentUser}
                         author={this.props.users[post.author_id]}
+                        profile={post.profile_id ? this.props.users[post.profile_id] : null}
                         comments={this.props.comments.filter(comment => comment.post_id === post.id)}
                         />
                 )

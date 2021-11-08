@@ -117,7 +117,7 @@
     #post-details {
         display: flex;
         align-items: center;
-        font-size: 20px;
+        font-size: 18px;
 
         img {
             width: 50px;
@@ -132,6 +132,15 @@
             &:hover {
                 text-decoration: underline;
                 cursor: pointer;
+            }
+        }
+
+        #post-profile-info {
+            margin-left: 10px;
+
+            i {
+                color: #333333;
+                margin-right: 10px;
             }
         }
     }

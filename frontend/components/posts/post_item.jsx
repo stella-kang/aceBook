@@ -40,6 +40,11 @@ class PostItem extends React.Component {
                     <div id="post-details">
                         {this.props.author.profile_picture ? <img src={this.props.author.profile_picture} /> : <img src={window.defaultProfile} />}
                         <span onClick={() => this.props.history.push(`/${this.props.author.id}/profile`)}>{this.props.author.first_name} {this.props.author.last_name}</span>
+
+                        {this.props.profile ? <div id="post-profile-info">
+                            <i className="fas fa-caret-right"></i>
+                            <span onClick={(() => this.props.history.push(`/${this.props.profile.id}/profile`))}>{this.props.profile.first_name} {this.props.profile.last_name}</span> 
+                            </div>: null}
                     </div>
 
                     <div className="post-dropdown-menu" id={`post-dropdown-${this.props.post.id}`}>
