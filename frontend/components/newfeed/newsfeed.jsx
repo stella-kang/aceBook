@@ -12,52 +12,52 @@ export default class Newsfeed extends React.Component {
         // this.props.fetchNewsfeedPosts();
 
         let createPostFormButton = document.getElementById("create-post-form-button")
-        if (createPostFormButton) createPostFormButton.innerText = `What's on your mind, ${this.props.currentUser.first_name}?`
+        createPostFormButton.innerText = `What's on your mind, ${this.props.currentUser.first_name}?`
     }
 
     componentWillUnmount() {
         this.props.clearPosts();
     }
     render() {
-        if (Object.values(this.props.users).length > 1) {
-            return <div className="newsfeed">
-                <div className="newsfeed-links">
-                    <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
-                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                        <span>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</span>
-                    </a>
-                    <a href="https://github.com/stella-kang/aceBook">
-                        <img src={window.githubLogo} />
-                        <span>Github</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/stella-kang-33302b127/">
-                        <img src={window.linkedinLogo} />
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
+        return <div className="newsfeed">
+            <div className="newsfeed-links">
+                <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
+                    {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                    <span>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</span>
+                </a>
+                <a href="https://github.com/stella-kang/aceBook">
+                    <img src={window.githubLogo} />
+                    <span>Github</span>
+                </a>
+                <a href="https://www.linkedin.com/in/stella-kang-33302b127/">
+                    <img src={window.linkedinLogo} />
+                    <span>LinkedIn</span>
+                </a>
+            </div>
 
-                <div className="newsfeed-scroll">
-                    <div className="create-post-form">
-                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                        {this.props.createPostFormModal}
-                    </div>
-                    <ul className="post-list">
-                        {this.props.posts.map(post => (
-                            <PostItem
-                                post={post}
-                                removePost={this.props.removePost}
-                                key={`${post.id}-${post.author_id}`}
-                                editPostFormModal={this.props.editPostFormModal}
-                                currentUser={this.props.currentUser}
-                                author={this.props.users[post.author_id]}
-                                profile={post.profile_id ? this.props.users[post.profile_id] : null}
-                                comments={this.props.comments.filter(comment => comment.post_id === post.id)}
-                            />
-                        )
-                        )}
-                    </ul>
+            <div className="newsfeed-scroll">
+                <div className="create-post-form">
+                    {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                    {this.props.createPostFormModal}
                 </div>
+                <ul className="post-list">
+                    {this.props.posts.map(post => (
+                        <PostItem
+                            post={post}
+                            removePost={this.props.removePost}
+                            key={`${post.id}-${post.author_id}`}
+                            editPostFormModal={this.props.editPostFormModal}
+                            currentUser={this.props.currentUser}
+                            author={this.props.users[post.author_id]}
+                            profile={post.profile_id ? this.props.users[post.profile_id] : null}
+                            comments={this.props.comments.filter(comment => comment.post_id === post.id)}
+                        />
+                    )
+                    )}
+                </ul>
+            </div>
 
+            {Object.values(this.props.users).length < 2 ? null :
                 <div className="newsfeed-friends-list">
                     <div>Friends</div>
                     {this.props.friends.length !== 0 ?
@@ -67,9 +67,7 @@ export default class Newsfeed extends React.Component {
                             ))}
                         </ul> : <div>No friends.</div>}
                 </div>
-            </div>
-        } else {
-            return null;
-        }
+            }
+        </div>
     }
 }

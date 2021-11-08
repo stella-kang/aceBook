@@ -50,14 +50,24 @@ class NavBar extends React.Component {
                 <SearchFormContainer />
             </div>
 
-            <div className="middle-icons" onClick={(() => this.props.history.push('/newsfeed'))}>
+            <div className="middle-icons">
                 <button 
                     id="newsfeed-nav-icon" 
                     className={this.props.location.pathname === `/newsfeed` ? "current-url" : null} 
-                    disabled={this.props.location.pathname === `/newsfeed` ? true : false}>
-                    <i className="fas fa-home fa-2x"></i>
-                    <div></div>
+                    disabled={this.props.location.pathname === `/newsfeed` ? true : false}
+                    onClick={(() => this.props.history.push('/newsfeed'))}
+                    >
+                        <i className="fas fa-home fa-2x"></i>
+                        <div></div>
                 </button>
+                
+                <a href="https://github.com/stella-kang/aceBook">
+                    <img src={window.githubLogo} />
+                </a>
+
+                <a href="https://www.linkedin.com/in/stella-kang-33302b127/">
+                    <img src={window.linkedinLogo} />
+                </a>
             </div>
 
             <div className="navbar-buttons">
