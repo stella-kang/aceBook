@@ -46,6 +46,7 @@ class NavBar extends React.Component {
     render() {
         return (<div className="nav-bar">
             <div className="search-form-div">
+                <img id="logo" src={window.logo}/>
                 <SearchFormContainer />
             </div>
 

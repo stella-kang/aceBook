@@ -43,6 +43,7 @@ class App extends React.Component {
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
         const friendRequestMenu = document.getElementById("friend-request-content");
         const friendSectionMenu = document.querySelectorAll(".friend-section-dropdown-content")
+        const logo = document.getElementById("logo");
 
         if (menu && menu.style.display === "block") {
             menu.style.display = "";
@@ -70,6 +71,13 @@ class App extends React.Component {
 
         if (friendSectionMenu) {
             friendSectionMenu.forEach(el => el.style.display = "");
+        }
+
+        debugger
+        if (logo && logo.style.visibility === "hidden") {
+            debugger
+            logo.style.visibility = "visible";
+            logo.style.width = "40px";
         }
     }
 
