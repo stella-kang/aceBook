@@ -44,7 +44,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
 
     h1 {
         font-size: 30px;
@@ -139,9 +138,10 @@
 
 .profile-buttons {
     display: flex;
+    align-items: center;
     width: 100%;
+    padding: 0 20px 0;
     box-sizing: border-box;
-    padding: 20px 20px 0;
     justify-content: space-between;
     border-top: 1px solid lightgrey;
 
@@ -164,11 +164,14 @@
         align-items: center;
 
         a {
-            margin-right: 20px;
             padding: 10px;
+            margin: 0 0 0 20px;
             color: #545454;
-            border: 3px solid transparent;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
             text-align: center;
+            height: 30px;
+            line-height: 30px;
 
             &:hover {
                 background-color: #f2f2f2;
@@ -178,10 +181,13 @@
 
         .displayed {
             color: $blue;
+            border: none;
+            border-top: 3px solid white;
             border-bottom: 3px solid $blue;
 
             &:hover {
                 background-color: white;
+                border-top: 3px solid white;
                 border-bottom: 3px solid $blue;
                 border-radius: 0;
             }

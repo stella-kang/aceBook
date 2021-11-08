@@ -28,12 +28,14 @@ class SearchForm extends React.Component {
         e.stopPropagation();
 
         const logo = document.getElementById("logo");
-        logo.style.visibility = "hidden";
+        logo.style.opacity = 0;
         logo.style.width = 0;
+        logo.style.visibility = "hidden";
     }
 
     render() {
         return <form id="search-form" onSubmit={this.handleSubmit}>
+            <i className="fas fa-search"></i>
             <input type="text" placeholder="Search aceBook" value={this.state.search} onChange={this.update} onClick={this.handleRemoveLogo}/>
             <button></button>
         </form>

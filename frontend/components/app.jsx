@@ -73,11 +73,10 @@ class App extends React.Component {
             friendSectionMenu.forEach(el => el.style.display = "");
         }
 
-        debugger
         if (logo && logo.style.visibility === "hidden") {
-            debugger
             logo.style.visibility = "visible";
-            logo.style.width = "40px";
+            logo.style.width = "";
+            logo.style.opacity = "";
         }
     }
 

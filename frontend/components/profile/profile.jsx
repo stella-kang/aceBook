@@ -179,12 +179,10 @@ export default class Profile extends React.Component {
                             <div className="profile-links">
                                 <a id="show-posts-link" onClick={this.showPostsSection} className="displayed">
                                     Posts
-                                    <div></div>
                                 </a>
 
                                 <a id="show-friends-link" onClick={this.showFriendsSection}>
                                     Friends
-                                    <div></div>
                                 </a>
                             </div>
 

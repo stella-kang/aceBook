@@ -26,7 +26,7 @@ class Search extends React.Component {
                 />)}
             </ul>
         } else {
-            return <div>No search results.</div>
+            return <div id="no-results">No search results.</div>
         }
     }
 }

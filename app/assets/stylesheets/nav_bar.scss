@@ -8,6 +8,7 @@
     margin-bottom: 20px;
     box-shadow: 0px 3px 7px 0px rgba(189, 195, 199, .4);
     padding: 0 10px 0;
+    height: 60px;
 
     button {
         border: none;
@@ -170,12 +171,15 @@
     width: 30%;
     display: flex;
     justify-content: center;
+    height: 100%;
 
     button {
         width: 20%;
+        height: 100%;
         background-color: transparent;
         border-radius: 0px;
-        border-bottom: 2px solid transparent;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
 
         &:hover {
             background-color: #f2f2f2;
@@ -198,6 +202,7 @@
 
 #newsfeed-nav-icon.current-url {
     width: 80px;
+    border: none;
     border-bottom: 2px solid $blue;
 }
 
@@ -285,6 +290,7 @@
     img {
         width: 40px;
         height: 40px;
-        transition: visibility 0s, width 0.1s;
+        opacity: 1;
+        transition: opacity 0.3s;
     }
 }
