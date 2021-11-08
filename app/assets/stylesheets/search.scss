@@ -1,5 +1,19 @@
 @import "./splash.scss";
 
+.search-container {
+    display: flex;
+
+    #search-heading {
+        font-size: 23px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-right: 18%;
+        box-sizing: border-box;
+        padding: 10px;
+        border-bottom: 1px solid #cccccc;
+    }
+}
+
 .search-results {
     display: flex;
     flex-direction: column;

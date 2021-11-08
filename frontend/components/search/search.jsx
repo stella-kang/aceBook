@@ -15,16 +15,19 @@ class Search extends React.Component {
         })
 
         if (users.length !== 0) {
-            return <ul className="search-results">
-                {users.map(user => <SearchItem
-                    user={user}
-                    friendRequests={this.props.friendRequests}
-                    currentUserId={this.props.currentUserId}
-                    deleteFriendRequest={this.props.deleteFriendRequest}
-                    createFriendRequest={this.props.createFriendRequest}
-                    key={user.id}
-                />)}
-            </ul>
+            return <div className="search-container">
+                <div id="search-heading">Search results</div>
+                <ul className="search-results">
+                    {users.map(user => <SearchItem
+                        user={user}
+                        friendRequests={this.props.friendRequests}
+                        currentUserId={this.props.currentUserId}
+                        deleteFriendRequest={this.props.deleteFriendRequest}
+                        createFriendRequest={this.props.createFriendRequest}
+                        key={user.id}
+                    />)}
+                </ul>
+            </div>
         } else {
             return <div id="no-results">No search results.</div>
         }
