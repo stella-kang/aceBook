@@ -13,17 +13,45 @@ Post.destroy_all
 Friend.destroy_all
 User.destroy_all
 
-user1 = User.create(first_name: "stella", last_name: "kang", password: "password", email: "stella@email.com")
+user1 = User.create(first_name: "Confused", last_name: "Pikachu", password: "password", email: "stella@email.com")
 file1 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/pikachu.jpeg')
 user1.profile_picture.attach(io: file1, filename: 'pikachu.jpg')
 
-user2 = User.create(first_name: "heajin", last_name: "Jeong", password: "password", email: "heajin@email.com")
+user2 = User.create(first_name: "Table", last_name: "Cat", password: "password", email: "heajin@email.com")
 file2 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/heajin.jpeg')
 user2.profile_picture.attach(io: file2, filename: 'heajin.jpg')
 
-user3 = User.create(first_name: "Michelle", last_name: "Lee", password: "password", email: "michelle@email.com")
+user3 = User.create(first_name: "Patrick", last_name: "Star", password: "password", email: "michelle@email.com")
 file3 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
 user3.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user4 = User.create(first_name: "TheReal", last_name: "Spiderman", password: "password", email: "michelle@email.com")
+# file4 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user4.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user5 = User.create(first_name: "Dabi", last_name: "theDoggie", password: "password", email: "michelle@email.com")
+# file5 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user5.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user6 = User.create(first_name: "Messy", last_name: "Makeup", password: "password", email: "michelle@email.com")
+# file6 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user6.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user7 = User.create(first_name: "Big", last_name: "Brain", password: "password", email: "michelle@email.com")
+# file7 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user7.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user8 = User.create(first_name: "ThisIs", last_name: "Fine", password: "password", email: "michelle@email.com")
+# file8 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user8.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user9 = User.create(first_name: "SnoopDogg", last_name: "Kid", password: "password", email: "michelle@email.com")
+# file9 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user9.profile_picture.attach(io: file3, filename: 'michelle.jpg')
+
+# user10 = User.create(first_name: "Michelle", last_name: "Lee", password: "password", email: "michelle@email.com")
+# file10 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/michelle.jpeg')
+# user10.profile_picture.attach(io: file3, filename: 'michelle.jpg')
 
 post1 = Post.create(content: "post1", author_id: user1.id)
 post2 = Post.create(content: "post2", author_id: user2.id)

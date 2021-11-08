@@ -9,6 +9,7 @@
     box-shadow: 0px 3px 7px 0px rgba(189, 195, 199, .4);
     padding: 0 10px 0;
     height: 60px;
+    width: 100%;
 
     button {
         border: none;
@@ -173,10 +174,9 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 20%;
 
     button {
-        width: 20%;
+        width: 30%;
         height: 100%;
         background-color: transparent;
         border-radius: 0px;
@@ -189,9 +189,22 @@
        }
     }
     
-    img {
-        width: 43px;
-        height: 43px;
+    a {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 10px;
+
+        &:hover {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+       }
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
     }
 }
 
@@ -208,7 +221,6 @@
 }
 
 #newsfeed-nav-icon.current-url {
-    width: 80px;
     border: none;
     border-bottom: 2px solid $blue;
 }

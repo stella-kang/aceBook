@@ -65,7 +65,7 @@ export default class Newsfeed extends React.Component {
                             {this.props.friends.map(friend => (
                                 <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} key={friend.id} />
                             ))}
-                        </ul> : <div>No friends.</div>}
+                        </ul> : <div id="newsfeed-no-friends">No friends.</div>}
                 </div>
             }
         </div>
