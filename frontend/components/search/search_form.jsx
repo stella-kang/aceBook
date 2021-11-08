@@ -20,7 +20,7 @@ class SearchForm extends React.Component {
         e.preventDefault();
 
         this.props.receiveSearch(this.state.search.toLowerCase());
-        this.props.history.push("./search");
+        this.props.history.push(`/search/${this.state.search.toLowerCase()}`);
     }
 
     render() {
