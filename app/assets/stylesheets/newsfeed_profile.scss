@@ -15,7 +15,7 @@
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 20%;
 
     a {
         padding: 5px;
@@ -40,6 +40,41 @@
         height: 40px;
         border-radius: 100%;
         margin-right: 10px;
+    }
+}
+
+.newsfeed-friends-list {
+    width: 20%;
+    box-sizing: border-box;
+    padding-right: 20px;
+
+    > div {
+        font-size: 18px;
+        font-weight: bold;
+        color: grey;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+
+        &:hover {
+            background-color: #e6e6e6;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
     }
 }
 

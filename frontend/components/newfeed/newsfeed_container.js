@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => ({
     users: state.entities.users,
     posts: Object.values(state.entities.posts).reverse(),
     currentUser: state.entities.users[state.session.currentUserId],
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    friends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId && friend.status === true)
 })
 
 const mDTP = (dispatch, ownProps) => ({

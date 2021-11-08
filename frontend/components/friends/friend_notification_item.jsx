@@ -49,4 +49,4 @@ class FriendNotificationItem extends React.Component {
     }
 }
 
-export default FriendNotificationItem;
+export default withRouter(FriendNotificationItem);
