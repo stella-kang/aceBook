@@ -7,6 +7,7 @@ class FriendButton extends React.Component {
         this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
         this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
         this.handleUpdateFriendRequest = this.handleUpdateFriendRequest.bind(this);
+        this.handleDropDownClick = this.handleDropDownClick.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +22,7 @@ class FriendButton extends React.Component {
     }
 
     handleDeleteFriendRequest(e) {
-        const requests = Object.values(this.props.friends).filter(friend => {
+        const requests = this.props.friends.filter(friend => {
             return (friend.user_id === this.props.user.id && friend.friend_id === this.props.currentUser.id) || (friend.user_id === this.props.currentUser.id && friend.friend_id === this.props.user.id)
         })
 
@@ -31,7 +32,7 @@ class FriendButton extends React.Component {
     }
 
     handleUpdateFriendRequest(e) {
-        let originalRequest = this.props.userFriends.find(friend => friend.friend_id === this.props.currentUser.id)
+        let originalRequest = this.props.friends.find(friend => friend.friend_id === this.props.currentUser.id && friend.user_id === this.props.user.id)
 
         this.props.updateFriendRequest({
             user_id: originalRequest.user_id,
@@ -50,7 +51,7 @@ class FriendButton extends React.Component {
     handleDropDownClick(e) {
         e.stopPropagation()
 
-        const friendRequestMenu = document.getElementById("friend-request-content");
+        const friendRequestMenu = document.getElementById(`friend-request-content-${this.props.user.id}`);
         if (friendRequestMenu.style.display === "") {
             friendRequestMenu.style.display = "block"
         } else {
@@ -63,40 +64,40 @@ class FriendButton extends React.Component {
         let friendButtonDropdown;
 
         if (this.props.user) {
-            if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
+            if (this.props.friends.some(friend => friend.friend_id === this.props.user.id && friend.user_id == this.props.currentUser.id && friend.status === true)) {
                 friendButton = <button id="friends-approved" onClick={this.handleDropDownClick}>
-                    <i className="fas fa-user-check"></i>
+                    {this.props.buttonType === "profile" ? <i className="fas fa-user-check"></i>: null}
                     <span>Friends</span>
                 </button>
 
-                friendButtonDropdown = <div id="friend-request-content">
+                friendButtonDropdown = <div className="friend-request-content" id={`friend-request-content-${this.props.user.id}`}>
                     <div>
                         <button onClick={this.handleDeleteFriendRequest}>
-                            <i className="fas fa-user-minus"></i>
+                            {this.props.buttonType === "profile" ? <i className="fas fa-user-minus"></i> : null}
                             <span>Unfriend</span>
                         </button>
                     </div>
                 </div>
-            } else if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false)) {
-                friendButton = <button onClick={this.handleDeleteFriendRequest}>
-                    <i className="fas fa-user-minus"></i>
+            } else if (this.props.friends.some(friend => friend.friend_id === this.props.user.id && friend.user_id == this.props.currentUser.id && friend.status === false)) {
+                friendButton = <button id="cancel-button" onClick={this.handleDeleteFriendRequest}>
+                    {this.props.buttonType === "profile" ? <i className="fas fa-user-minus"></i> : null}
                     <span>Cancel Request</span>
                 </button>
-            } else if (this.props.userFriends.some(friend => friend.friend_id === this.props.currentUser.id && friend.status === false)) {
-                friendButton = <button onClick={this.handleDropDownClick}>
-                    <i className="fas fa-user-plus"></i>
+            } else if (this.props.friends.some(friend => (friend.friend_id === this.props.currentUser.id && friend.user_id === this.props.user.id && friend.status === false))) {
+                friendButton = <button id="respond-button" onClick={this.handleDropDownClick}>
+                    {this.props.buttonType === "profile" ? <i className="fas fa-user-plus"></i> : null}
                     <span>Respond</span>
                 </button>
 
-                friendButtonDropdown = <div id="friend-request-content">
+                friendButtonDropdown = <div className="friend-request-content" id={`friend-request-content-${this.props.user.id}`}>
                     <div>
                         <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
                         <button onClick={this.handleDeleteFriendRequest}>Delete request</button>
                     </div>
                 </div>
-            } else if (!(this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true))) {
-                friendButton = <button onClick={this.handleCreateFriendRequest}>
-                    <i className="fas fa-user-plus"></i>
+            } else if (!(this.props.friends.some(friend => friend.friend_id === this.props.user.id && friend.user_id === this.props.currentUser.id && friend.status === true))) {
+                friendButton = <button id="add-friend-button" onClick={this.handleCreateFriendRequest}>
+                    { this.props.buttonType === "profile" ? <i className="fas fa-user-plus"></i> : null}
                     <span>Add Friend</span>
                 </button>
             }

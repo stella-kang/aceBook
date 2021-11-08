@@ -1,6 +1,8 @@
+@import "./splash.scss";
+
 #profile-friend-section {
     background-color: white;
-    width: 700px;
+    width: 800px;
     border-radius: 10px;
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.4);
     box-sizing: border-box;
@@ -10,6 +12,7 @@
 
 .friend-section-heading {
     font-size: 20px;
+    text-overflow: ellipsis;
 }
 
 .profile-friend-list {
@@ -17,6 +20,14 @@
     margin-top: 20px;
     width: 100%;
     justify-content: space-between;
+}
+
+#no-friends {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #808080;
+    margin-top: 20px;
 }
 
 .profile-friend-list-item {
@@ -28,6 +39,27 @@
     align-items: center;
     box-sizing: border-box;
     padding: 10px;
+
+    button {
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    #add-friend-button {
+        background-color: $blue;
+        color: white;
+    }
+
+    #respond-button {
+        background-color: #c6dde4;
+        color: $blue;
+
+        &:hover {
+            background-color: #B2C6CD;
+        }
+    }
 }
 
 .friend-item-heading {
@@ -40,13 +72,13 @@
     }
 
     img {
-        height: 80px;
-        width: 80px;
+        height: 70px;
+        width: 70px;
         border-radius: 5px;
         margin-right: 10px;
 
         &:hover {
-            filter: brightness(0.9);
+            filter: brightness(1);
         }
     }
 }

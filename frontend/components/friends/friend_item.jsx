@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import FriendButtonContainer from './friend_button_container';
 
 class FriendItem extends React.Component {
     constructor(props) {
@@ -21,11 +22,19 @@ class FriendItem extends React.Component {
     }
 
     handleDeleteFriendRequest(e) {
-        let request = this.props.friendRequests.find(friend => friend.user_id === this.props.currentUserId && friend.friend_id === this.props.friend.id)
-        let oppRequest = this.props.friendRequests.find(friend => friend.friend_id === this.props.currentUserId && friend.user_id === this.props.friend.id);
+        // let request = this.props.friendRequests.find(friend => friend.user_id === this.props.currentUserId && friend.friend_id === this.props.friend.id)
+        // let oppRequest = this.props.friendRequests.find(friend => friend.friend_id === this.props.currentUserId && friend.user_id === this.props.friend.id);
 
-        this.props.deleteFriendRequest(request.id);
-        this.props.deleteFriendRequest(oppRequest.id);
+        // this.props.deleteFriendRequest(request.id);
+        // this.props.deleteFriendRequest(oppRequest.id);
+
+        const requests = this.props.friendRequests.filter(friend => {
+            return (friend.user_id === this.props.friend.id && friend.friend_id === this.props.currentUserId) || (friend.user_id === this.props.currentUserId && friend.friend_id === this.props.friend.id)
+        })
+
+        requests.forEach(request => {
+            this.props.deleteFriendRequest(request.id)
+        })
     }
 
     render() {
@@ -80,7 +89,7 @@ class FriendItem extends React.Component {
                             </button>
                         </div>
                     </div>
-                </div> : null }
+                </div> :  this.props.friend.id === this.props.currentUserId ? null : <FriendButtonContainer user={this.props.friend} buttonType="friends"/>}
             </li>
         } else {
             return null;

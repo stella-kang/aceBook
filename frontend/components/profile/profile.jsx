@@ -190,7 +190,7 @@ export default class Profile extends React.Component {
 
                             <div className="friend-request-dropdown">
                                 {this.props.user === this.props.currentUser ? this.props.editUserModal() : null}
-                                {this.props.user === this.props.currentUser ? null : <FriendButtonContainer />}
+                                {this.props.user === this.props.currentUser ? null : <FriendButtonContainer user={this.props.user} buttonType="profile"/>}
                                 {/* {this.props.user === this.props.currentUser ? null : friendButton}
                                 {this.props.user === this.props.currentUser ? null : friendButtonDropdown} */}
                             </div>
@@ -199,7 +199,7 @@ export default class Profile extends React.Component {
                 </div>
 
                 <div id="profile-post-section">
-                    {this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false) ? null :
+                    {!this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true) ? null :
                         <div className="create-post-form">
                             {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                             {this.props.createPostFormModal}

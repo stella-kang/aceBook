@@ -5,9 +5,8 @@ import FriendButton from "./friend_button"
 
 const mSTP = (state, ownProps) => ({
     users: state.entities.users,
-    user: state.entities.users[ownProps.match.params.userId],
     currentUser: state.entities.users[state.session.currentUserId],
-    friends: state.entities.friends,
+    friends: Object.values(state.entities.friends),
     currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
     userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
 })
