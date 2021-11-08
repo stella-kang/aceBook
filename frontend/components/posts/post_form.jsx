@@ -44,6 +44,7 @@ class PostForm extends React.Component {
             formData.append('post[id]', this.state.id)
         }
 
+        debugger
         this.props.action(formData)
 
         this.props.closeModal();

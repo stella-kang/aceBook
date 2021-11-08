@@ -1,7 +1,8 @@
 class Api::PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
-
+        @post.profile_id = nil if @post.profile_id == 0 
+        
         if @post.save
             render :show
         else

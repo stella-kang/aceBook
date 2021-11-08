@@ -29,11 +29,11 @@ post1 = Post.create(content: "post1", author_id: user1.id)
 post2 = Post.create(content: "post2", author_id: user2.id)
 post3 = Post.create(content: "post3", author_id: user3.id)
 post4 = Post.create(content: "post4", author_id: user1.id)
-post5 = Post.create(content: "post5", author_id: user3.id, profile_id: user1.id)
+post5 = Post.create(content: "post5", author_id: user3.id, profile_id: user2.id)
 
 comment1 = Comment.create(content: "comment1", author_id: user1.id, post_id: post1.id)
 comment2 = Comment.create(content: "comment2", author_id: user1.id, post_id: post2.id)
-comment3 = Comment.create(content: "comment3", author_id: 1, post_id: post3.id)
+comment3 = Comment.create(content: "comment3", author_id: user1.id, post_id: post3.id)
 
 friend1 = Friend.create(user_id: user2.id, friend_id: user1.id, status: false)
 friend1 = Friend.create(user_id: user2.id, friend_id: user3.id, status: true)

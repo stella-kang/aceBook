@@ -11,6 +11,7 @@
 #
 class Post < ApplicationRecord
     validates :author_id, :content, presence: true
+    validates :profile_id, presence: true, allow_nil: true
 
     belongs_to :author,
         primary_key: :id,

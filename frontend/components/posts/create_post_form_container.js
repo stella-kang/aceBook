@@ -7,14 +7,13 @@ import PostForm from "./post_form";
 const mSTP = (state, ownProps) => {
     let urlArray = ownProps.location.pathname.split("/")
     let profileId;
-    
-    if (urlArray.includes("profile") && ownProps.match.params.userId !== state.session.currentUserId) {
-        const currentProfileId = parseInt(urlArray[1]);
-        if (currentProfileId !== state.session.currentUserId) profileId = currentProfileId;
+    const currentProfileId = parseInt(urlArray[1]);
+
+    if (urlArray.includes("profile") && currentProfileId !== state.session.currentUserId) {
+        profileId = currentProfileId;
     } else {
         profileId = null;
     }
-
 
     return { post: {
                 content: "",
