@@ -63,37 +63,44 @@ export default class SessionFrom extends React.Component {
     }
 
     render() {
-        let errors;
+        let emailError;
+        let passwordError;
+        let firstNameError;
+        let lastNameError;
+        let loginError;
 
         if (this.props.errors !== []) {
             if (!(this.props.modal && this.props.formType === "Log In")) {
                 document.querySelectorAll(".error-field").forEach(el => el.classList.remove("error-field"));
                 this.props.errors.forEach(el => {
                     if (el.includes("Email")) {
-                        document.getElementById("email").classList.add("error-field")
+                        document.getElementById("email").classList.add("error-field");
+                        document.getElementById("email-error").style.display = "flex";
+                        emailError = el
                     } else if (el.includes("Password")) {
-                        document.getElementById("password").classList.add("error-field")
+                        document.getElementById("password").classList.add("error-field");
+                        document.getElementById("password-error").style.display = "flex";
+                        passwordError = el;
                     } else if (el.includes("First")) {
-                        document.getElementById("first-name").classList.add("error-field")
+                        document.getElementById("first-name").classList.add("error-field");
+                        document.getElementById("first-name-error").style.display = "flex";
+                        firstNameError = el;
                     } else if (el.includes("Last")) {
-                        document.getElementById("last-name").classList.add("error-field")
+                        document.getElementById("last-name").classList.add("error-field");
+                        document.getElementById("last-name-error").style.display = "flex";
+                        lastNameError = el;
                     } else if (el.includes("credentials")) {
-                        document.getElementById("password").classList.add("error-field")
-                        document.getElementById("email").classList.add("error-field")
+                        document.getElementById("password").classList.add("error-field");
+                        document.getElementById("email").classList.add("error-field");
+                        document.getElementById("login-error").style.display = "flex";
+                        loginError = el;
                     }
                 })
-
-                errors = <ul className="errors">
-                    {this.props.errors.map((el) => (
-                        <li key={el}>{el}</li>
-                    ))}
-                </ul>
             }
         }
 
         return <div className="form-content">
             <form className="session-form" encType="multipart/form-data">
-
                 {this.props.formType === "Sign Up" ? <div id="signup-header">
                     <div>
                     <h1>Sign Up</h1>
@@ -110,34 +117,47 @@ export default class SessionFrom extends React.Component {
                     <div></div>
                 </div> : null}
 
-                {errors}
-
+                {/* {errors} */}
 
                 <div id="names-form">
-                {this.props.formType === "Log In" ? null : <input
-                    type="text"
-                    value={this.state.first_name}
-                    placeholder="First Name"
-                    id="first-name"
-                    onChange={this.update("first_name")} />}
+                    <div className="input-field" id="first-name-input">
+                        {this.props.formType === "Log In" ? null : <input
+                            type="text"
+                            value={this.state.first_name}
+                            placeholder="First Name"
+                            id="first-name"
+                            onChange={this.update("first_name")} />}
+                        <div className="errors" id="first-name-error">{firstNameError}</div>
+                    </div>
 
-                {this.props.formType === "Log In" ? null : <input
-                    type="text"
-                    value={this.state.last_name}
-                    placeholder="Last Name"
-                    id="last-name"
-                    onChange={this.update("last_name")} />}
+                    <div className="input-field" id="last-name-input">
+                        {this.props.formType === "Log In" ? null : <input
+                            type="text"
+                            value={this.state.last_name}
+                            placeholder="Last Name"
+                            id="last-name"
+                            onChange={this.update("last_name")} />}
+                        <div className="errors" id="last-name-error">{lastNameError}</div>
+                    </div>
                 </div>
 
-                {this.props.formType === "Save Changes" ? <div className="picture-input" onClick={() => document.getElementById("photo-input").click()}>
+                    {this.props.formType === "Save Changes" ? <div className="picture-input" onClick={() => document.getElementById("photo-input").click()}>
                     <span>Edit profile picture</span>
                     <input id="photo-input" type="file" accept="image/png, image/jpeg" onChange={this.handleProfilePictureChange} />
                     <i id="photo-input-icon" className="far fa-images fa-2x"></i>
-                </div> : null}
+                    </div> : null}
 
-                <input type="text" value={this.state.email} placeholder="Email" id="email" onChange={this.update("email")} />
+                <div className="input-field" id="email-input">
+                    <input type="text" value={this.state.email} placeholder="Email" id="email" onChange={this.update("email")} />
+                    <div className="errors" id="email-error">{emailError}</div>
+                </div>
 
-                <input type="password" value={this.state.password} placeholder="Password" id="password" onChange={this.update("password")} />
+                <div className="input-field" id="password-input">
+                    <input type="password" value={this.state.password} placeholder="Password" id="password" onChange={this.update("password")} />
+                    <div className= "errors" id="password-error">{passwordError}</div>
+                </div>
+                
+                <div className="errors" id="login-error">{loginError}</div>
 
                 <button onClick={this.handleSubmit} id="submit-button">{this.props.formType}</button>
 
