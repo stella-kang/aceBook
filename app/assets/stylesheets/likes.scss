@@ -12,3 +12,16 @@
         text-decoration-color: $blue;
     }
 }
+
+.like-animation {
+    animation: growButton 0.5s;
+}
+
+@keyframes growButton {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.5) rotate(-20deg);
+    }
+}
