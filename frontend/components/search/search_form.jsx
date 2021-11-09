@@ -12,6 +12,10 @@ class SearchForm extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname.includes("search") && !this.props.location.pathname.includes("search")) this.setState({ 'search': ""});
+    }
+
     update(e) {
         this.setState({ 'search': e.target.value })
     }
@@ -21,7 +25,7 @@ class SearchForm extends React.Component {
 
         this.props.receiveSearch(this.state.search.toLowerCase());
         this.props.history.push(`/search/${this.state.search.toLowerCase()}`);
-        this.setState({ search: ""})
+        document.getElementById('search-input').blur();
     }
 
     handleRemoveLogo(e) {
@@ -36,7 +40,7 @@ class SearchForm extends React.Component {
     render() {
         return <form id="search-form" onSubmit={this.handleSubmit}>
             <i className="fas fa-search"></i>
-            <input type="text" placeholder="Search aceBook" value={this.state.search} onChange={this.update} onClick={this.handleRemoveLogo}/>
+            <input type="text" id="search-input" placeholder="Search aceBook" value={this.state.search} onChange={this.update} onClick={this.handleRemoveLogo}/>
             <button></button>
         </form>
     }

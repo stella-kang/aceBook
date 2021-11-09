@@ -2,19 +2,27 @@
 
 .search-container {
     display: flex;
+    align-items: flex-start;
 
     #search-heading {
         font-size: 23px;
         font-weight: bold;
-        margin-left: 10px;
-        margin-right: 18%;
         box-sizing: border-box;
         padding: 10px;
         border-bottom: 1px solid #cccccc;
     }
 }
 
+#search-side-menu {
+    padding: 10px;
+    width: 300px;
+    height: 91vh;
+    background-color: white;
+    margin-right: 20%;
+}
+
 .search-results {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,6 +55,10 @@
         height: 70px;
         border-radius: 100%;
         margin-right: 20px;
+
+        &:hover {
+            filter: brightness(.9)
+        }
     }
 
     span {
@@ -104,4 +116,16 @@
     margin-top: 100px;
     font-size: 18px;
     color: grey;
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+
+    span {
+       margin-bottom: 10px;
+       
+       &:first-child {
+           font-size: 20px;
+           font-weight: bold;
+       }
+    }
 }

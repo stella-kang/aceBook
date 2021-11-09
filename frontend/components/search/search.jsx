@@ -14,23 +14,49 @@ class Search extends React.Component {
             return fullName.includes(this.props.search);
         })
 
-        if (users.length !== 0) {
-            return <div className="search-container">
+        return <div className="search-container">
+            <div id="search-side-menu">
                 <div id="search-heading">Search results</div>
-                <ul className="search-results">
-                    {users.map(user => <SearchItem
-                        user={user}
-                        friendRequests={this.props.friendRequests}
-                        currentUserId={this.props.currentUserId}
-                        deleteFriendRequest={this.props.deleteFriendRequest}
-                        createFriendRequest={this.props.createFriendRequest}
-                        key={user.id}
-                    />)}
-                </ul>
             </div>
-        } else {
-            return <div id="no-results">No search results.</div>
-        }
+
+            {users.length !== 0 ? <ul className="search-results">
+                {users.map(user => <SearchItem
+                    user={user}
+                    friendRequests={this.props.friendRequests}
+                    currentUserId={this.props.currentUserId}
+                    deleteFriendRequest={this.props.deleteFriendRequest}
+                    createFriendRequest={this.props.createFriendRequest}
+                    key={user.id}
+                />)}
+            </ul> : 
+            <div id="no-results">
+                <span>We didn't find any results</span>
+                <span>Make sure everything is spelled correctly or try different keywords.</span>
+            </div> }
+        </div>
+
+        // if (users.length !== 0) {
+        //     return <div className="search-container">
+        //         <div id="search-side-menu">
+        //             <div id="search-heading">Search results</div>
+        //         </div>
+        //         <ul className="search-results">
+        //             {users.map(user => <SearchItem
+        //                 user={user}
+        //                 friendRequests={this.props.friendRequests}
+        //                 currentUserId={this.props.currentUserId}
+        //                 deleteFriendRequest={this.props.deleteFriendRequest}
+        //                 createFriendRequest={this.props.createFriendRequest}
+        //                 key={user.id}
+        //             />)}
+        //         </ul>
+        //     </div>
+        // } else {
+        //     return <div id="no-results">
+        //         <span>We didn't find any results</span>
+        //         <span>Make sure everything is spelled correctly or try different keywords.</span>
+        //         </div>
+        // }
     }
 }
 
