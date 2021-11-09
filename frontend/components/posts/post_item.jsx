@@ -28,23 +28,23 @@ class PostItem extends React.Component {
     }
 
     render() {
-        let profile;
-
-        if (this.props.post.profile) {
-            profile = <span>{this.props.post.profile.first_name} {this.props.post.profile.last_name}</span>
-        }
-
         if (this.props.author) {
             return <li className="post-item">
                 <div className="post-header">
                     <div id="post-details">
                         {this.props.author.profile_picture ? <img src={this.props.author.profile_picture} /> : <img src={window.defaultProfile} />}
-                        <span onClick={() => this.props.history.push(`/${this.props.author.id}/profile`)}>{this.props.author.first_name} {this.props.author.last_name}</span>
+                        <div>
+                            <div id="post-author-details">
+                                <span onClick={() => this.props.history.push(`/${this.props.author.id}/profile`)}>{this.props.author.first_name} {this.props.author.last_name}</span>
 
-                        {this.props.profile ? <div id="post-profile-info">
-                            <i className="fas fa-caret-right"></i>
-                            <span onClick={(() => this.props.history.push(`/${this.props.profile.id}/profile`))}>{this.props.profile.first_name} {this.props.profile.last_name}</span> 
-                            </div>: null}
+                                {this.props.profile ? <div id="post-profile-info">
+                                    <i className="fas fa-caret-right"></i>
+                                    <span onClick={(() => this.props.history.push(`/${this.props.profile.id}/profile`))}>{this.props.profile.first_name} {this.props.profile.last_name}</span> 
+                                    </div>: null}
+                            </div>
+
+                            <div id="post-created-at">{this.props.post.created_at}</div>
+                        </div>
                     </div>
 
                     <div className="post-dropdown-menu" id={`post-dropdown-${this.props.post.id}`}>
@@ -67,8 +67,6 @@ class PostItem extends React.Component {
                     </div>
                 </div>
 
-                {profile}
-
                 <span>{this.props.post.content}</span>
 
                 {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
@@ -83,6 +81,16 @@ class PostItem extends React.Component {
                 </div>
 
                 <div className="comment-section">
+
+
+                    {/* <ul className="comments-list">
+                        {this.props.comments.length < 2 ? 
+                            this.props.comments.map(el => (
+                            <CommentContainer comment={el} key={el.id} />
+                            )) : <CommentContainer comment={this.props.comments[-1]} key={this.props.comments[-1].id} />
+                        } 
+                    </ul> */}
+                    
                     <ul className="comments-list">
                         {this.props.comments.map(el => (
                             <CommentContainer comment={el} key={el.id} />
