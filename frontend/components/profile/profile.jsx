@@ -15,6 +15,7 @@ export default class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
+        this.props.fetchLikes();
         this.props.fetchProfileContent();
         // this.props.fetchFriends();
         // this.props.fetchProfilePosts();
@@ -215,6 +216,9 @@ export default class Profile extends React.Component {
                                 editPostFormModal={this.props.editPostFormModal}
                                 author={this.props.users[post.author_id]}
                                 comments={this.props.comments.filter(comment => comment.post_id === post.id)}
+                                likes={this.props.likes}
+                                createLike={this.props.createLike}
+                                deleteLike={this.props.deleteLike}
                             />
                         ))}
                     </ul>
