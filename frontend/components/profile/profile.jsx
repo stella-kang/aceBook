@@ -216,7 +216,7 @@ export default class Profile extends React.Component {
                                 editPostFormModal={this.props.editPostFormModal}
                                 author={this.props.users[post.author_id]}
                                 comments={this.props.comments.filter(comment => comment.post_id === post.id)}
-                                likes={this.props.likes}
+                                likes={this.props.likes.filter(like => like.likeable_type === "Post" && like.likeable_id === post.id)}
                                 createLike={this.props.createLike}
                                 deleteLike={this.props.deleteLike}
                             />

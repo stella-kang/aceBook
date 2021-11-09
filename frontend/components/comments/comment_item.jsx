@@ -35,7 +35,7 @@ class Comment extends React.Component {
     }
 
     updateLike(e) {
-        let currentUserLike = this.props.likes.find(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id)
+        let currentUserLike = this.props.likes.find(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id && like.likeable_type === "Comment")
         if (currentUserLike) {
             this.props.deleteLike(currentUserLike.id);
             document.getElementById(`comment-like-button-${this.props.comment.id}`).classList.remove("comment-liked")
@@ -111,6 +111,12 @@ class Comment extends React.Component {
                     onClick={this.updateLike}>
                         Like
                     </div>
+
+                    <div>
+                        &#183;
+                    </div>
+
+                    <div>{this.props.comment.created_at}</div>
                 </div>
 
                 <div className="comment-form comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>

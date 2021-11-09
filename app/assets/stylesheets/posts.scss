@@ -298,7 +298,7 @@
 .post-counts {
     display: flex;
     justify-content: space-between;
-    margin: 10px 15px 0 15px;
+    margin: 20px 15px 0 15px;
     font-size: 15px;
     color: grey;
 
@@ -306,4 +306,9 @@
         text-decoration: underline;
         cursor: pointer;
     }
+}
+
+#comments-list {
+    box-sizing: border-box;
+    padding-right: 35px;
 }

@@ -23,6 +23,16 @@ json.comments do
     @comments.each do |comment|
         json.set! comment.id do
             json.extract! comment, :content, :author_id, :post_id, :id
+
+            if (comment.created_at + 1.day) > DateTime.now
+                if (comment.created_at.hour - DateTime.now.hour === 0)
+                    json.created_at "#{DateTime.now.min - comment.created_at.min}m"
+                else
+                    json.created_at "#{DateTime.now.hour - comment.created_at.hour}h"
+                end
+            else 
+                json.created_at comment.created_at.strftime("%b %-d")
+            end
         end
     end    
 end
