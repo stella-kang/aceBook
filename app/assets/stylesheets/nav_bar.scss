@@ -6,6 +6,7 @@
     justify-content: space-between;
     background-color: white;
     box-shadow: 0px 3px 7px 0px rgba(189, 195, 199, .4);
+    box-sizing: border-box;
     padding: 0 10px 0;
     height: 60px;
     width: 100%;
@@ -81,7 +82,7 @@
 }
 
 .main-dropdown-content, .notifications-dropdown-content {
-    transform: translate(-80%, 7px);
+    transform: translate(-85%, 7px);
     box-sizing: border-box;
     padding: 20px;
     background-color: white;
@@ -90,7 +91,7 @@
     z-index: 1;
     display: none;
     box-shadow: 0px 3px 7px 0px rgba(189, 195, 199, .4);
-    width: 280px;
+    width: 350px;
 
     * {
         display: flex;
@@ -118,7 +119,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-left: 40px;
+        margin-left: 20px;
 
         span {
 

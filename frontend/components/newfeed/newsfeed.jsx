@@ -7,7 +7,8 @@ import CreatePostFormContainer from "../posts/create_post_form_container";
 export default class Newsfeed extends React.Component {
     componentDidMount() {
         this.props.fetchUsers();
-        this.props.fetchNewsfeedContent(0, 5);
+        this.props.fetchNewsfeedContent();
+        this.props.fetchLikes();
         // this.props.fetchNewsfeedComments();
         // this.props.fetchNewsfeedPosts();
 

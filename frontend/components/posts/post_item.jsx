@@ -69,6 +69,10 @@ class PostItem extends React.Component {
 
                 <span>{this.props.post.content}</span>
 
+                <div className="post-likes">
+                    
+                </div>
+
                 {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
                 <div className="post-icons-outer-div">

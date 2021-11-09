@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { fetchProfileComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user&session_actions';
-import { fetchProfilePosts, removePost, clearAllPosts } from '../../actions/post_actions';
+import { fetchProfileContent } from "../../actions/newsfeed_profile_actions"
+import { removePost, clearAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
-import { createFriendRequest, fetchFriendRequests, removeFriendRequest, editFriendRequest } from '../../actions/friends_actions';
+import { fetchFriendRequests } from '../../actions/friends_actions';
 import React from 'react';
 import Profile from "./profile"
 
@@ -23,13 +23,14 @@ const mSTP = (state, ownProps) => {
 
 
 const mDTP = (dispatch, ownProps) => {
-    const profileId = parseInt(ownProps.match.params.userId)
+    // const profileId = parseInt(ownProps.match.params.userId)
     return {
     fetchUsers: () => dispatch(fetchUsers()),
-    fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
+    fetchProfileContent: () => dispatch(fetchProfileContent(ownProps.match.params.userId)),
+    // fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
     clearPosts: () => dispatch(clearAllPosts()),
     removePost: (postId) => dispatch(removePost(postId)),
-    fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
+    // fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
     // fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
     // fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
     fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
@@ -48,6 +49,7 @@ const mDTP = (dispatch, ownProps) => {
             <i className="fas fa-edit"></i>
             Edit post
         </button>),
+
     editUserModal: () => (<button id="edit-user-button" onClick={() => {
         dispatch(openModal("edit_user"))
         }}>
