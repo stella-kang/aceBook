@@ -289,7 +289,16 @@
     box-sizing: border-box;
     margin-top: 20px;
 
-    #comment {
+    #comment, .like {
+        width: 50%;
         padding: 10px;
     }
+}
+
+.post-counts {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px 0 15px;
+    font-size: 15px;
+    color: grey;
 }

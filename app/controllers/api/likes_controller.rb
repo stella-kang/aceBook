@@ -19,7 +19,7 @@ class Api::LikesController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         Like.destroy(params[:id])
     end
 

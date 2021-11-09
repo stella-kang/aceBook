@@ -52,6 +52,9 @@ export default class Newsfeed extends React.Component {
                             author={this.props.users[post.author_id]}
                             profile={post.profile_id ? this.props.users[post.profile_id] : null}
                             comments={this.props.comments.filter(comment => comment.post_id === post.id)}
+                            likes={this.props.likes.filter(like => like.likeable_type === "Post" && like.likeable_id === post.id)}
+                            createLike={this.props.createLike}
+                            deleteLike={this.props.deleteLike}
                         />
                     )
                     )}

@@ -8,6 +8,8 @@ class PostItem extends React.Component {
         super(props);
 
         this.handleDropDownClick = this.handleDropDownClick.bind(this);
+        this.updateLike = this.updateLike.bind(this);
+        this.toggleCommentSection = this.toggleCommentSection.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +26,31 @@ class PostItem extends React.Component {
             postMenu.style.display = "block";
         } else {
             postMenu.style.display = "";
+        }
+    }
+
+    updateLike(e) {
+        let currentUserLike = this.props.likes.find(like => like.author_id === this.props.currentUser.id)
+        if (currentUserLike) {
+            this.props.deleteLike(currentUserLike.id);
+            document.getElementById(`like-${this.props.post.id}`).classList.remove("liked");
+        } else {
+            this.props.createLike({
+                likeable_type: "Post",
+                likeable_id: this.props.post.id,
+                author_id: this.props.currentUser.id
+            })
+            document.getElementById(`like-${this.props.post.id}`).classList.add("liked");
+        }
+    }
+
+    toggleCommentSection(e) {
+        let commentSection = document.getElementById(`comment-section-${this.props.post.id}`);
+
+        if (commentSection.style.display === '') {
+            commentSection.style.display = 'none';
+        } else {
+            commentSection.style.display = '';
         }
     }
 
@@ -69,14 +96,30 @@ class PostItem extends React.Component {
 
                 <span>{this.props.post.content}</span>
 
-                <div className="post-likes">
-                    
+                <div className="post-counts">
+                    {this.props.likes.length !== 0 ?
+                        <div className="post-likes">
+                            {this.props.likes.length === 1 ? <div>{this.props.likes.length} Like</div> : <div>{this.props.likes.length} Likes</div>}
+                        </div> : <div></div>
+                    }
+
+                    {this.props.comments.length !== 0 ? 
+                        <div className="post-comments" onClick={this.toggleCommentSection}>
+                            {this.props.comments.length === 1 ? <div>{this.props.comments.length} Comment</div> : <div>{this.props.comments.length} Comments</div>}
+                        </div> : <div></div>
+                    }
                 </div>
+
 
                 {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
                 <div className="post-icons-outer-div">
                     <div className="post-icons">
+                        <div className={`like ${this.props.likes.some(like => like.author_id === this.props.currentUser.id) ? 'liked' : null}`} id={`like-${this.props.post.id}`} onClick={this.updateLike}>
+                            <i className="far fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+
                         <div id="comment" onClick={() => document.getElementById(`comment-input-${this.props.post.id}-undefined`).focus()}>
                             <i className="far fa-comment fa-1x"></i>
                             <span>Comment</span>
@@ -84,7 +127,7 @@ class PostItem extends React.Component {
                     </div>
                 </div>
 
-                <div className="comment-section">
+                <div className="comment-section" id={`comment-section-${this.props.post.id}`}>
 
 
                     {/* <ul className="comments-list">
@@ -95,7 +138,7 @@ class PostItem extends React.Component {
                         } 
                     </ul> */}
                     
-                    <ul className="comments-list">
+                    <ul id="comments-list">
                         {this.props.comments.map(el => (
                             <CommentContainer comment={el} key={el.id} />
                         ))}
