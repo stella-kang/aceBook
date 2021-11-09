@@ -1,5 +1,14 @@
 @import "./splash.scss";
 
-.liked {
+.post-liked {
     color: $blue;
+}
+
+.comment-liked {
+    color: $blue;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: $blue;
+    }
 }

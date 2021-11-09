@@ -301,4 +301,9 @@
     margin: 10px 15px 0 15px;
     font-size: 15px;
     color: grey;
+
+    .post-comments:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }

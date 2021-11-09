@@ -33,14 +33,14 @@ class PostItem extends React.Component {
         let currentUserLike = this.props.likes.find(like => like.author_id === this.props.currentUser.id)
         if (currentUserLike) {
             this.props.deleteLike(currentUserLike.id);
-            document.getElementById(`like-${this.props.post.id}`).classList.remove("liked");
+            document.getElementById(`like-${this.props.post.id}`).classList.remove("post-liked");
         } else {
             this.props.createLike({
                 likeable_type: "Post",
                 likeable_id: this.props.post.id,
                 author_id: this.props.currentUser.id
             })
-            document.getElementById(`like-${this.props.post.id}`).classList.add("liked");
+            document.getElementById(`like-${this.props.post.id}`).classList.add("post-liked");
         }
     }
 
@@ -115,7 +115,7 @@ class PostItem extends React.Component {
 
                 <div className="post-icons-outer-div">
                     <div className="post-icons">
-                        <div className={`like ${this.props.likes.some(like => like.author_id === this.props.currentUser.id) ? 'liked' : null}`} id={`like-${this.props.post.id}`} onClick={this.updateLike}>
+                        <div className={`like ${this.props.likes.some(like => like.author_id === this.props.currentUser.id) ? 'post-liked' : null}`} id={`like-${this.props.post.id}`} onClick={this.updateLike}>
                             <i className="far fa-thumbs-up"></i>
                             <span>Like</span>
                         </div>
