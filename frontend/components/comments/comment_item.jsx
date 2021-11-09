@@ -107,7 +107,7 @@ class Comment extends React.Component {
 
                 <div className="comment-menu">
                     <div id={`comment-like-button-${this.props.comment.id}`} 
-                    className={this.props.likes.some(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id) ? 'comment-liked' : null} 
+                    className={this.props.likes.some(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id && like.likeable_type === "Comment") ? 'comment-liked' : null} 
                     onClick={this.updateLike}>
                         Like
                     </div>
