@@ -6,6 +6,8 @@ class Chat extends React.Component {
     constructor(props) {
         super(props);
 
+        this.closeChat = this.closeChat.bind(this);
+
         this.bottom = React.createRef();
     }
 
@@ -45,6 +47,10 @@ class Chat extends React.Component {
         if(this.bottom.current) this.bottom.current.scrollIntoView();
     }
 
+    closeChat(e) {
+        document.getElementById(`chatroom-${this.props.chat.id}`).style.display = "none";
+    }
+
     render() {
         let messages = this.props.messages.filter(message => message.chat_id === this.props.chat.id)
         // console.log(messages);
@@ -67,7 +73,7 @@ class Chat extends React.Component {
                         <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
                     </div>
 
-                    <i className="fas fa-times"></i>
+                    <i className="fas fa-times" onClick={this.closeChat}></i>
                 </div>
 
                 <div className="chat-body">

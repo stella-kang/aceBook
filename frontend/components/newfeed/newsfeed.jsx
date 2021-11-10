@@ -32,7 +32,7 @@ export default class Newsfeed extends React.Component {
                 this.props.createChat({
                     user1_id: this.props.currentUser.id,
                     user2_id: friendId
-                })
+                }).then(chat => document.getElementById(`chatroom-${chat.id}`).style.display = "block");
             }
         }
     }
