@@ -1,4 +1,4 @@
-import { RECEIVE_MESSAGES, RECEIVE_MESSAGE } from "../actions/message_chat_actions"
+import { RECEIVE_MESSAGES, RECEIVE_MESSAGE, CLEAR_MESSAGES } from "../actions/message_chat_actions"
 
 const messagesReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -13,6 +13,8 @@ const messagesReducer = (state = {}, action) => {
         case RECEIVE_MESSAGE:
             nextState[action.message.id] = action.message;
             return nextState;
+        case CLEAR_MESSAGES:
+            return {};
         default:
             return state;
     }

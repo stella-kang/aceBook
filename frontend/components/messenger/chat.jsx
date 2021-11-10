@@ -1,5 +1,6 @@
 import React from "react";
 import MessageForm from "./message_form";
+import MessageItem from "./message_item"
 
 class Chat extends React.Component {
     constructor(props) {
@@ -60,16 +61,32 @@ class Chat extends React.Component {
 
         return (
             <div className="chatroom-container" id={`chatroom-${this.props.chat.id}`}>
-                <div>{this.props.friend.first_name} {this.props.friend.last_name}</div>
-                <ul className="message-list">
-                    {messages.map(message => {
-                        return <li key={message.id}>
-                            {message.body}
-                        </li>;
-                    })}
-                    <div ref={this.bottom} />
-                </ul>
-                <MessageForm chat={this.props.chat} currentUser={this.props.currentUser} />
+                <div className="chat-header">
+                    <div id="chat-friend-info">
+                        {this.props.friend.profile_picture ? <img src={this.props.friend.profile_picture} /> : <img src={window.defaultProfile} />}
+                        <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
+                    </div>
+
+                    <i className="fas fa-times"></i>
+                </div>
+
+                <div className="chat-body">
+                    <ul className="message-list">
+                        {messages.map(message => {
+                            // return <li key={message.id}>
+                            //     <span>{message.body}</span>
+                            // </li>;
+                            return <MessageItem 
+                                author={this.props.users[message.author_id]}
+                                message={message}
+                                key={message.id}
+                                currentUser={this.props.currentUser}
+                            />
+                        })}
+                        <div ref={this.bottom} />
+                    </ul>
+                    <MessageForm chat={this.props.chat} currentUser={this.props.currentUser} />
+                </div>
             </div>
         );
     }

@@ -4,7 +4,7 @@ import { removePost, clearAllPosts } from '../../actions/post_actions';
 import { fetchNewsfeedContent } from '../../actions/newsfeed_profile_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchLikes, createLike, removeLike } from '../../actions/like_actions';
-import { fetchChats } from '../../actions/message_chat_actions';
+import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
 import React from "react";
 import Newsfeed from "./newsfeed"
 
@@ -29,6 +29,8 @@ const mDTP = (dispatch, ownProps) => ({
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(removeLike(likeId)),
     fetchChats: () => dispatch(fetchChats()),
+    fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
+    createChat: (chat) => dispatch(createChat(chat)),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));

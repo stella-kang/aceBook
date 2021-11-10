@@ -1,7 +1,6 @@
 class Api::ChatsController < ApplicationController
     def index
         @chats = Chat.where("user1_id = ?", current_user.id).or(Chat.where("user2_id = ?", current_user.id))
-        debugger
         render :index if @chats 
     end
 

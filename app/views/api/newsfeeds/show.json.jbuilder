@@ -3,9 +3,9 @@ json.posts do
     json.set! post.id do 
         json.extract! post, :content, :author_id, :profile_id, :id
 
-        if (post.created_at + 1.day) > DateTime.now
+        if (post.created_at + 23.hour) > DateTime.now
             if (post.created_at.hour - DateTime.now.hour == 0)
-                json.created_at "#{DateTime.now.min - @post.created_at.min}m"
+                json.created_at "#{DateTime.now.min - post.created_at.min}m"
             else
                 json.created_at "#{(24 - post.created_at.hour) + DateTime.now.hour}h"
             # else 
@@ -26,7 +26,7 @@ json.comments do
         json.set! comment.id do
             json.extract! comment, :content, :author_id, :post_id, :id
 
-            if (comment.created_at + 1.day) > DateTime.now
+            if (comment.created_at + 23.hour) > DateTime.now
                 if (comment.created_at.hour - DateTime.now.hour === 0)
                     json.created_at "#{DateTime.now.min - comment.created_at.min}m"
                 else

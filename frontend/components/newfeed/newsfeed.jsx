@@ -25,14 +25,19 @@ export default class Newsfeed extends React.Component {
     openChat(friendId) {
         return (e) => {
             let chat = this.props.chats.find(chat => chat.user1_id === friendId || chat.user2_id === friendId)
-            this.props.fetchMessages(chat.id);
-            document.getElementById(`chatroom-${chat.id}`).style.display = "block";
+            if (chat) {
+                this.props.fetchMessages(chat.id);
+                document.getElementById(`chatroom-${chat.id}`).style.display = "block";
+            } else {
+                this.props.createChat({
+                    user1_id: this.props.currentUser.id,
+                    user2_id: friendId
+                })
+            }
         }
     }
 
     render() {
-        // this.chats = [];
-
         return <div className="newsfeed">
             <div className="newsfeed-links">
                 <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
@@ -88,10 +93,12 @@ export default class Newsfeed extends React.Component {
                 </div>
             }
 
-            {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
-                <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]}/>
+            <div className="chat-section">
+                {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
+                    <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
                 )
-            ) : null}
+                ) : null}
+            </div>
         </div>
     }
 }

@@ -1,6 +1,6 @@
 json.extract! @comment, :content, :author_id, :post_id, :id
 
-if (@comment.created_at + 1.day) > DateTime.now
+if (@comment.created_at + 23.hour) > DateTime.now
     if (@comment.created_at.hour - DateTime.now.hour === 0)
         json.created_at "#{DateTime.now.min - @comment.created_at.min}m"
     else

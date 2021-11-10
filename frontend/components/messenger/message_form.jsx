@@ -25,12 +25,12 @@ class MessageForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            // <div className="chat-form">
+                <form className="chat-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.body} onChange={this.update} placeholder="Aa" />
                     <button></button>
                 </form>
-            </div>
+            // </div>
         );
     }
 }
