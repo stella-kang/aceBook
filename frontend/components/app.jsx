@@ -92,7 +92,6 @@ class App extends React.Component {
                 <ProtectedRoute path="/search/:searchTerm" component={searchContainer} />
                 {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
-            <Chat />
         </div>
     }
 }

@@ -1,17 +1,16 @@
 # == Schema Information
 #
-# Table name: messages
+# Table name: chats
 #
 #  id         :bigint           not null, primary key
-#  body       :string           not null
+#  user1_id   :integer          not null
+#  user2_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  chat_id    :integer
-#  author_id  :integer
 #
 require 'test_helper'
 
-class MessageTest < ActiveSupport::TestCase
+class ChatTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

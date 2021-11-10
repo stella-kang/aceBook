@@ -107,16 +107,16 @@ class Comment extends React.Component {
 
                 <div className="comment-menu">
                     <div id={`comment-like-button-${this.props.comment.id}`} 
-                    className={this.props.likes.some(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id && like.likeable_type === "Comment") ? 'comment-liked' : null} 
+                    className={`comment-button ${this.props.likes.some(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id && like.likeable_type === "Comment") ? 'comment-liked' : null}`} 
                     onClick={this.updateLike}>
                         Like
                     </div>
 
-                    <div>
+                    <div id="comment-menu-dot">
                         &#183;
                     </div>
 
-                    <div>{this.props.comment.created_at}</div>
+                    <div id="comment-timestamp">{this.props.comment.created_at}</div>
                 </div>
 
                 <div className="comment-form comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>

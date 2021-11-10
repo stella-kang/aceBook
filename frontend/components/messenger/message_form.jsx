@@ -5,7 +5,7 @@ class MessageForm extends React.Component {
         super(props);
 
         this.state = { 
-            body: "" 
+            body: "",
         };
 
         this.update = this.update.bind(this);
@@ -18,7 +18,8 @@ class MessageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body});
+        App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body, author_id: this.props.currentUser.id, chat_id: this.props.chat.id});
+        
         this.setState({ body: "" });
     }
 
@@ -26,7 +27,7 @@ class MessageForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.body} onChange={this.update} placeholder="Type message here" />
+                    <input type="text" value={this.state.body} onChange={this.update} placeholder="Aa" />
                     <button></button>
                 </form>
             </div>

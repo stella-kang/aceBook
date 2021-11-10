@@ -194,13 +194,19 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    color: grey;
 
     * {
         margin-right: 5px;
     }
 
-    &:hover {
-        text-decoration: underline;
-        text-decoration-color: black;
+    .comment-button {
+        &:hover {
+            text-decoration: underline;
+        }
     }
+}
+
+#comment-menu-dot, #comment-timestamp {
+    font-weight: 400;
 }

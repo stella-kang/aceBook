@@ -71,4 +71,9 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         primary_key: :id,
         class_name: :Comment
+
+    has_many :messages,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Message
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_004305) do
+ActiveRecord::Schema.define(version: 2021_11_10_023711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2021_11_10_004305) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user1_id", null: false
+    t.integer "user2_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user1_id", "user2_id"], name: "index_chats_on_user1_id_and_user2_id", unique: true
+    t.index ["user1_id"], name: "index_chats_on_user1_id"
+    t.index ["user2_id"], name: "index_chats_on_user2_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -71,6 +81,10 @@ ActiveRecord::Schema.define(version: 2021_11_10_004305) do
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author_id", null: false
+    t.integer "chat_id", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "posts", force: :cascade do |t|

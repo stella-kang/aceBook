@@ -19,5 +19,8 @@ Rails.application.routes.draw do
     end
     resources :friends, only: [:create, :destroy, :update]
     resources :likes, only: [:create, :destroy, :index]
+    resources :chats, only: [:create, :index] do
+      resources :messages, only: [:index]
+    end
   end
 end

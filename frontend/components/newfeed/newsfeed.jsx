@@ -3,12 +3,14 @@ import PostItem from "../posts/post_item";
 import NewsfeedFriendItem from './newsfeed_friend_item';
 import { Redirect } from "react-router";
 import CreatePostFormContainer from "../posts/create_post_form_container";
+import ChatContainer from "../messenger/chat_container";
 
 export default class Newsfeed extends React.Component {
     componentDidMount() {
         this.props.fetchUsers();
         this.props.fetchNewsfeedContent();
         this.props.fetchLikes();
+        this.props.fetchChats();
         // this.props.fetchNewsfeedComments();
         // this.props.fetchNewsfeedPosts();
 
@@ -72,6 +74,11 @@ export default class Newsfeed extends React.Component {
                         </ul> : <div id="newsfeed-no-friends">No friends.</div>}
                 </div>
             }
+
+            {this.props.chats.length !== 0 && Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
+                <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]}/>
+                )
+            ) : null}
         </div>
     }
 }

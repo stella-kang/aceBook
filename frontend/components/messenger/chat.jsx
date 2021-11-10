@@ -4,38 +4,37 @@ import MessageForm from "./message_form";
 class Chat extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            messages: [] 
-        };
+
         this.bottom = React.createRef();
     }
 
     componentDidMount() {
+        this.props.fetchMessages(this.props.chat.id);
+
         App.cable.subscriptions.create(
-            { channel: "ChatChannel" },
+            { channel: "ChatChannel", chat_id: this.props.chat.id},
             {
-                // received: data => {
-                //     this.setState({
-                //         messages: this.state.messages.concat(data.message)
-                //     });
                 received: data => {
                     switch (data.type) {
                         case "message":
-                            this.setState({
-                                messages: this.state.messages.concat(data.message)
-                            });
+                            debugger
+                            this.props.receiveMessage(data.message)
+                            // this.setState({
+                            //     messages: this.state.messages.concat(data.message)
+                            // });
                             break;
-                        case "messages":
-                            this.setState({ messages: data.messages });
-                            break;
+                        // case "messages":
+                        //     this.props.receiveMessages(data.messages)
+                        //     // this.setState({ messages: data.messages });
+                        //     break;
                     }
                 },
                 speak: function(data) {
                     return this.perform("speak", data)
-                },
-                load: function() {
-                    return this.perform("load")
                 }
+                // load: function() {
+                //     return this.perform("load")
+                // }
             }
         );
 
@@ -43,22 +42,35 @@ class Chat extends React.Component {
     }
 
     componentDidUpdate() {
-        this.bottom.current.scrollIntoView();
+        if(this.bottom.current) this.bottom.current.scrollIntoView();
     }
 
     render() {
-        const messageList = this.state.messages.map(message => {
-            return <li key={message.id}>
-                    {message}
-                    <div ref={this.bottom} />
-                </li>;
-        });
+        let messages = this.props.messages.filter(message => message.chat_id === this.props.chat.id)
+        console.log(messages);
+        // let messageList;
+        
+        // if (messages.length !==0) {
+        //     messageList = messages.map(message => {
+        //         return <li key={message.id}>
+        //             {message}
+        //             <div ref={this.bottom} />
+        //         </li>;
+        //     });
+        // };
 
         return (
             <div className="chatroom-container">
-                <div>ChatRoom</div>
-                <div className="message-list">{messageList}</div>
-                <MessageForm />
+                <div>{this.props.friend.id}</div>
+                <ul className="message-list">
+                    {messages.map(message => {
+                        return <li key={message.id}>
+                            {message.body}
+                        </li>;
+                    })}
+                    <div ref={this.bottom} />
+                </ul>
+                <MessageForm chat={this.props.chat} currentUser={this.props.currentUser} />
             </div>
         );
     }
