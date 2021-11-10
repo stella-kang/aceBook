@@ -27,6 +27,9 @@ class Search extends React.Component {
                     deleteFriendRequest={this.props.deleteFriendRequest}
                     createFriendRequest={this.props.createFriendRequest}
                     key={user.id}
+                    fetchMessages={this.props.fetchMessages}
+                    createChat={this.props.createChat}
+                    chats={this.props.chats}
                 />)}
             </ul> : 
             <div id="no-results">
