@@ -7,6 +7,7 @@ class Chat extends React.Component {
         super(props);
 
         this.closeChat = this.closeChat.bind(this);
+        this.addCurrentChatStyling = this.addCurrentChatStyling.bind(this);
 
         this.bottom = React.createRef();
     }
@@ -51,6 +52,12 @@ class Chat extends React.Component {
         document.getElementById(`chatroom-${this.props.chat.id}`).style.display = "none";
     }
 
+    addCurrentChatStyling(e) {
+        const currentChat = document.querySelector(".current-chat");
+        if (currentChat) currentChat.classList.remove("current-chat");
+        document.getElementById(`chat-close-button-${this.props.chat.id}`).classList.add("current-chat");
+    }
+
     render() {
         let messages = this.props.messages.filter(message => message.chat_id === this.props.chat.id)
         // console.log(messages);
@@ -66,14 +73,14 @@ class Chat extends React.Component {
         // };
 
         return (
-            <div className="chatroom-container" id={`chatroom-${this.props.chat.id}`}>
+            <div className="chatroom-container" onClick={this.addCurrentChatStyling} id={`chatroom-${this.props.chat.id}`}>
                 <div className="chat-header">
                     <div id="chat-friend-info">
                         {this.props.friend.profile_picture ? <img src={this.props.friend.profile_picture} /> : <img src={window.defaultProfile} />}
-                        <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
+                        <span id="chat-friend-name" onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)}>{this.props.friend.first_name} {this.props.friend.last_name}</span>
                     </div>
 
-                    <i className="fas fa-times" onClick={this.closeChat}></i>
+                    <i className="fas fa-times" id={`chat-close-button-${this.props.chat.id}`} onClick={this.closeChat}></i>
                 </div>
 
                 <div className="chat-body">

@@ -28,7 +28,7 @@ const mDTP = (dispatch, ownProps) => ({
     fetchUsers: () => dispatch(fetchUsers()),
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(removeLike(likeId)),
-    fetchChats: () => dispatch(fetchChats()),
+    // fetchChats: () => dispatch(fetchChats()),
     fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
     createChat: (chat) => dispatch(createChat(chat)),
 

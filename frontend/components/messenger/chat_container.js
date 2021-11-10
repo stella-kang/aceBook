@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchMessages, receiveMessage, clearMessages } from '../../actions/message_chat_actions';
+import { withRouter } from 'react-router-dom';
 import Chat from "./chat"
 
 const mSTP = (state, ownProps) => ({
@@ -15,4 +16,4 @@ const mDTP = (dispatch, ownProps) => ({
     clearMessages: () => dispatch(clearMessages())
 })
 
-export default connect(mSTP, mDTP)(Chat);
+export default withRouter(connect(mSTP, mDTP)(Chat));

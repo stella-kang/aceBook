@@ -87,7 +87,7 @@ class NavBar extends React.Component {
                     </button>
 
                     <div className="notifications-dropdown-content">
-                        {this.props.currentUserReceivedRequests.length === 0 ? <div id="no-notifications">No notifications</div> : <FriendNotificationListContainer />}
+                        {this.props.currentUserReceivedRequests.length === 0 ? <div id="no-notifications">No friend requests.</div> : <FriendNotificationListContainer />}
                     </div>
                 </div>
 

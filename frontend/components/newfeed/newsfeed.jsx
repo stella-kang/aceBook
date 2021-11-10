@@ -10,7 +10,7 @@ export default class Newsfeed extends React.Component {
         this.props.fetchUsers();
         this.props.fetchNewsfeedContent();
         this.props.fetchLikes();
-        this.props.fetchChats();
+        // this.props.fetchChats();
         // this.props.fetchNewsfeedComments();
         // this.props.fetchNewsfeedPosts();
 
@@ -28,11 +28,14 @@ export default class Newsfeed extends React.Component {
             if (chat) {
                 this.props.fetchMessages(chat.id);
                 document.getElementById(`chatroom-${chat.id}`).style.display = "block";
+                const currentChat = document.querySelector(".current-chat");
+                if (currentChat) currentChat.classList.remove("current-chat");
+                document.getElementById(`chat-close-button-${chat.id}`).classList.add("current-chat");
             } else {
                 this.props.createChat({
                     user1_id: this.props.currentUser.id,
                     user2_id: friendId
-                }).then(chat => document.getElementById(`chatroom-${chat.id}`).style.display = "block");
+                })
             }
         }
     }
@@ -93,12 +96,12 @@ export default class Newsfeed extends React.Component {
                 </div>
             }
 
-            <div className="chat-section">
+            {/* <div className="chat-section">
                 {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
                     <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
                 )
                 ) : null}
-            </div>
+            </div> */}
         </div>
     }
 }

@@ -37,7 +37,13 @@ export const fetchChats = () => dispatch => {
 
 export const createChat = (chat) => dispatch => {
     return ChatAndMessagesApiUtil.createChat(chat)  
-        .then(chat => dispatch(receiveChat(chat)));
+        .then(chat => {
+            dispatch(receiveChat(chat));
+            document.getElementById(`chatroom-${chat.id}`).style.display = "block";
+            const currentChat = document.querySelector(".current-chat");
+            if (currentChat) currentChat.classList.remove("current-chat");
+            document.getElementById(`chat-close-button-${chat.id}`).classList.add("current-chat");
+        });
 }
 
 export const fetchMessages = (chatId) => dispatch => {

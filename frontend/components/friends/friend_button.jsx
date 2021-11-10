@@ -65,7 +65,7 @@ class FriendButton extends React.Component {
 
         if (this.props.user) {
             if (this.props.friends.some(friend => friend.friend_id === this.props.user.id && friend.user_id == this.props.currentUser.id && friend.status === true)) {
-                friendButton = <button id="friends-approved" onClick={this.handleDropDownClick}>
+                friendButton = <button onClick={this.handleDropDownClick}>
                     {this.props.buttonType === "profile" ? <i className="fas fa-user-check"></i>: null}
                     <span>Friends</span>
                 </button>

@@ -3,11 +3,13 @@ import { createPost } from "../../util/posts_util";
 import PostItem from "../posts/post_item";
 import FriendsSectionContainer from "../friends/friends_section_container";
 import FriendButtonContainer from "../friends/friend_button_container";
+import ChatContainer from "../messenger/chat_container"
 
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
 
+        this.openChat = this.openChat.bind(this);
         // this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
         // this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
         // this.handleUpdateFriendRequest = this.handleUpdateFriendRequest.bind(this);
@@ -17,6 +19,7 @@ export default class Profile extends React.Component {
         this.props.fetchUsers();
         this.props.fetchLikes();
         this.props.fetchProfileContent();
+        // this.props.fetchChats()
         // this.props.fetchFriends();
         // this.props.fetchProfilePosts();
         // this.props.fetchProfileComments();
@@ -25,7 +28,6 @@ export default class Profile extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.clearPosts();
-            this.props.fetchUsers();
             this.props.fetchFriends();
             this.props.fetchProfileContent();
         }
@@ -111,6 +113,22 @@ export default class Profile extends React.Component {
         friendLink.classList.add("displayed");
     }
 
+    openChat(e) {
+        let chat = this.props.chats.find(chat => chat.user1_id === this.props.user.id || chat.user2_id === this.props.user.id)
+        if (chat) {
+            this.props.fetchMessages(chat.id);
+            document.getElementById(`chatroom-${chat.id}`).style.display = "block";
+            const currentChat = document.querySelector(".current-chat");
+            if (currentChat) currentChat.classList.remove("current-chat");
+            document.getElementById(`chat-close-button-${chat.id}`).classList.add("current-chat");
+        } else {
+            this.props.createChat({
+                user1_id: this.props.currentUser.id,
+                user2_id: this.props.user.id
+            })
+        }
+    } 
+
     render() {
         if (this.props.user) {
             // let friendButton;
@@ -176,7 +194,7 @@ export default class Profile extends React.Component {
                     <div id="profile-summary">
                         <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
 
-                        <div className="profile-buttons">
+                        <div className="profile-buttons-and-links">
                             <div className="profile-links">
                                 <a id="show-posts-link" onClick={this.showPostsSection} className="displayed">
                                     Posts
@@ -187,9 +205,13 @@ export default class Profile extends React.Component {
                                 </a>
                             </div>
 
-                            <div className="friend-request-dropdown">
+                            <div className="profile-buttons">
                                 {this.props.user === this.props.currentUser ? this.props.editUserModal() : null}
                                 {this.props.user === this.props.currentUser ? null : <FriendButtonContainer user={this.props.user} buttonType="profile"/>}
+                                {this.props.user === this.props.currentUser ? null : <button id="profile-message-button" onClick={this.openChat}className="profile-button">
+                                        <i className="fas fa-comment"></i>
+                                        <span>Message</span>
+                                    </button>}
                                 {/* {this.props.user === this.props.currentUser ? null : friendButton}
                                 {this.props.user === this.props.currentUser ? null : friendButtonDropdown} */}
                             </div>
@@ -224,6 +246,13 @@ export default class Profile extends React.Component {
                 </div>
 
                 <FriendsSectionContainer />
+
+                {/* <div className="chat-section">
+                    {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
+                        <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
+                    )
+                    ) : null}
+                </div> */}
             </div>
         } else {
             return null;

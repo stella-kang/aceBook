@@ -6,7 +6,7 @@
     border-radius: 10px;
     margin-left: 20px;
     box-shadow: 0px 0px 7px 0px rgba(189, 195, 199, .4);
-    height: 350px;
+    height: 400px;
     z-index: 1;
     display: none;
 }
@@ -37,10 +37,15 @@
         border-radius: 100%;
         margin-right: 10px;
     }
+
+    i {
+        padding: 10px;
+        box-sizing: border-box;
+    }
 }
 
 .message-list {
-    height: 230px;
+    height: 280px;
     width: 100%;
     overflow-y: scroll;
     padding: 20px;
@@ -80,7 +85,7 @@
     .message-content {
         border-radius: 30px;
         box-sizing: border-box;
-        padding: 10px;
+        padding: 15px;
         width: fit-content;
         display: flex;
         align-items: center;
@@ -105,4 +110,15 @@
 
 #current-user-message-item {
     justify-content: flex-end;
+}
+
+.current-chat {
+    color: $blue;
+}
+
+#chat-friend-name {
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }

@@ -5,6 +5,7 @@ import { removePost, clearAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchFriendRequests } from '../../actions/friends_actions';
 import { fetchLikes, createLike, removeLike } from '../../actions/like_actions';
+import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
 import React from 'react';
 import Profile from "./profile"
 
@@ -16,7 +17,8 @@ const mSTP = (state, ownProps) => {
         posts: Object.values(state.entities.posts).reverse(),
         comments: Object.values(state.entities.comments),
         friends: Object.values(state.entities.friends),
-        likes: Object.values(state.entities.likes)
+        likes: Object.values(state.entities.likes),
+        chats: Object.values(state.entities.chats)
         // currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
         // userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
     }
@@ -42,6 +44,9 @@ const mDTP = (dispatch, ownProps) => {
     fetchLikes: () => dispatch(fetchLikes()),
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(removeLike(likeId)),
+    // fetchChats: () => dispatch(fetchChats()),
+    fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
+    createChat: (chat) => dispatch(createChat(chat)),
 
     createPostFormModal: <button id="create-post-form-button" onClick={() => {
         dispatch(openModal("create_post"));

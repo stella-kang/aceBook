@@ -7,7 +7,9 @@ class Api::ChatsController < ApplicationController
     def create
         @chat = Chat.new(chat_params)
 
-        unless @chat.save
+        if @chat.save
+            render :show
+        else
             render json: @chat.errors.full_messages, status: 422
         end 
     end

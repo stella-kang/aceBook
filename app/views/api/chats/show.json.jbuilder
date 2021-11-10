@@ -1,0 +1,1 @@
+json.extract! @chat, :id, :user1_id, :user2_id

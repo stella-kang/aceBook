@@ -133,14 +133,14 @@
         margin-bottom: 20px;
     }
 
-    #friends-approved {
-    background-color: $blue;
-    color: white;
+    // #friends-approved {
+    // background-color: $blue;
+    // color: white;
 
-        &:hover {
-            background-color: #146cd9;
-        }
-    }
+    //     &:hover {
+    //         background-color: #146cd9;
+    //     }
+    // }
 }
 
 .session-form .picture-input {
@@ -188,9 +188,12 @@
     }
 }
 
-.friend-request-dropdown {
-    position: relative;
-    margin: 0;
+.profile-buttons {
+    display: flex;
+
+    button {
+        margin-right: 10px;
+    }
 }
 
 .friend-request-content {
@@ -219,7 +222,7 @@
     }
 }
 
-.profile-buttons {
+.profile-buttons-and-links {
     display: flex;
     align-items: center;
     width: 100%;
@@ -227,6 +230,8 @@
     box-sizing: border-box;
     justify-content: space-between;
     border-top: 1px solid lightgrey;
+    position: relative;
+    margin: 0;
 
     button {
         padding: 10px;
@@ -276,4 +281,13 @@
             }
         }
     }
+}
+
+#profile-message-button {
+    background-color: $blue;
+    color: white;
+
+        &:hover {
+            background-color: #146cd9;
+        }
 }
