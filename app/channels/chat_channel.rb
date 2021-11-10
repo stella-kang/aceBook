@@ -10,7 +10,7 @@ class ChatChannel < ApplicationCable::Channel
     message = Message.create(body: data['message'], author_id: data['author_id'], chat_id: data['chat_id'])
 
     if message.save 
-      socket = { message: message.body, type: 'message' }
+      socket = { message: message }
       ChatChannel.broadcast_to(@channel, socket)
     end
   end

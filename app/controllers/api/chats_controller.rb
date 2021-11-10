@@ -1,7 +1,7 @@
 class Api::ChatsController < ApplicationController
     def index
-        @chats = Chat.where(:user1_id === current_user.id).or(Chat.where(:user2_id === current_user.id))
-        render :index
+        @chats = Chat.where(:user1_id == current_user.id).or(Chat.where(:user2_id == current_user.id))
+        render :index if @chats 
     end
 
     def create

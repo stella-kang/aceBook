@@ -14,14 +14,24 @@ export default class Newsfeed extends React.Component {
         // this.props.fetchNewsfeedComments();
         // this.props.fetchNewsfeedPosts();
 
-        let createPostFormButton = document.getElementById("create-post-form-button")
-        createPostFormButton.innerText = `What's on your mind, ${this.props.currentUser.first_name}?`
+        let createPostFormButton = document.getElementById("create-post-form-button");
+        createPostFormButton.innerText = `What's on your mind, ${this.props.currentUser.first_name}?`;
     }
 
     componentWillUnmount() {
         this.props.clearPosts();
     }
+
+    openMessenger(friendId) {
+        return (e) => {
+            let chat = this.props.chats.find(chat => (chat.user1_id === this.props.currentUser.id && chat.user2_id === friendId) || (chat.user2_id === this.props.currentUser.id && chat.user1_id === friendId))
+            this.chats.push(chat);
+        }
+    }
+
     render() {
+        this.chats = [];
+
         return <div className="newsfeed">
             <div className="newsfeed-links">
                 <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
@@ -65,17 +75,19 @@ export default class Newsfeed extends React.Component {
 
             {Object.values(this.props.users).length < 2 ? null :
                 <div className="newsfeed-friends-list">
-                    <div>Friends</div>
+                    <div>Contacts</div>
                     {this.props.friends.length !== 0 ?
                         <ul>
                             {this.props.friends.map(friend => (
-                                <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} key={friend.id} />
+                                <div onClick={this.openMessenger(friend.friend_id)}>
+                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} key={friend.id} />
+                                </div>
                             ))}
                         </ul> : <div id="newsfeed-no-friends">No friends.</div>}
                 </div>
             }
 
-            {this.props.chats.length !== 0 && Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
+            {Object.values(this.props.users).length > 1 ? this.chats.map(chat => (
                 <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]}/>
                 )
             ) : null}

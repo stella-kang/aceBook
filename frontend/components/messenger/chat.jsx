@@ -15,19 +15,20 @@ class Chat extends React.Component {
             { channel: "ChatChannel", chat_id: this.props.chat.id},
             {
                 received: data => {
-                    switch (data.type) {
-                        case "message":
-                            debugger
-                            this.props.receiveMessage(data.message)
-                            // this.setState({
-                            //     messages: this.state.messages.concat(data.message)
-                            // });
-                            break;
-                        // case "messages":
-                        //     this.props.receiveMessages(data.messages)
-                        //     // this.setState({ messages: data.messages });
-                        //     break;
-                    }
+                    this.props.receiveMessage(data.message)
+                    // switch (data.type) {
+                    //     case "message":
+                    //         debugger
+                           
+                    //         // this.setState({
+                    //         //     messages: this.state.messages.concat(data.message)
+                    //         // });
+                    //         break;
+                    //     // case "messages":
+                    //     //     this.props.receiveMessages(data.messages)
+                    //     //     // this.setState({ messages: data.messages });
+                    //     //     break;
+                    // }
                 },
                 speak: function(data) {
                     return this.perform("speak", data)
@@ -47,7 +48,7 @@ class Chat extends React.Component {
 
     render() {
         let messages = this.props.messages.filter(message => message.chat_id === this.props.chat.id)
-        console.log(messages);
+        // console.log(messages);
         // let messageList;
         
         // if (messages.length !==0) {

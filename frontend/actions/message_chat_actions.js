@@ -24,9 +24,9 @@ export const receiveMessage = (message) => ({
     type: RECEIVE_MESSAGE,
     message
 })
-export const fetchChats = (chatId) => dispatch => {
-    return ChatAndMessagesApiUtil.fetchChat(chatId)
-        .then(chats => dispatch(receiveChats(chats)));
+export const fetchChats = () => dispatch => {
+    return ChatAndMessagesApiUtil.fetchChat()
+        .then(chat => dispatch(receiveChats(chat)));
 }
 
 export const createChat = (chat) => dispatch => {
