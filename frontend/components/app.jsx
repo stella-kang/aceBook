@@ -75,9 +75,9 @@ class App extends React.Component {
         }
 
         if (logo && logo.style.visibility === "hidden") {
-            logo.style.visibility = "visible";
             logo.style.width = "";
-            logo.style.opacity = "";
+            // logo.style.opacity = "";
+            logo.style.visibility = "visible";
         }
     }
 
