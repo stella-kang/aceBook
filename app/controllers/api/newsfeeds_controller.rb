@@ -16,7 +16,7 @@ class Api::NewsfeedsController < ApplicationController
 
         # @posts += current_user.posts.where('id > ? and id < ? ', params[:num1], params[:num2]).order(created_at: :asc)
         # @posts += current_user.posts.order(created_at: :asc)
-        posts = current_user.posts.includes(:comments)
+        posts = current_user.posts.includes(:comments).order(created_at: :asc)
         @posts += posts
         posts.each do |post|
             @comments += post.comments

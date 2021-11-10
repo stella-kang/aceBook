@@ -27,8 +27,7 @@ export default class Profile extends React.Component {
             this.props.clearPosts();
             this.props.fetchUsers();
             this.props.fetchFriends();
-            this.props.fetchProfilePosts();
-            this.props.fetchProfileComments();
+            this.props.fetchProfileContent();
         }
     }
 

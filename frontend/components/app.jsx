@@ -8,6 +8,7 @@ import profileContainer from "./profile/profile_container"
 import NavBarContainer from './navbar/nav_bar_container';
 import {withRouter} from 'react-router-dom';
 import searchContainer from './search/search_container';
+import Chat from "./messenger/chat"
 
 class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -91,6 +92,7 @@ class App extends React.Component {
                 <ProtectedRoute path="/search/:searchTerm" component={searchContainer} />
                 {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
+            <Chat />
         </div>
     }
 }
