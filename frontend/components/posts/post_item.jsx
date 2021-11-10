@@ -9,7 +9,7 @@ class PostItem extends React.Component {
 
         this.handleDropDownClick = this.handleDropDownClick.bind(this);
         this.updateLike = this.updateLike.bind(this);
-        this.toggleCommentSection = this.toggleCommentSection.bind(this);
+        this.showMoreComments = this.showMoreComments.bind(this);
     }
 
     componentDidMount() {
@@ -46,18 +46,45 @@ class PostItem extends React.Component {
         }
     }
 
-    toggleCommentSection(e) {
-        let commentSection = document.getElementById(`comment-section-${this.props.post.id}`);
+    showMoreComments(e) {
+        let commentSection = document.getElementById(`comment-list-${this.props.post.id}`);
+        let lastCommentPreview = document.getElementById(`last-comment-preview-${this.props.post.id}`);
+        let showCommentButton = document.getElementById(`show-comment-button-${this.props.post.id}`);
 
-        if (commentSection.style.display === '') {
-            commentSection.style.display = 'none';
-        } else {
-            commentSection.style.display = '';
+        if (commentSection.style.display === 'none') {
+            commentSection.style.display = 'block';
+            showCommentButton.style.display = 'none';
+            lastCommentPreview.style.display = 'none';
         }
     }
 
     render() {
         if (this.props.author) {
+            let commentsList;
+            let showCommentButton;
+            let lastComment;
+
+            if (this.props.comments.length < 2) {
+                commentsList = <ul id={`comment-list-${this.props.post.id}`}>
+                    {this.props.comments.map(el => (
+                        <CommentContainer comment={el} key={el.id} />
+                    ))}
+                </ul>
+            } else {
+                commentsList = <ul style={{ display: 'none' }} id={`comment-list-${this.props.post.id}`}>
+                    {this.props.comments.map(el => (
+                        <CommentContainer comment={el} key={el.id} />
+                    ))}
+                </ul>
+
+                this.props.comments.length < 3 ? showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.props.comments.length - 1} more comment</div> :
+                    showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.props.comments.length - 1} more comments</div>
+
+                lastComment = <ul id={`last-comment-preview-${this.props.post.id}`}>
+                    <CommentContainer comment={this.props.comments.at(-1)} key={this.props.comments.at(-1).id} />
+                </ul>
+            }
+
             return <li className="post-item">
                 <div className="post-header">
                     <div id="post-details">
@@ -129,9 +156,7 @@ class PostItem extends React.Component {
                     </div>
                 </div>
 
-                <div className="comment-section" id={`comment-section-${this.props.post.id}`}>
-
-
+                <div className="comment-section">
                     {/* <ul className="comments-list">
                         {this.props.comments.length < 2 ? 
                             this.props.comments.map(el => (
@@ -140,11 +165,14 @@ class PostItem extends React.Component {
                         } 
                     </ul> */}
                     
-                    <ul id="comments-list">
+                    {/* <ul id="comments-list">
                         {this.props.comments.map(el => (
                             <CommentContainer comment={el} key={el.id} />
                         ))}
-                    </ul>
+                    </ul> */}
+                    {showCommentButton}
+                    {commentsList}
+                    {lastComment}
 
                     <div className="comment-form">
                         {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}

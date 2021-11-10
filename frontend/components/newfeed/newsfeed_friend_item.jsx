@@ -9,10 +9,10 @@ class NewsfeedFriendItem extends React.Component {
         //     <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
         // </li>
 
-        return <li>
+        return <div>
             {this.props.friend.profile_picture ? <img src={this.props.friend.profile_picture} /> : <img src={window.defaultProfile} />}
             <span>{this.props.friend.first_name} {this.props.friend.last_name}</span>
-        </li>
+        </div>
     }
 }
 

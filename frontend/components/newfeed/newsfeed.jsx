@@ -77,7 +77,7 @@ export default class Newsfeed extends React.Component {
                             createLike={this.props.createLike}
                             deleteLike={this.props.deleteLike}
                         />
-                    )
+                        )
                     )}
                 </ul>
             </div>
@@ -87,10 +87,15 @@ export default class Newsfeed extends React.Component {
                     <div>Contacts</div>
                     {this.props.friends.length !== 0 ?
                         <ul>
+                            {/* {this.props.friends.map(friend => (>
+                                <li onClick={this.openChat(friend.friend_id)} key={`${friend.id}-${friend.status}`}>
+                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]}/>
+                                </li>
+                            )} */}
                             {this.props.friends.map(friend => (
-                                <div onClick={this.openChat(friend.friend_id)}>
-                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} key={friend.id} />
-                                </div>
+                                <li onClick={this.openChat(friend.friend_id)} key={`${friend.id}-${friend.status}`}>
+                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} />
+                                </li>
                             ))}
                         </ul> : <div id="newsfeed-no-friends">No friends.</div>}
                 </div>

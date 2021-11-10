@@ -96,7 +96,7 @@ class Chat extends React.Component {
                                 currentUser={this.props.currentUser}
                             />
                         })}
-                        <div ref={this.bottom} />
+                        <div ref={this.bottom}/>
                     </ul>
                     <MessageForm chat={this.props.chat} currentUser={this.props.currentUser} />
                 </div>

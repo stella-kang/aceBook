@@ -4,7 +4,11 @@ if (@post.created_at + 23.hour) > DateTime.now
     if (@post.created_at.hour - DateTime.now.hour === 0)
         json.created_at "#{DateTime.now.min - @post.created_at.min}m"
     else 
-        json.created_at "#{(24 - post.created_at.hour) + DateTime.now.hour}h"
+        if (@post.created_at.hour > DateTime.now.hour)
+            json.created_at "#{(24 - @post.created_at.hour) + DateTime.now.hour}h"
+        else
+            json.created_at "#{DateTime.now.hour - @post.created_at.hour}h"
+        end
     end
 else 
     json.created_at @post.created_at.strftime("%b %-d")

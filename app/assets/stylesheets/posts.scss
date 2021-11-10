@@ -312,3 +312,14 @@
     box-sizing: border-box;
     padding-right: 35px;
 }
+
+.show-comment-button {
+    color: grey;
+    margin-bottom: 15px;
+    font-size: 15px;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

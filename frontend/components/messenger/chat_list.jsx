@@ -9,7 +9,7 @@ class ChatList extends React.Component {
     render() {
         return <div className="chat-section">
             {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
-                <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
+                <ChatContainer key={chat.id} chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
             )
             ) : null}
         </div>
