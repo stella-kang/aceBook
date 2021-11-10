@@ -22,15 +22,16 @@ export default class Newsfeed extends React.Component {
         this.props.clearPosts();
     }
 
-    openMessenger(friendId) {
+    openChat(friendId) {
         return (e) => {
-            let chat = this.props.chats.find(chat => (chat.user1_id === this.props.currentUser.id && chat.user2_id === friendId) || (chat.user2_id === this.props.currentUser.id && chat.user1_id === friendId))
-            this.chats.push(chat);
+            let chat = this.props.chats.find(chat => chat.user1_id === friendId || chat.user2_id === friendId)
+            this.props.fetchMessages(chat.id);
+            document.getElementById(`chatroom-${chat.id}`).style.display = "block";
         }
     }
 
     render() {
-        this.chats = [];
+        // this.chats = [];
 
         return <div className="newsfeed">
             <div className="newsfeed-links">
@@ -79,7 +80,7 @@ export default class Newsfeed extends React.Component {
                     {this.props.friends.length !== 0 ?
                         <ul>
                             {this.props.friends.map(friend => (
-                                <div onClick={this.openMessenger(friend.friend_id)}>
+                                <div onClick={this.openChat(friend.friend_id)}>
                                     <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} key={friend.id} />
                                 </div>
                             ))}
@@ -87,7 +88,7 @@ export default class Newsfeed extends React.Component {
                 </div>
             }
 
-            {Object.values(this.props.users).length > 1 ? this.chats.map(chat => (
+            {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
                 <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]}/>
                 )
             ) : null}

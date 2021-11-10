@@ -9,8 +9,6 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchMessages(this.props.chat.id);
-
         App.cable.subscriptions.create(
             { channel: "ChatChannel", chat_id: this.props.chat.id},
             {
@@ -61,8 +59,8 @@ class Chat extends React.Component {
         // };
 
         return (
-            <div className="chatroom-container">
-                <div>{this.props.friend.id}</div>
+            <div className="chatroom-container" id={`chatroom-${this.props.chat.id}`}>
+                <div>{this.props.friend.first_name} {this.props.friend.last_name}</div>
                 <ul className="message-list">
                     {messages.map(message => {
                         return <li key={message.id}>

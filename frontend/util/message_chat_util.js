@@ -13,7 +13,7 @@ export const createChat = (chat) => {
     })
 }
 
-export const fetchChat = () => {
+export const fetchChats = () => {
     return $.ajax({
         method: 'GET',
         url: `api/chats`
