@@ -42,7 +42,7 @@ class App extends React.Component {
         const notificationsButton = document.getElementById("notifications-dropdown-button");
         const postMenu = document.querySelectorAll(".post-dropdown-content");
         const commentMenus = document.querySelectorAll(".comment-dropdown-content");
-        const friendRequestMenu = document.getElementById("friend-request-content");
+        const friendRequestMenu = document.querySelector(".friend-request-content");
         const friendSectionMenu = document.querySelectorAll(".friend-section-dropdown-content")
         const logo = document.getElementById("logo");
 

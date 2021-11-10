@@ -10,6 +10,11 @@ class PostItem extends React.Component {
         this.handleDropDownClick = this.handleDropDownClick.bind(this);
         this.updateLike = this.updateLike.bind(this);
         this.showMoreComments = this.showMoreComments.bind(this);
+
+        this.state = {
+            lastComments: this.props.comments.length > 0 ? [this.props.comments.at(-1)] : [],
+            allComments: this.props.comments
+        }
     }
 
     componentDidMount() {
@@ -17,6 +22,18 @@ class PostItem extends React.Component {
             let dropdown = document.getElementById(`post-dropdown-${this.props.post.id}`);
             if (dropdown) dropdown.style.display = "none";
         }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.comments.length < this.props.comments.length) {
+            let arr = [...this.state.lastComments];
+            arr.push(this.props.comments.at(-1));
+
+            this.setState({
+                lastComments: arr,
+                allComments: this.props.comments
+            })
+        } 
     }
 
     handleDropDownClick(e) {
@@ -66,22 +83,27 @@ class PostItem extends React.Component {
 
             if (this.props.comments.length < 2) {
                 commentsList = <ul id={`comment-list-${this.props.post.id}`}>
-                    {this.props.comments.map(el => (
+                    {this.state.allComments.map(el => (
                         <CommentContainer comment={el} key={el.id} />
                     ))}
                 </ul>
             } else {
                 commentsList = <ul style={{ display: 'none' }} id={`comment-list-${this.props.post.id}`}>
-                    {this.props.comments.map(el => (
+                    {this.state.allComments.map(el => (
                         <CommentContainer comment={el} key={el.id} />
                     ))}
                 </ul>
+                
+                if (this.state.allComments.length !== this.state.lastComments.length) {
+                    this.props.comments.length < 3 ? showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.state.allComments.length - this.state.lastComments.length} more comment</div> :
+                        showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.state.allComments.length - this.state.lastComments.length} more comments</div>
+                }
 
-                this.props.comments.length < 3 ? showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.props.comments.length - 1} more comment</div> :
-                    showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.props.comments.length - 1} more comments</div>
-
+                debugger
                 lastComment = <ul id={`last-comment-preview-${this.props.post.id}`}>
-                    <CommentContainer comment={this.props.comments.at(-1)} key={this.props.comments.at(-1).id} />
+                    {this.state.lastComments.map(el => (
+                        <CommentContainer comment={el} key={el.id} />
+                    ))}
                 </ul>
             }
 
@@ -134,7 +156,7 @@ class PostItem extends React.Component {
 
                     {this.props.comments.length !== 0 ? 
                         <div className="post-comments" onClick={this.toggleCommentSection}>
-                            {this.props.comments.length === 1 ? <div>{this.props.comments.length} Comment</div> : <div>{this.props.comments.length} Comments</div>}
+                            {this.props.comments.length === 1 ? <div>{(this.props.comments.length)} Comment</div> : <div>{(this.props.comments.length)} Comments</div>}
                         </div> : <div></div>
                     }
                 </div>

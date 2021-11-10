@@ -57,9 +57,10 @@
         padding-bottom: 20px;
         margin-bottom: 20px;
         border-bottom: 1px solid lightgray;
+        pointer-events: none;
     }
 
-    li {
+    div {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
@@ -83,7 +84,7 @@
 #newsfeed-no-friends {
     border: none;
     width: 100%;
-    text-align: center;
+    justify-content: center;
     color: grey;
     font-weight: 400;
     font-size: 15px;
