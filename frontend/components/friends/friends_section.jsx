@@ -26,7 +26,7 @@ class FriendsSection extends React.Component {
                         deleteFriendRequest={this.props.deleteFriendRequest}
                     />
                 })}
-            </ul> : <span id="no-friends">No friends.</span>}
+            </ul> : <span id="no-friends">This user does not have any friends.</span>}
         </div>
     }
 }

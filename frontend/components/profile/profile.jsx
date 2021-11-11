@@ -235,7 +235,7 @@ export default class Profile extends React.Component {
                     }
 
                     <ul className="post-list">
-                        {this.props.posts.map(post => (
+                        {this.props.posts.length !== 0 ? this.props.posts.map(post => (
                             <PostItem
                                 post={post}
                                 removePost={this.props.removePost}
@@ -248,7 +248,7 @@ export default class Profile extends React.Component {
                                 createLike={this.props.createLike}
                                 deleteLike={this.props.deleteLike}
                             />
-                        ))}
+                        )) : <div id="no-posts">This user has no posts.</div>}
                     </ul>
                 </div>
 
