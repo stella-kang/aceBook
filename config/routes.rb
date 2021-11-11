@@ -11,12 +11,8 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy]
     resource :newsfeed, only: [:show]
-    resources :posts, only: [:create, :update, :destroy] do
-      # resources :likes, only: [:index]
-    end
-    resources :comments, only: [:update, :destroy, :create] do
-      # resources :likes, only: [:index]
-    end
+    resources :posts, only: [:create, :update, :destroy]
+    resources :comments, only: [:update, :destroy, :create]
     resources :friends, only: [:create, :destroy, :update]
     resources :likes, only: [:create, :destroy, :index]
     resources :chats, only: [:create, :index] do
