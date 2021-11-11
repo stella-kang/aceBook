@@ -98,6 +98,10 @@ post12 = Post.create(content: "i only post my opinions. THAT'S JUST MY OPINION!"
 post13 = Post.create(content: "*blinks*", author_id: user8.id)
 post14 = Post.create(content: "Hi! Are you sure everything is fine? Let me know how I can help!", author_id: user5.id, profile_id: user9.id)
 post15 = Post.create(content: "Pineapple 100% belongs on pizza", author_id: user10.id)
+post16 = Post.create(content: "Made a new acebook account. YOLO!", author_id: user13.id)
+post17 = Post.create(content: "i am hungry for wet", author_id: user14.id)
+post18 = Post.create(content: "you call it water? I call it h2o", author_id: user14.id)
+post19 = Post.create(content: "(╯°□°)╯︵ ┻━┻", author_id: user10.id)
 
 friend1 = Friend.create(user_id: user12.id, friend_id: user1.id, status: false)
 friend2 = Friend.create(user_id: user1.id, friend_id: user2.id, status: true)

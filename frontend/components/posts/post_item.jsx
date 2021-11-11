@@ -167,6 +167,8 @@ class PostItem extends React.Component {
 
                 <span>{this.props.post.content}</span>
 
+                {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
+
                 <div className="post-counts">
                     {this.props.likes.length !== 0 ?
                         <div className="post-likes">
@@ -180,8 +182,6 @@ class PostItem extends React.Component {
                         </div> : <div></div>
                     }
                 </div>
-
-                {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
                 <div className="post-icons-outer-div">
                     <div className="post-icons">
