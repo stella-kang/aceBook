@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { removeFriendRequest, editFriendRequest, createFriendRequest } from "../../actions/friends_actions"
 import FriendNotificationList from './friend_notification_list';
 

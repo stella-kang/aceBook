@@ -28,7 +28,13 @@ class Comment extends React.Component {
             })
         }
 
-        const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
+        let commentMenu;
+        if (this.props.commentType === "last-comment") {
+            commentMenu = document.querySelectorAll(`#comment-dropdown-content-${this.props.comment.id}`).item(1);
+        } else {
+            commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
+        }
+
         if (commentMenu.style.display === "") {
             commentMenu.style.display = "block";
         } else {
@@ -53,18 +59,39 @@ class Comment extends React.Component {
 
     showEditForm(e) {
         e.stopPropagation();
-    
-        const editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
-        editForm.style.display = "flex";
 
-        const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
+        let editForm;
+        let commentMenu;
+        let commentItem;
+        let commentInput;
+        let commentDetails;
+    
+        if (this.props.commentType === 'last-comment') {
+            editForm = document.querySelectorAll(`#comment-edit-form-${this.props.comment.id}`).item(1);
+            commentMenu = document.querySelectorAll(`#comment-dropdown-content-${this.props.comment.id}`).item(1);
+            commentItem = document.querySelectorAll(`#comment-${this.props.comment.id}`).item(1);
+            commentInput = document.querySelectorAll(`#comment-input-${this.props.comment.post_id}-${this.props.comment.id}`).item(1);
+            commentDetails = document.querySelectorAll(`#comment-menu-${this.props.comment.id}`).item(1);
+        } else {
+            editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
+            commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
+            commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+            commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`);
+            commentDetails = document.getElementById(`comment-menu-${this.props.comment.id}`)
+        }
+        // const editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
+        editForm.style.display = "block";
+
+        // const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         commentMenu.style.display = "";
 
-        const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+        // const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
         commentItem.style.display = "none";
 
-        const commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`)
+        // const commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`)
         commentInput.focus();
+
+        commentDetails.style.display = "none";
     }
 
     render () {
@@ -107,7 +134,7 @@ class Comment extends React.Component {
                     </div>
                 </div>
 
-                <div className="comment-menu">
+                <div className="comment-menu" id={`comment-menu-${this.props.comment.id}`}>
                     <div id={`comment-like-button-${this.props.comment.id}`} 
                     className={`comment-button ${this.props.likes.some(like => like.likeable_id === this.props.comment.id && like.author_id === this.props.currentUser.id && like.likeable_type === "Comment") ? 'comment-liked' : null}`} 
                     onClick={this.updateLike}>
@@ -123,8 +150,8 @@ class Comment extends React.Component {
 
                 <div className="comment-form comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>
                     {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                    <EditCommentContainer comment={this.props.comment} />
-                </div>
+                    <EditCommentContainer lastComment={this.props.commentType === "last-comment" ? true : false} comment={this.props.comment} />
+                </div> 
 
             </li>
         } else {

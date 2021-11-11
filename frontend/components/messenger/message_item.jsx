@@ -9,7 +9,6 @@ const MessageItem = (props) => {
 
         return <li className="message-item" id={props.author === props.currentUser ? "current-user-message-item" : null }>
             <div className="message-content" id={props.author === props.currentUser ? "current-user-message" : "friend-message"}>
-                {/* {props.author.profile_picture ? <img src={props.author.profile_picture} /> : <img src={window.defaultProfile} />} */}
                 {image}
                 <div>{props.message.body}</div>
             </div>

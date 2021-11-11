@@ -12,14 +12,11 @@ json.posts do
                 else
                     json.created_at "#{DateTime.now.hour - post.created_at.hour}h"
                 end
-            # else 
-            #     json.created_at "#{post.created_at.hour - DateTime.now.hour + 24}h"
             end
         else 
             json.created_at post.created_at.strftime("%b %-d")
         end
        
-        # json.comments post.comments.map { |comment| comment.id}
         json.photo url_for(post.photo) if (post.photo.attached?)
         end
     end

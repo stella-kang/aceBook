@@ -93,16 +93,6 @@ class SearchItem extends React.Component {
             </div>
 
             {button}
-
-            {/* {this.props.friendRequests.some(friend => (friend.user_id === this.props.currentUserId && friend.friend_id === this.props.user.id && friend.status === true)) || this.props.user.id === this.props.currentUserId ? null :
-                this.props.friendRequests.some(friend => (friend.user_id === this.props.currentUserId && friend.friend_id === this.props.user.id && friend.status === false)) ?
-                <button id="search-item-cancel-request" onClick={this.handleDeleteFriendRequest}>
-                    <i className="fas fa-user-minus"></i>
-                </button> :
-                <button id="search-item-send-request" onClick={this.handleCreateFriendRequest}>
-                    <i className="fas fa-user-plus"></i>
-                </button>
-            } */}
         </li>
     }
 }

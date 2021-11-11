@@ -1,10 +1,5 @@
 class Api::LikesController < ApplicationController
     def index
-        # if params[:comment_id]
-        #     @likes = Like.where(likeable_id: params[:comment_id])
-        # elsif params[:post_id]
-        #     @likes = Like.where(likeable_id: params[:post_id])
-        # end
         @likes = Like.all
         render :index
     end

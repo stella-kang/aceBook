@@ -6,7 +6,6 @@ import Chat from "./chat"
 const mSTP = (state, ownProps) => ({
     messages: Object.values(state.entities.messages),
     users: state.entities.users,
-    // chats: Object.values(state.entities.chats),
     currentUser: state.entities.users[state.session.currentUserId]
 })
 

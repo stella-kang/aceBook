@@ -3,7 +3,7 @@ import { fetchUsers } from '../../actions/user&session_actions';
 import { fetchFriendRequests } from '../../actions/friends_actions';
 import { removeFriendRequest, createFriendRequest, editFriendRequest} from '../../actions/friends_actions';
 import { receiveSearch } from '../../actions/search_action';
-import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
+import { fetchMessages, createChat } from '../../actions/message_chat_actions';
 import { withRouter } from 'react-router-dom';
 import Search from './search';
 

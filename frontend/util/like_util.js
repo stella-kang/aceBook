@@ -6,14 +6,6 @@ export const createLike = (like) => {
     })
 }
 
-// export const createPostLike = (like) => {
-//     return $.ajax({
-//         method: 'POST',
-//         url: `/api/posts/${like.likeable_id}/likes`,
-//         data: { like }
-//     })
-// }
-
 export const deleteLike = (likeId) => {
     return $.ajax({
         method: 'DELETE',

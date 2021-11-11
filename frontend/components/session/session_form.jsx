@@ -117,8 +117,6 @@ export default class SessionFrom extends React.Component {
                     <div></div>
                 </div> : null}
 
-                {/* {errors} */}
-
                 <div id="names-form">
                     <div className="input-field" id="first-name-input">
                         {this.props.formType === "Log In" ? null : <input

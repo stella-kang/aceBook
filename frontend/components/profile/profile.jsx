@@ -10,19 +10,12 @@ export default class Profile extends React.Component {
         super(props);
 
         this.openChat = this.openChat.bind(this);
-        // this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
-        // this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
-        // this.handleUpdateFriendRequest = this.handleUpdateFriendRequest.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchUsers();
         this.props.fetchLikes();
         this.props.fetchProfileContent();
-        // this.props.fetchChats()
-        // this.props.fetchFriends();
-        // this.props.fetchProfilePosts();
-        // this.props.fetchProfileComments();
     }
 
     componentDidUpdate(prevProps) {
@@ -36,51 +29,6 @@ export default class Profile extends React.Component {
     componentWillUnmount() {
         this.props.clearPosts();
     }
-
-    // handleCreateFriendRequest(e) {
-    //     this.props.createFriendRequest({
-    //         user_id: this.props.currentUser.id,
-    //         friend_id: this.props.user.id
-    //     })
-    // }
-
-    // handleDeleteFriendRequest(e) {
-    //     const requests = Object.values(this.props.friends).filter(friend => {
-    //         return (friend.user_id === this.props.user.id && friend.friend_id === this.props.currentUser.id) || (friend.user_id === this.props.currentUser.id && friend.friend_id === this.props.user.id)
-    //     })
-
-    //     requests.forEach(request => {
-    //         this.props.deleteFriendRequest(request.id)
-    //     })
-    // }
-
-    // handleUpdateFriendRequest(e) {
-    //     let originalRequest = this.props.userFriends.find(friend => friend.friend_id === this.props.currentUser.id)
-
-    //     this.props.updateFriendRequest({
-    //         user_id: originalRequest.user_id,
-    //         friend_id: originalRequest.friend_id,
-    //         status: true,
-    //         id: originalRequest.id
-    //     })
-
-    //     this.props.createFriendRequest({
-    //         user_id: this.props.currentUser.id,
-    //         friend_id: this.props.user.id,
-    //         status: true
-    //     })
-    // }
-
-    // handleDropDownClick(e) {
-    //     e.stopPropagation()
-
-    //     const friendRequestMenu = document.getElementById("friend-request-content");
-    //     if (friendRequestMenu.style.display === "") {
-    //         friendRequestMenu.style.display = "block"
-    //     } else {
-    //         friendRequestMenu.style.display = ""
-    //     }
-    // }
 
     showPostsSection(e) {
         let postsSection = document.getElementById("profile-post-section")
@@ -131,47 +79,6 @@ export default class Profile extends React.Component {
 
     render() {
         if (this.props.user) {
-            // let friendButton;
-            // let friendButtonDropdown;
-
-            // if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true)) {
-            //     friendButton = <button id="friends-approved" onClick={this.handleDropDownClick}>
-            //         <i className="fas fa-user-check"></i>
-            //         <span>Friends</span>
-            //     </button>
-
-            //     friendButtonDropdown = <div id="friend-request-content">
-            //         <div>
-            //             <button onClick={this.handleDeleteFriendRequest}>
-            //                 <i className="fas fa-user-minus"></i>
-            //                 <span>Unfriend</span>
-            //             </button>
-            //         </div>
-            //     </div>
-            // } else if (this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === false)) {
-            //     friendButton = <button onClick={this.handleDeleteFriendRequest}>
-            //         <i className="fas fa-user-minus"></i>
-            //         <span>Cancel Request</span>
-            //     </button>
-            // } else if (this.props.userFriends.some(friend => friend.friend_id === this.props.currentUser.id && friend.status === false)) {
-            //     friendButton = <button onClick={this.handleDropDownClick}>
-            //         <i className="fas fa-user-plus"></i>
-            //         <span>Respond</span>
-            //     </button>
-
-            //     friendButtonDropdown = <div id="friend-request-content">
-            //         <div>
-            //             <button onClick={this.handleUpdateFriendRequest}>Confirm</button>
-            //             <button onClick={this.handleDeleteFriendRequest}>Delete request</button>
-            //         </div>
-            //     </div>
-            // } else if (!(this.props.currentUserFriends.some(friend => friend.friend_id === this.props.user.id && friend.status === true))) {
-            //     friendButton = <button onClick={this.handleCreateFriendRequest}>
-            //         <i className="fas fa-user-plus"></i>
-            //         <span>Add Friend</span>
-            //     </button>
-            // }
-
             let createPostButton = document.getElementById("create-post-form-button")
             if (createPostButton) {
                 let text;
@@ -192,10 +99,6 @@ export default class Profile extends React.Component {
                     </div>
 
                     <div className="profile-header">
-                        {/* <div id="white-rectangle">
-                            {this.props.user.profile_picture ? <img id="profile-picture" src={this.props.user.profile_picture} /> : <img id="profile-picture" src={window.defaultProfile} />}
-                        </div> */}
-
                         <div id="profile-summary">
                             {this.props.user.profile_picture ? <img id="profile-picture" src={this.props.user.profile_picture} /> : <img id="profile-picture" src={window.defaultProfile} />}
                             <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
@@ -218,8 +121,6 @@ export default class Profile extends React.Component {
                                             <i className="fas fa-comment"></i>
                                             <span>Message</span>
                                         </button>}
-                                    {/* {this.props.user === this.props.currentUser ? null : friendButton}
-                                    {this.props.user === this.props.currentUser ? null : friendButtonDropdown} */}
                                 </div>
                             </div>
                         </div>
@@ -253,13 +154,6 @@ export default class Profile extends React.Component {
                 </div>
 
                 <FriendsSectionContainer />
-
-                {/* <div className="chat-section">
-                    {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
-                        <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
-                    )
-                    ) : null}
-                </div> */}
             </div>
         } else {
             return null;

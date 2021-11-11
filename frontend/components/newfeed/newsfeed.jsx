@@ -10,9 +10,6 @@ export default class Newsfeed extends React.Component {
         this.props.fetchUsers();
         this.props.fetchNewsfeedContent();
         this.props.fetchLikes();
-        // this.props.fetchChats();
-        // this.props.fetchNewsfeedComments();
-        // this.props.fetchNewsfeedPosts();
 
         let createPostFormButton = document.getElementById("create-post-form-button");
         createPostFormButton.innerText = `What's on your mind, ${this.props.currentUser.first_name}?`;
@@ -89,16 +86,6 @@ export default class Newsfeed extends React.Component {
                     <div>Contacts</div>
                     {this.props.friends.length !== 0 ?
                         <ul>
-                            {/* {this.props.friends.map(friend => (>
-                                <li onClick={this.openChat(friend.friend_id)} key={`${friend.id}-${friend.status}`}>
-                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]}/>
-                                </li>
-                            )} */}
-                            {/* {this.props.friends.map(friend => (
-                                <li onClick={this.openChat(friend.friend_id)} key={`${friend.id}-${friend.status}`}>
-                                    <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} />
-                                </li>
-                            ))} */}
                             {friends.map(friend => (
                                 <li onClick={this.openChat(friend.id)} key={`${friend.id}`}>
                                     <NewsfeedFriendItem friend={friend} />
@@ -107,13 +94,6 @@ export default class Newsfeed extends React.Component {
                         </ul> : <div id="newsfeed-no-friends">No friends.</div>}
                 </div>
             }
-
-            {/* <div className="chat-section">
-                {Object.values(this.props.users).length > 1 ? this.props.chats.map(chat => (
-                    <ChatContainer chat={chat} friend={this.props.users[(chat.user1_id !== this.props.currentUser.id ? chat.user1_id : chat.user2_id)]} />
-                )
-                ) : null}
-            </div> */}
         </div>
     }
 }

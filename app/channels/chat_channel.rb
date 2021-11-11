@@ -14,14 +14,6 @@ class ChatChannel < ApplicationCable::Channel
       ChatChannel.broadcast_to(@channel, socket)
     end
   end
-
-  # def load
-  #   @channel = Chat.find(data['chat_id'])
-
-  #   messages = Message.all.collect(&:body)
-  #   socket = { messages: messages, type: 'messages' }
-  #   ChatChannel.broadcast_to(@channel, socket)
-  # end
   
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed

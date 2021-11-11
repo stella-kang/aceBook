@@ -1,4 +1,4 @@
-import { RECEIVE_FRIEND_REQUEST, REMOVE_FRIEND_REQUEST, RECEIVE_FRIEND_REQUESTS, UPDATE_FRIEND_REQUEST, CLEAR_FRIENDS} from "../actions/friends_actions";
+import { RECEIVE_FRIEND_REQUEST, REMOVE_FRIEND_REQUEST, RECEIVE_FRIEND_REQUESTS, UPDATE_FRIEND_REQUEST} from "../actions/friends_actions";
 
 const friendsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -6,10 +6,6 @@ const friendsReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_FRIEND_REQUESTS:
-            // Object.values(action.friendRequests).forEach(friendRequest => {
-            //     nextState[friendRequest.id] = friendRequest;
-            // })
-            // return nextState;
             return action.friendRequests;
         case RECEIVE_FRIEND_REQUEST:
             nextState[action.friendRequest.id] = action.friendRequest;
@@ -20,8 +16,6 @@ const friendsReducer = (state = {}, action) => {
         case UPDATE_FRIEND_REQUEST:
             nextState[action.friendRequest.id] = action.friendRequest;
             return nextState;
-        // case CLEAR_FRIENDS:
-        //     return {};
         default:
             return state;
     }

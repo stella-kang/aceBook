@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentContainer from '../comments/comment_container';
 import CreateCommentForm from "../comments/create_comment_container"
-import { withRouter, Redirect} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class PostItem extends React.Component {
     constructor(props) {
@@ -24,7 +24,11 @@ class PostItem extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
+        const prevCommentBodies = prevProps.comments.map(comment => comment.content)
+        const currCommentBodies = this.props.comments.map(comment => comment.content)
+        const currCommentIds = this.props.comments.map(comment => comment.id)
+
         if (prevProps.comments.length < this.props.comments.length) {
             let arr = [...this.state.lastComments];
             arr.push(this.props.comments.at(-1));
@@ -33,7 +37,23 @@ class PostItem extends React.Component {
                 lastComments: arr,
                 allComments: this.props.comments
             })
-        } 
+        } else if (prevProps.comments.length > this.props.comments.length) {
+            let previousComments = [...prevState.lastComments];
+
+            prevState.lastComments.forEach((comment, i) => {
+                if (!currCommentIds.includes(comment.id)) previousComments.splice(i, 1)
+            });
+
+            this.setState({
+                lastComments: previousComments,
+                allComments: this.props.comments
+            })
+        } else if (prevCommentBodies.some(comment => !currCommentBodies.includes(comment))) {
+            this.setState({
+                lastComments: this.props.comments.slice(this.props.comments.length - prevState.lastComments.length),
+                allComments: this.props.comments
+            })
+        }
     }
 
     handleDropDownClick(e) {
@@ -84,13 +104,13 @@ class PostItem extends React.Component {
             if (this.props.comments.length < 2) {
                 commentsList = <ul id={`comment-list-${this.props.post.id}`}>
                     {this.state.allComments.map(el => (
-                        <CommentContainer comment={el} key={el.id} />
+                        <CommentContainer commentType="regular-comment" comment={el} key={el.id} />
                     ))}
                 </ul>
             } else {
                 commentsList = <ul style={{ display: 'none' }} id={`comment-list-${this.props.post.id}`}>
                     {this.state.allComments.map(el => (
-                        <CommentContainer comment={el} key={el.id} />
+                        <CommentContainer commentType="regular-comment" comment={el} key={el.id} />
                     ))}
                 </ul>
                 
@@ -101,7 +121,7 @@ class PostItem extends React.Component {
 
                 lastComment = <ul id={`last-comment-preview-${this.props.post.id}`}>
                     {this.state.lastComments.map(el => (
-                        <CommentContainer comment={el} key={el.id} />
+                        <CommentContainer commentType="last-comment" comment={el} key={el.id} />
                     ))}
                 </ul>
             }
@@ -160,7 +180,6 @@ class PostItem extends React.Component {
                     }
                 </div>
 
-
                 {this.props.post.photo ? <img src={this.props.post.photo} /> : null}
 
                 <div className="post-icons-outer-div">
@@ -178,19 +197,6 @@ class PostItem extends React.Component {
                 </div>
 
                 <div className="comment-section">
-                    {/* <ul className="comments-list">
-                        {this.props.comments.length < 2 ? 
-                            this.props.comments.map(el => (
-                            <CommentContainer comment={el} key={el.id} />
-                            )) : <CommentContainer comment={this.props.comments[-1]} key={this.props.comments[-1].id} />
-                        } 
-                    </ul> */}
-                    
-                    {/* <ul id="comments-list">
-                        {this.props.comments.map(el => (
-                            <CommentContainer comment={el} key={el.id} />
-                        ))}
-                    </ul> */}
                     {showCommentButton}
                     {commentsList}
                     {lastComment}
@@ -206,70 +212,5 @@ class PostItem extends React.Component {
         }
     }
 }
-
-// const PostItem = (props) => {
-
-//     let profile; 
-
-//     if (props.post.profile) {
-//         profile = <span>{props.post.profile.first_name} {props.post.profile.last_name}</span>
-//     } else {
-//         profile = null;
-//     }
-
-//     const handleDropdownClick = (e) => {
-//         e.stopPropagation();
-//         const postMenu = document.getElementById("post-dropdown-content");
-//         if (postMenu.style.display === "") {
-//             postMenu.style.display = "block";
-//         } else {
-//             postMenu.style.display = "";
-//         }
-//     }
-
-//     return <li className="post-item">
-//         <div className="post-header">
-//             <div id="post-details">
-//                 {props.author.profile_picture ? <img src={props.author.profile_picture} /> : <img src={window.defaultProfile} />}
-//                 <span>{props.author.first_name} {props.author.last_name}</span>
-//             </div>
-            
-//             <div id="post-dropdown-menu" >
-//                 <button id="post-dropdown-button" onClick={handleDropdownClick}>
-//                     <i className="fas fa-ellipsis-h fa-2x"></i>
-//                 </button>
-
-//                 <div id="post-dropdown-content">
-//                     <div>
-//                         <div className="post-dropdown-button">
-//                             {props.editPostFormModal(props.post.id)}
-                            
-//                             <button onClick={() => props.removePost(props.post.id)}>
-//                                 <i className="far fa-trash-alt"></i>
-//                                 Delete post
-//                             </button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-
-//         {profile}
-
-//         <span>{props.post.content}</span>
-
-//         {props.post.photo ? <img src={props.post.photo} /> : null}
-
-//         <div className="comment-section">
-//             <ul className="comments-list">
-//                 {props.comments.map(el => (
-//                     <CommentContainer comment={el} key={el.id}/>
-//                 ))}
-//             </ul>
-
-//             <CreateCommentForm postId={props.post.id}/>
-//         </div>
-//     </li>
-// }
 
 export default withRouter(PostItem);

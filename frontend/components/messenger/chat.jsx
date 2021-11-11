@@ -18,30 +18,12 @@ class Chat extends React.Component {
             {
                 received: data => {
                     this.props.receiveMessage(data.message)
-                    // switch (data.type) {
-                    //     case "message":
-                    //         debugger
-                           
-                    //         // this.setState({
-                    //         //     messages: this.state.messages.concat(data.message)
-                    //         // });
-                    //         break;
-                    //     // case "messages":
-                    //     //     this.props.receiveMessages(data.messages)
-                    //     //     // this.setState({ messages: data.messages });
-                    //     //     break;
-                    // }
                 },
                 speak: function(data) {
                     return this.perform("speak", data)
                 }
-                // load: function() {
-                //     return this.perform("load")
-                // }
             }
         );
-
-        // App.cable.subscriptions.subscriptions[0].load();
     }
 
     componentDidUpdate() {
@@ -60,17 +42,6 @@ class Chat extends React.Component {
 
     render() {
         let messages = this.props.messages.filter(message => message.chat_id === this.props.chat.id)
-        // console.log(messages);
-        // let messageList;
-        
-        // if (messages.length !==0) {
-        //     messageList = messages.map(message => {
-        //         return <li key={message.id}>
-        //             {message}
-        //             <div ref={this.bottom} />
-        //         </li>;
-        //     });
-        // };
 
         return (
             <div className="chatroom-container" onClick={this.addCurrentChatStyling} id={`chatroom-${this.props.chat.id}`}>
@@ -86,9 +57,6 @@ class Chat extends React.Component {
                 <div className="chat-body">
                     <ul className="message-list">
                         {messages.map(message => {
-                            // return <li key={message.id}>
-                            //     <span>{message.body}</span>
-                            // </li>;
                             return <MessageItem 
                                 author={this.props.users[message.author_id]}
                                 message={message}

@@ -5,7 +5,7 @@ import { removePost, clearAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchFriendRequests } from '../../actions/friends_actions';
 import { fetchLikes, createLike, removeLike } from '../../actions/like_actions';
-import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
+import { fetchMessages, createChat } from '../../actions/message_chat_actions';
 import React from 'react';
 import Profile from "./profile"
 
@@ -19,32 +19,21 @@ const mSTP = (state, ownProps) => {
         friends: Object.values(state.entities.friends),
         likes: Object.values(state.entities.likes),
         chats: Object.values(state.entities.chats)
-        // currentUserFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === state.session.currentUserId),
-        // userFriends: Object.values(state.entities.friends).filter(friend => friend.user_id === parseInt(ownProps.match.params.userId))
     }
 }
 
 
 
 const mDTP = (dispatch, ownProps) => {
-    // const profileId = parseInt(ownProps.match.params.userId)
     return {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchProfileContent: () => dispatch(fetchProfileContent(ownProps.match.params.userId)),
-    // fetchProfilePosts: () => dispatch(fetchProfilePosts(ownProps.match.params.userId)),
     clearPosts: () => dispatch(clearAllPosts()),
     removePost: (postId) => dispatch(removePost(postId)),
-    // fetchProfileComments: () => dispatch(fetchProfileComments(ownProps.match.params.userId)),
-    // fetchProfileFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
-    // fetchCurrentUserFriends: (userId) => dispatch(fetchFriendRequests(userId)),
     fetchFriends: () => dispatch(fetchFriendRequests(ownProps.match.params.userId)),
-    // createFriendRequest: (friend) => dispatch(createFriendRequest(friend)),
-    // deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
-    // updateFriendRequest: (friend) => dispatch(editFriendRequest(friend)),
     fetchLikes: () => dispatch(fetchLikes()),
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(removeLike(likeId)),
-    // fetchChats: () => dispatch(fetchChats()),
     fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
     createChat: (chat) => dispatch(createChat(chat)),
 

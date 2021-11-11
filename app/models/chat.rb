@@ -11,11 +11,6 @@
 class Chat < ApplicationRecord
     validates :user1_id, :user2_id, presence: true
 
-    # has_many :messages,
-    #     primary_key: :id,
-    #     foreign_key: :chat_id,
-    #     class_name: :Message
-
     has_many :messages,
         foreign_key: :chat_id,
         primary_key: :id,

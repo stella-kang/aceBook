@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { createPost, fetchNewsfeedPosts, fetchProfilePosts } from "../../actions/post_actions";
+import { createPost} from "../../actions/post_actions";
 import PostForm from "./post_form";
 
 

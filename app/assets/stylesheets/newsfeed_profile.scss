@@ -114,18 +114,6 @@
     margin-top: 50px;
 }
 
-// #white-rectangle {
-//     width: 800px;
-//     height: 60px;
-//     background-color: white;
-//     border-top-left-radius: 20px;
-//     border-top-right-radius: 20px;
-//     position: relative;
-//     display: flex;
-//     justify-content: center;
-//     margin-top: 100px;
-// }
-
 #profile-picture {
     width: 250px;
     height: 250px;
@@ -148,10 +136,7 @@
 
 #profile-summary {
     width: 800px;
-    // background-color: white;
     display: flex;
-    // border-bottom-left-radius: 20px;
-    // border-bottom-right-radius: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -162,15 +147,6 @@
         text-align: center;
         margin-top: 25px;
     }
-
-    // #friends-approved {
-    // background-color: $blue;
-    // color: white;
-
-    //     &:hover {
-    //         background-color: #146cd9;
-    //     }
-    // }
 }
 
 .session-form .picture-input {
@@ -262,8 +238,6 @@
     border-top: 1px solid lightgrey;
     position: relative;
     margin: 0;
-    // position: sticky;
-    // top: 50%;
 
     button {
         padding: 10px;
@@ -325,9 +299,6 @@
 }
 
 .profile-cover-photo {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
     position: relative;
     width: 800px;
 

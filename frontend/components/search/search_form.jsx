@@ -32,7 +32,6 @@ class SearchForm extends React.Component {
         e.stopPropagation();
 
         const logo = document.getElementById("logo");
-        // logo.style.opacity = 0;
         logo.style.width = 0;
         logo.style.visibility = "hidden";
     }

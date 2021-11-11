@@ -4,7 +4,7 @@ import { removePost, clearAllPosts } from '../../actions/post_actions';
 import { fetchNewsfeedContent } from '../../actions/newsfeed_profile_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchLikes, createLike, removeLike } from '../../actions/like_actions';
-import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
+import { fetchMessages, createChat } from '../../actions/message_chat_actions';
 import React from "react";
 import Newsfeed from "./newsfeed"
 
@@ -19,8 +19,6 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = (dispatch, ownProps) => ({
-    // fetchNewsfeedPosts: () => dispatch(fetchNewsfeedPosts()),
-    // fetchNewsfeedComments: () => dispatch(fetchNewsfeedComments()),
     fetchNewsfeedContent: () => dispatch(fetchNewsfeedContent()),
     fetchLikes: () => dispatch(fetchLikes()),
     removePost: (postId) => dispatch(removePost(postId)),
@@ -28,7 +26,6 @@ const mDTP = (dispatch, ownProps) => ({
     fetchUsers: () => dispatch(fetchUsers()),
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(removeLike(likeId)),
-    // fetchChats: () => dispatch(fetchChats()),
     fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
     createChat: (chat) => dispatch(createChat(chat)),
 

@@ -43,14 +43,20 @@ export default class CommentForm extends React.Component {
         const editForm = document.querySelectorAll(".comment-edit-form");
         if (editForm) {
             editForm.forEach(el => {
-                el.style.display = ""
+                el.style.display = "";
             }
             );
         }
 
-        const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+        let commentItem;
+        if (this.props.lastComment) {
+            commentItem = document.querySelectorAll(`#comment-${this.props.comment.id}`).item(1);
+        } else {
+            commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+        }
+
         if (commentItem) {
-            commentItem.style.display = "flex";
+            commentItem.style.display = "";
         }
     }
 

@@ -76,7 +76,6 @@ class App extends React.Component {
 
         if (logo && logo.style.visibility === "hidden") {
             logo.style.width = "";
-            // logo.style.opacity = "";
             logo.style.visibility = "visible";
         }
     }
@@ -90,7 +89,6 @@ class App extends React.Component {
                 <ProtectedRoute path="/newsfeed" component={newsfeedContainer} />
                 <ProtectedRoute path="/:userId/profile" component={profileContainer} />
                 <ProtectedRoute path="/search/:searchTerm" component={searchContainer} />
-                {/* <AuthRoute component={splashGreeting} /> */}
             </Switch>
             <ProtectedRoute path="/" component={ChatListContainer} />
         </div>

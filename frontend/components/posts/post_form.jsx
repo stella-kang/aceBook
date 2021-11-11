@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router";
 
 class PostForm extends React.Component {
     constructor(props) {
