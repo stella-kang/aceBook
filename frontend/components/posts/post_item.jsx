@@ -99,7 +99,6 @@ class PostItem extends React.Component {
                         showCommentButton = <div className="show-comment-button" id={`show-comment-button-${this.props.post.id}`} onClick={this.showMoreComments}>View {this.state.allComments.length - this.state.lastComments.length} more comments</div>
                 }
 
-                debugger
                 lastComment = <ul id={`last-comment-preview-${this.props.post.id}`}>
                     {this.state.lastComments.map(el => (
                         <CommentContainer comment={el} key={el.id} />

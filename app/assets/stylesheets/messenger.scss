@@ -36,6 +36,7 @@
         width: 40px;
         border-radius: 100%;
         margin-right: 10px;
+        object-fit: cover;
     }
 
     i {
@@ -81,21 +82,23 @@
 .message-item {
     margin-bottom: 10px;
     display: flex;
+    font-size: 15px;
 
     .message-content {
         border-radius: 30px;
         box-sizing: border-box;
-        padding: 15px;
+        padding: 20px;
         width: fit-content;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
     }
 
     img {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         border-radius: 100%;
         margin-right: 5px;
+        object-fit: cover;
     }
 }
 

@@ -57,7 +57,7 @@ export default class SessionFrom extends React.Component {
         this.props.clearErrors();
 
         this.props.action({
-            email: "stella@email.com",
+            email: "demo@email.com",
             password: "password"
         })
     }

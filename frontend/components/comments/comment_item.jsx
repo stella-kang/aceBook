@@ -12,8 +12,10 @@ class Comment extends React.Component {
     }
 
     componentDidMount() {
-        if (this.author !== this.props.currentUser)
-        document.getElementById(`comment-dropdown-menu-${this.props.comment.id}`).style.display = "none";
+        if (this.author !== this.props.currentUser) {
+            let menu = document.getElementById(`comment-dropdown-menu-${this.props.comment.id}`);
+            if (menu) menu.style.display = "none";
+        }
     }
 
     handleDropDownClick(e) {

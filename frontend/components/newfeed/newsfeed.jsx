@@ -41,6 +41,8 @@ export default class Newsfeed extends React.Component {
     }
 
     render() {
+        let friends = this.props.friends.map(friend => this.props.users[friend.friend_id]).sort((f1, f2) => f1.first_name > f2.first_name ? 1 : -1);
+        
         return <div className="newsfeed">
             <div className="newsfeed-links">
                 <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
@@ -92,9 +94,14 @@ export default class Newsfeed extends React.Component {
                                     <NewsfeedFriendItem friend={this.props.users[friend.friend_id]}/>
                                 </li>
                             )} */}
-                            {this.props.friends.map(friend => (
+                            {/* {this.props.friends.map(friend => (
                                 <li onClick={this.openChat(friend.friend_id)} key={`${friend.id}-${friend.status}`}>
                                     <NewsfeedFriendItem friend={this.props.users[friend.friend_id]} />
+                                </li>
+                            ))} */}
+                            {friends.map(friend => (
+                                <li onClick={this.openChat(friend.id)} key={`${friend.id}`}>
+                                    <NewsfeedFriendItem friend={friend} />
                                 </li>
                             ))}
                         </ul> : <div id="newsfeed-no-friends">No friends.</div>}

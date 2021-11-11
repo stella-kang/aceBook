@@ -13,6 +13,7 @@
         border-radius: 100%;
         margin-right: 10px;
         margin-top: 3px;
+        object-fit: cover;
     }
 
     .comment-edit-form {
@@ -126,13 +127,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 5px;
 
     img {
         height: 40px;
         width: 40px;
         border-radius: 100%;
         margin-right: 10px;
+        object-fit: cover;
     }
 
     form {
