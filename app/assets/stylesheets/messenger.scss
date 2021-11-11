@@ -120,6 +120,11 @@
 }
 
 #chat-friend-name {
+    text-overflow: ellipsis;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+
     &:hover {
         text-decoration: underline;
         cursor: pointer;

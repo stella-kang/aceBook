@@ -79,6 +79,24 @@ propic11 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws
 user11.profile_picture.attach(io: propic11, filename: 'opinion.jpg')
 # user11.cover_photo.attach(io: coverpic10, filename: 'opinion_reaction.jpg')
 
+user12 = User.create(first_name: "Blank", last_name: "User", password: "password", email: "user12@email.com")
+# propic11 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/bones.jpeg')
+# coverpic11 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/opinion_reaction.jpeg')
+# user11.profile_picture.attach(io: propic11, filename: 'opinion.jpg')
+# user11.cover_photo.attach(io: coverpic10, filename: 'opinion_reaction.jpg')
+
+user13 = User.create(first_name: "I am", last_name: "Drake", password: "password", email: "user12@email.com")
+propic13 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake.jpeg')
+coverpic13 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake_cover.jpeg')
+user13.profile_picture.attach(io: propic13, filename: 'drake.jpg')
+user13.cover_photo.attach(io: coverpic13, filename: 'drake_cover.jpg')
+
+user14 = User.create(first_name: "Tuxedo Winnie", last_name: "The Pooh", password: "password", email: "user13@email.com")
+propic14 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/tuxedo.jpeg')
+# coverpic14 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake_cover.jpeg')
+user14.profile_picture.attach(io: propic13, filename: 'tuxedo.jpg')
+# user14.cover_photo.attach(io: coverpic13, filename: 'drake_cover.jpg')
+
 post1 = Post.create(content: "this is the first post... :o", author_id: user1.id)
 post2 = Post.create(content: "ITS PROUNOUNCED GIF, NOT JIF!!!", author_id: user10.id, profile_id: user2.id)
 post3 = Post.create(content: "Spongebob told me that Squidward likes krabby patties >:)", author_id: user3.id)

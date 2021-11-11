@@ -58,7 +58,7 @@
 
     ul {
         overflow-y: scroll;
-        height: 80vh;
+        height: 84vh;
     }
 
     > div {
@@ -129,6 +129,7 @@
     position: absolute;
     transform: translateY(-75%);
     border: 10px solid white;
+    object-fit: cover;
 }
 
 #white-background {
@@ -365,7 +366,7 @@
 #cover-photo-default {
     width: 800px;
     height: 350px;
-    background-color: lightgrey;
+    background-image: linear-gradient(white, grey);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }

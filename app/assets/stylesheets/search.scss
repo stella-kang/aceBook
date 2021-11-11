@@ -19,6 +19,7 @@
     height: 91vh;
     background-color: white;
     margin-right: 20%;
+    position: fixed;
 }
 
 .search-results {
@@ -26,6 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 40%;
 }
 
 .search-item {
@@ -124,6 +126,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 100px;
+    margin-left: 40%;
 
     span {
        margin-bottom: 10px;
