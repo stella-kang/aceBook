@@ -79,18 +79,11 @@ class Comment extends React.Component {
             commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`);
             commentDetails = document.getElementById(`comment-menu-${this.props.comment.id}`)
         }
-        // const editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
+
         editForm.style.display = "flex";
-
-        // const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         commentMenu.style.display = "";
-
-        // const commentItem = document.getElementById(`comment-${this.props.comment.id}`);
         commentItem.style.display = "none";
-
-        // const commentInput = document.getElementById(`comment-input-${this.props.comment.post_id}-${this.props.comment.id}`)
         commentInput.focus();
-
         commentDetails.style.display = "none";
     }
 

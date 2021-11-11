@@ -58,6 +58,7 @@ class PostItem extends React.Component {
 
     handleDropDownClick(e) {
         e.stopPropagation();
+
         const postMenu = document.getElementById(`post-dropdown-content-${this.props.post.id}`);
         if (postMenu.style.display === "") {
             postMenu.style.display = "block";

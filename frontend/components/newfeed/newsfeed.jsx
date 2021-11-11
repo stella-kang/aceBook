@@ -1,9 +1,6 @@
 import React from "react";
 import PostItem from "../posts/post_item";
 import NewsfeedFriendItem from './newsfeed_friend_item';
-import { Redirect } from "react-router";
-import CreatePostFormContainer from "../posts/create_post_form_container";
-import ChatContainer from "../messenger/chat_container";
 
 export default class Newsfeed extends React.Component {
     componentDidMount() {

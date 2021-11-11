@@ -53,15 +53,18 @@ export default class CommentForm extends React.Component {
         }
 
         let commentItem;
+        let commentMenu;
+
         if (this.props.lastComment) {
             commentItem = document.querySelectorAll(`#comment-${this.props.comment.id}`).item(1);
+            commentMenu = document.querySelectorAll(`#comment-menu-${this.props.comment.id}`).item(1)
         } else {
             commentItem = document.getElementById(`comment-${this.props.comment.id}`);
+            commentMenu = document.getElementById(`comment-menu-${this.props.comment.id}`)
         }
 
-        if (commentItem) {
-            commentItem.style.display = "";
-        }
+        commentItem.style.display = "";
+        commentMenu.style.display = "";
     }
 
     render() {
