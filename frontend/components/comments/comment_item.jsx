@@ -80,7 +80,7 @@ class Comment extends React.Component {
             commentDetails = document.getElementById(`comment-menu-${this.props.comment.id}`)
         }
         // const editForm = document.getElementById(`comment-edit-form-${this.props.comment.id}`);
-        editForm.style.display = "block";
+        editForm.style.display = "flex";
 
         // const commentMenu = document.getElementById(`comment-dropdown-content-${this.props.comment.id}`);
         commentMenu.style.display = "";
@@ -148,9 +148,12 @@ class Comment extends React.Component {
                     <div id="comment-timestamp">{this.props.comment.created_at}</div>
                 </div>
 
-                <div className="comment-form comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>
-                    {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
-                    <EditCommentContainer lastComment={this.props.commentType === "last-comment" ? true : false} comment={this.props.comment} />
+                <div className="comment-edit-form" id={`comment-edit-form-${this.props.comment.id}`}>
+                    <div className="comment-form">
+                        {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
+                        <EditCommentContainer lastComment={this.props.commentType === "last-comment" ? true : false} comment={this.props.comment} />
+                    </div>
+                    <div id="comment-cancel">Press Esc to cancel.</div>
                 </div> 
 
             </li>

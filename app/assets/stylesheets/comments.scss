@@ -18,6 +18,7 @@
 
     .comment-edit-form {
         display: none;
+        flex-direction: column;
     }
 }
 
@@ -128,6 +129,7 @@
     margin: 0 15px 15px;
 }
 
+
 .comment-form {
     width: 100%;
     display: flex;
@@ -157,11 +159,6 @@
         &:focus {
             outline: none;
         }
-    }
-
-    div {
-        font-size: 13px;
-        color: grey;
     }
 }
 
@@ -215,4 +212,10 @@
 
 #comment-menu-dot, #comment-timestamp {
     font-weight: 400;
+}
+
+#comment-cancel {
+    font-size: 13px;
+    color: grey;
+    margin: 5px 0 5px 70px;
 }
