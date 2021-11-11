@@ -8,6 +8,7 @@ class SearchItem extends React.Component {
         this.handleCreateFriendRequest = this.handleCreateFriendRequest.bind(this);
         this.handleDeleteFriendRequest = this.handleDeleteFriendRequest.bind(this);
         this.redirectToProfilePage = this.redirectToProfilePage.bind(this);
+        this.handleUpdateFriendRequest = this.handleUpdateFriendRequest.bind(this);
         this.openChat = this.openChat.bind(this);
     }
 
@@ -26,6 +27,23 @@ class SearchItem extends React.Component {
         const request = this.props.friendRequests.find(request => request.user_id === this.props.currentUserId && request.friend_id === this.props.user.id)
 
         this.props.deleteFriendRequest(request.id);
+    }
+
+    handleUpdateFriendRequest(e) {
+        let originalRequest = this.props.friendRequests.find(friend => friend.friend_id === this.props.currentUserId && friend.user_id === this.props.user.id)
+
+        this.props.updateFriendRequest({
+            user_id: originalRequest.user_id,
+            friend_id: originalRequest.friend_id,
+            status: true,
+            id: originalRequest.id
+        })
+
+        this.props.createFriendRequest({
+            user_id: this.props.currentUserId,
+            friend_id: this.props.user.id,
+            status: true
+        })
     }
 
     openChat(e) {
@@ -56,6 +74,10 @@ class SearchItem extends React.Component {
         } else if (this.props.friendRequests.some(friend => (friend.user_id === this.props.currentUserId && friend.friend_id === this.props.user.id && friend.status === false))) {
             button = <button id="search-item-cancel-request" onClick={this.handleDeleteFriendRequest}>
                 <i className="fas fa-user-minus"></i>
+            </button>
+        }  else if (this.props.friendRequests.some(friend => friend.friend_id === this.props.currentUserId && friend.user_id === this.props.user.id && friend.status === false)) {
+            button = <button id="search-item-confirm-request" onClick={this.handleUpdateFriendRequest}>
+                <i className="fas fa-user-plus"></i>
             </button>
         } else {
             button = <button id="search-item-send-request" onClick={this.handleCreateFriendRequest}>

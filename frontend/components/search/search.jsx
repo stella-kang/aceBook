@@ -26,6 +26,7 @@ class Search extends React.Component {
                     currentUserId={this.props.currentUserId}
                     deleteFriendRequest={this.props.deleteFriendRequest}
                     createFriendRequest={this.props.createFriendRequest}
+                    updateFriendRequest={this.props.updateFriendRequest}
                     key={user.id}
                     fetchMessages={this.props.fetchMessages}
                     createChat={this.props.createChat}

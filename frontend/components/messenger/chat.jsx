@@ -75,9 +75,9 @@ class Chat extends React.Component {
         return (
             <div className="chatroom-container" onClick={this.addCurrentChatStyling} id={`chatroom-${this.props.chat.id}`}>
                 <div className="chat-header">
-                    <div id="chat-friend-info">
+                    <div id="chat-friend-info" onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)}>
                         {this.props.friend.profile_picture ? <img src={this.props.friend.profile_picture} /> : <img src={window.defaultProfile} />}
-                        <span id="chat-friend-name" onClick={() => this.props.history.push(`/${this.props.friend.id}/profile`)}>{this.props.friend.first_name} {this.props.friend.last_name}</span>
+                        <span id="chat-friend-name">{this.props.friend.first_name} {this.props.friend.last_name}</span>
                     </div>
 
                     <i className="fas fa-times" id={`chat-close-button-${this.props.chat.id}`} onClick={this.closeChat}></i>

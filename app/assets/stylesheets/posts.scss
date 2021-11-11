@@ -124,6 +124,14 @@
         #post-author-details {
             display: flex;
             align-items: center;
+            
+            span {
+                max-width: 550px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                line-height: 20px;
+            }
         }
 
         #post-created-at {
@@ -142,10 +150,14 @@
 
         span {
             font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
 
             &:hover {
                 text-decoration: underline;
                 cursor: pointer;
+                
             }
         }
 
@@ -162,6 +174,7 @@
     > span {
         font-size: 18px;
         margin: 20px 15px 5px;
+        overflow-wrap: break-word;
     }
 
     .post-header {
@@ -243,7 +256,7 @@
     #create-post-form-button {
         width: 100%;
         border-radius: 30px;
-        padding-left: 30px;
+        padding: 10px 30px 10px;
         text-align: left;
         color: grey;
 

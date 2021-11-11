@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/user&session_actions';
 import { fetchFriendRequests } from '../../actions/friends_actions';
-import { removeFriendRequest, createFriendRequest } from '../../actions/friends_actions';
+import { removeFriendRequest, createFriendRequest, editFriendRequest} from '../../actions/friends_actions';
 import { receiveSearch } from '../../actions/search_action';
 import { fetchChats, fetchMessages, createChat } from '../../actions/message_chat_actions';
 import { withRouter } from 'react-router-dom';
@@ -20,9 +20,10 @@ const mDTP = (dispatch, ownProps) => ({
     fetchFriendRequests: (userId) => dispatch(fetchFriendRequests(userId)),
     deleteFriendRequest: (requestId) => dispatch(removeFriendRequest(requestId)),
     createFriendRequest: (request) => dispatch(createFriendRequest(request)),
+    updateFriendRequest: (request) => dispatch(editFriendRequest(request)),
     receiveSearch: (term) => dispatch(receiveSearch(term)),
     fetchMessages: (chatId) => dispatch(fetchMessages(chatId)),
-    createChat: (chat) => dispatch(createChat(chat)),
+    createChat: (chat) => dispatch(createChat(chat))
 
 })
 

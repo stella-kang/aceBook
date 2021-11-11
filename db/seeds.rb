@@ -8,6 +8,8 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Message.destroy_all
+Like.destroy_all
 Comment.destroy_all
 Post.destroy_all
 Friend.destroy_all
@@ -94,7 +96,7 @@ user13.cover_photo.attach(io: coverpic13, filename: 'drake_cover.jpg')
 user14 = User.create(first_name: "Tuxedo Winnie", last_name: "The Pooh", password: "password", email: "user13@email.com")
 propic14 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/tuxedo.jpeg')
 # coverpic14 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake_cover.jpeg')
-user14.profile_picture.attach(io: propic13, filename: 'tuxedo.jpg')
+user14.profile_picture.attach(io: propic14, filename: 'tuxedo.jpg')
 # user14.cover_photo.attach(io: coverpic13, filename: 'drake_cover.jpg')
 
 post1 = Post.create(content: "this is the first post... :o", author_id: user1.id)
@@ -113,10 +115,28 @@ post13 = Post.create(content: "*blinks*", author_id: user8.id)
 post14 = Post.create(content: "Hi! Are you sure everything is fine? Let me know how I can help!", author_id: user5.id, profile_id: user9.id)
 post15 = Post.create(content: "Pineapple 100% belongs on pizza", author_id: user10.id)
 
-# comment1 = Comment.create(content: "comment1", author_id: user1.id, post_id: post1.id)
-# comment2 = Comment.create(content: "comment2", author_id: user1.id, post_id: post2.id)
-# comment3 = Comment.create(content: "comment3", author_id: user1.id, post_id: post3.id)
-
-# friend1 = Friend.create(user_id: user2.id, friend_id: user1.id, status: false)
-# friend1 = Friend.create(user_id: user2.id, friend_id: user3.id, status: true)
-# friend1 = Friend.create(user_id: user3.id, friend_id: user2.id, status: true)
+friend1 = Friend.create(user_id: user1.id, friend_id: user12.id, status: false)
+friend2 = Friend.create(user_id: user1.id, friend_id: user2.id, status: true)
+friend3 = Friend.create(user_id: user2.id, friend_id: user1.id, status: true)
+friend4 = Friend.create(user_id: user1.id, friend_id: user3.id, status: true)
+friend5 = Friend.create(user_id: user3.id, friend_id: user1.id, status: true)
+friend6 = Friend.create(user_id: user1.id, friend_id: user4.id, status: true)
+friend7 = Friend.create(user_id: user4.id, friend_id: user1.id, status: true)
+friend8 = Friend.create(user_id: user1.id, friend_id: user5.id, status: true)
+friend9 = Friend.create(user_id: user5.id, friend_id: user1.id, status: true)
+friend10 = Friend.create(user_id: user1.id, friend_id: user6.id, status: true)
+friend11 = Friend.create(user_id: user6.id, friend_id: user1.id, status: true)
+friend12 = Friend.create(user_id: user1.id, friend_id: user7.id, status: true)
+friend13 = Friend.create(user_id: user7.id, friend_id: user1.id, status: true)
+friend14 = Friend.create(user_id: user1.id, friend_id: user8.id, status: true)
+friend15 = Friend.create(user_id: user8.id, friend_id: user1.id, status: true)
+friend16 = Friend.create(user_id: user1.id, friend_id: user9.id, status: true)
+friend17 = Friend.create(user_id: user9.id, friend_id: user1.id, status: true)
+friend18 = Friend.create(user_id: user1.id, friend_id: user10.id, status: true)
+friend19 = Friend.create(user_id: user10.id, friend_id: user1.id, status: true)
+friend20 = Friend.create(user_id: user1.id, friend_id: user11.id, status: true)
+friend21 = Friend.create(user_id: user11.id, friend_id: user1.id, status: true)
+friend22 = Friend.create(user_id: user1.id, friend_id: user13.id, status: true)
+friend23 = Friend.create(user_id: user13.id, friend_id: user1.id, status: true)
+friend24 = Friend.create(user_id: user1.id, friend_id: user14.id, status: true)
+friend25 = Friend.create(user_id: user14.id, friend_id: user1.id, status: true)

@@ -13,7 +13,7 @@
 }
 
 .newsfeed-scroll {
-    margin-left: 28%;
+    margin-left: 25%;
 }
 
 .newsfeed-links {
@@ -33,6 +33,10 @@
         font-weight: bold;
         text-decoration: none;
         color: black;
+
+        img {
+            object-fit: cover;
+        }
 
         &:hover {
             border-radius: 10px;
@@ -155,6 +159,8 @@
     h1 {
         font-size: 30px;
         margin-bottom: 20px;
+        text-align: center;
+        margin-top: 25px;
     }
 
     // #friends-approved {

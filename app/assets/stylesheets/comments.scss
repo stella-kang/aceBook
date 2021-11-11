@@ -29,6 +29,9 @@
     p:first-child {
         font-weight: bold;
         margin-bottom: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         &:hover {
             text-decoration: underline;
@@ -42,6 +45,7 @@
         padding: 15px;
         border-radius: 20px;
         margin-right: 35px;
+        max-width: 600px;
 
         p {
             display: flex;
