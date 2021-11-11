@@ -115,7 +115,7 @@ post13 = Post.create(content: "*blinks*", author_id: user8.id)
 post14 = Post.create(content: "Hi! Are you sure everything is fine? Let me know how I can help!", author_id: user5.id, profile_id: user9.id)
 post15 = Post.create(content: "Pineapple 100% belongs on pizza", author_id: user10.id)
 
-friend1 = Friend.create(user_id: user1.id, friend_id: user12.id, status: false)
+friend1 = Friend.create(user_id: user12.id, friend_id: user1.id, status: false)
 friend2 = Friend.create(user_id: user1.id, friend_id: user2.id, status: true)
 friend3 = Friend.create(user_id: user2.id, friend_id: user1.id, status: true)
 friend4 = Friend.create(user_id: user1.id, friend_id: user3.id, status: true)
