@@ -3,7 +3,7 @@ import { createPost } from "../../util/posts_util";
 import PostItem from "../posts/post_item";
 import FriendsSectionContainer from "../friends/friends_section_container";
 import FriendButtonContainer from "../friends/friend_button_container";
-import ChatContainer from "../messenger/chat_container"
+import CoverPhotoFormContainer from "../cover_photo/cover_photo_form_container";
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -185,35 +185,42 @@ export default class Profile extends React.Component {
             }
 
             return <div className="profile-wall">
-
-                <div className="profile-header">
-                    <div id="white-rectangle">
-                        {this.props.user.profile_picture ? <img id="profile-picture" src={this.props.user.profile_picture} /> : <img id="profile-picture" src={window.defaultProfile} />}
+                <div id="white-background">
+                    <div className="profile-cover-photo">
+                        {this.props.user.cover_photo ? <img id="cover-photo" src={this.props.user.cover_photo} /> : <div id="cover-photo-default"></div>}
+                        {this.props.user === this.props.currentUser ? <CoverPhotoFormContainer /> : null}
                     </div>
 
-                    <div id="profile-summary">
-                        <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
+                    <div className="profile-header">
+                        {/* <div id="white-rectangle">
+                            {this.props.user.profile_picture ? <img id="profile-picture" src={this.props.user.profile_picture} /> : <img id="profile-picture" src={window.defaultProfile} />}
+                        </div> */}
 
-                        <div className="profile-buttons-and-links">
-                            <div className="profile-links">
-                                <a id="show-posts-link" onClick={this.showPostsSection} className="displayed">
-                                    Posts
-                                </a>
+                        <div id="profile-summary">
+                            {this.props.user.profile_picture ? <img id="profile-picture" src={this.props.user.profile_picture} /> : <img id="profile-picture" src={window.defaultProfile} />}
+                            <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
 
-                                <a id="show-friends-link" onClick={this.showFriendsSection}>
-                                    Friends
-                                </a>
-                            </div>
+                            <div className="profile-buttons-and-links">
+                                <div className="profile-links">
+                                    <a id="show-posts-link" onClick={this.showPostsSection} className="displayed">
+                                        Posts
+                                    </a>
 
-                            <div className="profile-buttons">
-                                {this.props.user === this.props.currentUser ? this.props.editUserModal() : null}
-                                {this.props.user === this.props.currentUser ? null : <FriendButtonContainer user={this.props.user} buttonType="profile"/>}
-                                {this.props.user === this.props.currentUser ? null : <button id="profile-message-button" onClick={this.openChat}className="profile-button">
-                                        <i className="fas fa-comment"></i>
-                                        <span>Message</span>
-                                    </button>}
-                                {/* {this.props.user === this.props.currentUser ? null : friendButton}
-                                {this.props.user === this.props.currentUser ? null : friendButtonDropdown} */}
+                                    <a id="show-friends-link" onClick={this.showFriendsSection}>
+                                        Friends
+                                    </a>
+                                </div>
+
+                                <div className="profile-buttons">
+                                    {this.props.user === this.props.currentUser ? this.props.editUserModal() : null}
+                                    {this.props.user === this.props.currentUser ? null : <FriendButtonContainer user={this.props.user} buttonType="profile"/>}
+                                    {this.props.user === this.props.currentUser ? null : <button id="profile-message-button" onClick={this.openChat}className="profile-button">
+                                            <i className="fas fa-comment"></i>
+                                            <span>Message</span>
+                                        </button>}
+                                    {/* {this.props.user === this.props.currentUser ? null : friendButton}
+                                    {this.props.user === this.props.currentUser ? null : friendButtonDropdown} */}
+                                </div>
                             </div>
                         </div>
                     </div>
