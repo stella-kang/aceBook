@@ -79,7 +79,7 @@ coverpic13 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazona
 user13.profile_picture.attach(io: propic13, filename: 'drake.jpg')
 user13.cover_photo.attach(io: coverpic13, filename: 'drake_cover.jpg')
 
-user14 = User.create(first_name: "Tuxedo Winnie", last_name: "The Pooh", password: "password", email: "user13@email.com")
+user14 = User.create(first_name: "Tuxedo Winnie", last_name: "The Pooh", password: "password", email: "user14@email.com")
 propic14 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/tuxedo.jpeg')
 user14.profile_picture.attach(io: propic14, filename: 'tuxedo.jpg')
 
