@@ -145,6 +145,7 @@ class PostItem extends React.Component {
                         </div>
                     </div>
 
+                    {this.props.author === this.props.currentUser ? 
                     <div className="post-dropdown-menu" id={`post-dropdown-${this.props.post.id}`}>
                         <button id="post-dropdown-button" onClick={this.handleDropDownClick}>
                             <i className="fas fa-ellipsis-h fa-2x"></i>
@@ -162,7 +163,7 @@ class PostItem extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> : null}
                 </div>
 
                 <span>{this.props.post.content}</span>
