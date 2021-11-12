@@ -35,14 +35,17 @@ componentDidMount() {
     );
 }
 ```
+
 <img src='./app/assets/images/readme_images/newsfeed.png'/>
 
+### Comment Section
 * Each post will have a comment section, that will dynamically update based on the amount of comments it has
     * On page load, the comment section will preview the latest comment if it has more than one, and include a link to expand the comment section to show all comments
     * Regardless of the comment section length, a user will be able to dynamically add a new comment and have it render on the page once it has been saved
 
 <img src='./app/assets/images/readme_images/comments_section.png'/>
 
+### Profiles
 * All profiles will host that particular user's profile picture (if applicable), cover photo (if applicable), along with a post scroll that will show both the posts the user has made, as well as posts that their friends have made directly onto their profile
     * When the current user navigates to another users profile, there will be a button for the current user to open or start a chat with that user
     * There will also be another button that dynamically update depending on the current users friend relationship with that user (i.e. incoming friend request that hasn't been responded to yet, outgoing friend request that hasn't been responded to yet, current friends, etc.)
@@ -94,10 +97,13 @@ if (this.props.friends.some(friend => friend.friend_id === this.props.user.id &&
 
 <img src='./app/assets/images/readme_images/current_user.png'/>
 
+### NavBar
 * The Navigation Bar will persist throughout the app, and provides buttons for the user to respond to any incoming friend requests, navigate to the newsfeed or their profile, search the app for its users, and logout of the app
 
 <img src='./app/assets/images/readme_images/nav_bar.png'/>
 
+
+### Search
 * The search bar will redirect users to the search feature, which will show a list of users within the app whose names match the searched term
     * Each item in the search results will show a button depending on the current users friend relationship with them, similarly to user profiles
 
