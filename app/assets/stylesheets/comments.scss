@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
 
-    p:first-child {
+    span:first-child {
         font-weight: bold;
         margin-bottom: 5px;
         overflow: hidden;
@@ -47,10 +47,11 @@
         border-radius: 20px;
         margin-right: 35px;
         max-width: 600px;
+        display: flex;
+        flex-direction: column;
 
-        p {
-            display: flex;
-            word-break: break-all;
+        span {
+            overflow-wrap: break-word;
             line-height: 16px;
         }
     }

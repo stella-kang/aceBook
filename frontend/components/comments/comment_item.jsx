@@ -98,8 +98,8 @@ class Comment extends React.Component {
 
                     <div className="comment-body">
                         <div id="comment-content">
-                            <p onClick={() => this.props.history.push(`/${this.author.id}/profile`)}>{this.author.first_name} {this.author.last_name}</p>
-                            <p>{this.props.comment.content}</p>
+                            <span onClick={() => this.props.history.push(`/${this.author.id}/profile`)}>{this.author.first_name} {this.author.last_name}</span>
+                            <span>{this.props.comment.content}</span>
                         </div>
                         <div id="likes-anchor">
                             {likes.length !== 0 ?
@@ -124,7 +124,7 @@ class Comment extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div> : null}
+                    </div> : null}
                     </div>
                 </div>
 
