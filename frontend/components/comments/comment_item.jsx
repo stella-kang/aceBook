@@ -110,6 +110,7 @@ class Comment extends React.Component {
                             }
                         </div>
 
+                        {this.author === this.props.currentUser ? 
                         <div id="comment-dropdown-anchor">
                             <div className={`comment-dropdown-menu`} id={`comment-dropdown-menu-${this.props.comment.id}`}>
                                 <button id="comment-dropdown-button" onClick={this.handleDropDownClick}>
@@ -123,7 +124,7 @@ class Comment extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> : null}
                     </div>
                 </div>
 
