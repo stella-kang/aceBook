@@ -50,7 +50,7 @@ class PostItem extends React.Component {
             })
         } else if (prevCommentBodies.some(comment => !currCommentBodies.includes(comment))) {
             this.setState({
-                lastComments: this.props.comments.slice(this.props.comments.length - prevState.lastComments.length),
+            lastComments: this.props.comments.slice(this.props.comments.length - prevState.lastComments.length),
                 allComments: this.props.comments
             })
         }

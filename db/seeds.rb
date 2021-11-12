@@ -73,7 +73,7 @@ user11.profile_picture.attach(io: propic11, filename: 'opinion.jpg')
 
 user12 = User.create(first_name: "Blank", last_name: "User", password: "password", email: "user12@email.com")
 
-user13 = User.create(first_name: "I am", last_name: "Drake", password: "password", email: "user12@email.com")
+user13 = User.create(first_name: "I am", last_name: "Drake", password: "password", email: "user13@email.com")
 propic13 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake.jpeg')
 coverpic13 = URI.open('https://acebook-profilepicture-seeds.s3.us-east-2.amazonaws.com/drake_cover.jpeg')
 user13.profile_picture.attach(io: propic13, filename: 'drake.jpg')
