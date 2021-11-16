@@ -36,18 +36,18 @@ export default class Newsfeed extends React.Component {
 
     render() {
         let friends = this.props.friends.map(friend => this.props.users[friend.friend_id]).sort((f1, f2) => f1.first_name > f2.first_name ? 1 : -1);
-        
+
         return <div className="newsfeed">
             <div className="newsfeed-links">
                 <a onClick={() => this.props.history.push(`/${this.props.currentUser.id}/profile`)}>
                     {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
                     <span>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</span>
                 </a>
-                <a href="https://github.com/stella-kang/aceBook">
+                <a href="https://github.com/stella-kang/aceBook" target="_blank">
                     <img src={window.githubLogo} />
                     <span>Github</span>
                 </a>
-                <a href="https://www.linkedin.com/in/stella-kang-33302b127/">
+                <a href="https://www.linkedin.com/in/stella-kang-33302b127/" target="_blank">
                     <img src={window.linkedinLogo} />
                     <span>LinkedIn</span>
                 </a>

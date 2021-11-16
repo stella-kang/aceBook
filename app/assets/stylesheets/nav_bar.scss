@@ -14,6 +14,10 @@
     top: 0;
     z-index: 1;
 
+    #logo:hover {
+        cursor: pointer;
+    }
+
     button {
         border: none;
         background-color: #e6e6e6;

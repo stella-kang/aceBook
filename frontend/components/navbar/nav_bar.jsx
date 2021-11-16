@@ -46,33 +46,33 @@ class NavBar extends React.Component {
     render() {
         return (<div className="nav-bar">
             <div className="search-form-div">
-                <img id="logo" src={window.logo}/>
+                <img id="logo" src={window.logo} onClick={() => this.props.history.push('/newsfeed')}/>
                 <SearchFormContainer />
             </div>
 
             <div className="middle-icons">
-                <button 
-                    id="newsfeed-nav-icon" 
-                    className={this.props.location.pathname === `/newsfeed` ? "current-url" : null} 
+                <button
+                    id="newsfeed-nav-icon"
+                    className={this.props.location.pathname === `/newsfeed` ? "current-url" : null}
                     disabled={this.props.location.pathname === `/newsfeed` ? true : false}
                     onClick={(() => this.props.history.push('/newsfeed'))}
                     >
                         <i className="fas fa-home fa-2x"></i>
                         <div></div>
                 </button>
-                
-                <a href="https://github.com/stella-kang/aceBook">
+
+                <a href="https://github.com/stella-kang/aceBook" target="_blank">
                     <img src={window.githubLogo} />
                 </a>
 
-                <a href="https://www.linkedin.com/in/stella-kang-33302b127/">
+                <a href="https://www.linkedin.com/in/stella-kang-33302b127/" target="_blank">
                     <img src={window.linkedinLogo} />
                 </a>
             </div>
 
             <div className="navbar-buttons">
-                <button 
-                    id="profile-button" 
+                <button
+                    id="profile-button"
                     onClick={() => this.props.history.push(`/${this.props.currentUserId}/profile`)}
                     className={this.props.location.pathname === `/${this.props.currentUserId}/profile` ? "current-url" : null}
                     disabled={this.props.location.pathname === `/${this.props.currentUserId}/profile` ? true : false}>
@@ -98,8 +98,8 @@ class NavBar extends React.Component {
 
                     <div className="main-dropdown-content">
                         <div>
-                            <Link 
-                                id="dropdown-profile-link" 
+                            <Link
+                                id="dropdown-profile-link"
                                 to={`/${this.props.currentUserId}/profile`}>
 
                                 {this.props.currentUser.profile_picture ? <img src={this.props.currentUser.profile_picture} /> : <img src={window.defaultProfile} />}
