@@ -20,7 +20,7 @@ export default class CommentForm extends React.Component {
 
                         const commentItem = document.querySelectorAll(`#comment-${this.props.comment.id}`);
                         const commentDetails = document.querySelectorAll(`#comment-menu-${this.props.comment.id}`);
-                        
+
                         if (commentItem && commentDetails) {
                             commentItem.forEach(comment => comment.style.display = "");
                             commentDetails.forEach(comment => comment.style.display = "");
@@ -63,8 +63,8 @@ export default class CommentForm extends React.Component {
             commentMenu = document.getElementById(`comment-menu-${this.props.comment.id}`)
         }
 
-        commentItem.style.display = "";
-        commentMenu.style.display = "";
+        if (commentItem) commentItem.style.display = "";
+        if (commentMenu) commentMenu.style.display = "";
     }
 
     render() {
