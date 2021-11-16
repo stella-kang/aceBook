@@ -23,6 +23,7 @@
 
         &:hover {
             background-color: #cccccc;
+            cursor: pointer;
         }
     }
 
@@ -36,9 +37,10 @@
         justify-content: center;
         box-sizing: border-box;
         padding: 5px;
-        
+
         &:hover {
             background-color: #f2f2f2;
+            cursor: pointer;
         }
 
         img {
@@ -118,7 +120,7 @@
         box-sizing: border-box;
         padding: 10px;
         border-radius: 10px;
-         
+
         &:hover {
             background-color: #f2f2f2;
         }
@@ -197,7 +199,7 @@
             border-radius: 10px;
        }
     }
-    
+
     a {
         width: 30%;
         display: flex;
