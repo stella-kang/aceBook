@@ -51,6 +51,10 @@ export default class Newsfeed extends React.Component {
                     <img src={window.linkedinLogo} />
                     <span>LinkedIn</span>
                 </a>
+                <a href="https://stellakang.dev/" target="_blank">
+                    <i class="fas fa-user-alt fa-3x"></i>
+                    <span id="portfolio-link">Portfolio</span>
+                </a>
             </div>
 
             <div className="newsfeed-scroll">
