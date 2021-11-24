@@ -68,6 +68,10 @@ class NavBar extends React.Component {
                 <a href="https://www.linkedin.com/in/stella-kang-33302b127/" target="_blank">
                     <img src={window.linkedinLogo} />
                 </a>
+
+                <a href="https://stellakang.dev/" target="_blank">
+                    <i id="portfolio-icon" class="fas fa-user-alt fa-2x"></i>
+                </a>
             </div>
 
             <div className="navbar-buttons">
