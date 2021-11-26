@@ -51,8 +51,14 @@ export default class Newsfeed extends React.Component {
                     <img src={window.linkedinLogo} />
                     <span>LinkedIn</span>
                 </a>
+
+                <a href="https://angel.co/u/stella-kang-2" target="_blank">
+                    <img src={window.angelLogo} />
+                    <span>Angel</span>
+                </a>
+
                 <a href="https://stellakang.dev/" target="_blank">
-                    <i class="fas fa-user-alt fa-3x"></i>
+                    <i id="portfolio-icon" class="fas fa-user-alt fa-2x"></i>
                     <span id="portfolio-link">Portfolio</span>
                 </a>
             </div>
