@@ -69,6 +69,10 @@ class NavBar extends React.Component {
                     <img src={window.linkedinLogo} />
                 </a>
 
+                <a href="https://angel.co/u/stella-kang-2" target="_blank">
+                    <img src={window.angelLogo} />
+                </a>
+
                 <a href="https://stellakang.dev/" target="_blank">
                     <i id="portfolio-icon" class="fas fa-user-alt fa-2x"></i>
                 </a>
